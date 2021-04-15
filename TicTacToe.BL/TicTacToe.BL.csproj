@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicTacToe.Data\TicTacToe.Data.csproj" />
+  </ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.1.0" />
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="Scrutor" Version="3.3.0" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Folder Include="Installers\" />
+	</ItemGroup>
+
+</Project>
