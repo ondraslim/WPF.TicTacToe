@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using TicTacToe.App.Views.Game;
 
 namespace TicTacToe.App.Views
 {
@@ -7,9 +9,16 @@ namespace TicTacToe.App.Views
     /// </summary>
     public partial class GameControl : UserControl
     {
+        
         public GameControl()
         {
             InitializeComponent();
+        }
+
+        private void GameControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            RenderGamePages.Children.Clear();
+            RenderGamePages.Children.Add(new GameSetupControl());
         }
     }
 }

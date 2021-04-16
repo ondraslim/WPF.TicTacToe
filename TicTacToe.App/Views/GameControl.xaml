@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-             d:DesignHeight="800" d:DesignWidth="1200">
+             d:DesignHeight="800" d:DesignWidth="1200" Loaded="GameControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -19,9 +19,18 @@
         </Grid.Resources>
 
         <Border BorderBrush="Black" BorderThickness="0 0 0 1">
-                <ListView Grid.Row="0" Background="White">
-                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                        <ListViewItem VerticalAlignment="Center">
+            <Grid Grid.Row="0" Background="White">
+                <ListView>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ListViewItem VerticalAlignment="Center" Grid.Column="0">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                     VerticalAlignment="Center"
                                     BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
@@ -31,7 +40,7 @@
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
-                        <ListViewItem VerticalAlignment="Center">
+                        <ListViewItem VerticalAlignment="Center" Grid.Column="1">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                     VerticalAlignment="Center"
                                     BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
@@ -41,7 +50,7 @@
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
-                        <ListViewItem VerticalAlignment="Center">
+                        <ListViewItem VerticalAlignment="Center" Grid.Column="2">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                     VerticalAlignment="Center"
                                     BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
@@ -51,12 +60,15 @@
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
-                    <ListViewItem VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Text="Turn 42">
-                        </TextBlock>
-                    </ListViewItem>
-                    </StackPanel>
+                        <ListViewItem Grid.Column="3" />
+                        <ListViewItem VerticalAlignment="Center" Grid.Column="4">
+                            <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Text="Turn 42">
+                            </TextBlock>
+                        </ListViewItem>
+                    </Grid>
                 </ListView>
+            </Grid>
+
         </Border>
         <Grid Grid.Row="1" Background="#F6F5F8" Name="RenderGamePages">
 
