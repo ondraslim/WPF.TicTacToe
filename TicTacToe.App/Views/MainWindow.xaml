@@ -24,17 +24,17 @@
                 <Border BorderBrush="Black" BorderThickness="0 0 1 0">
                     <Grid Margin="0 20 0 0">
                         <ListView Margin="0 15">
-                            <ListViewItem HorizontalAlignment="Center" Margin="0 10">
+                            <ListViewItem HorizontalAlignment="Center" Margin="0 50 0 0">
                                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                        ToolTip="Home">
+                                        ToolTip="Home" Click="BtnHome_Click">
                                     <StackPanel Margin="-5">
                                         <md:PackIcon Kind="Home" />
                                     </StackPanel>
                                 </Button>
                             </ListViewItem>
-                            <ListViewItem HorizontalAlignment="Center" Margin="0 10">
+                            <ListViewItem HorizontalAlignment="Center">
                                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
@@ -44,7 +44,7 @@
                                     </StackPanel>
                                 </Button>
                             </ListViewItem>
-                            <ListViewItem HorizontalAlignment="Center" Margin="0 10">
+                            <ListViewItem HorizontalAlignment="Center">
                                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
@@ -54,7 +54,7 @@
                                     </StackPanel>
                                 </Button>
                             </ListViewItem>
-                            <ListViewItem HorizontalAlignment="Center" Margin="0 100 0 0">
+                            <ListViewItem HorizontalAlignment="Center" Margin="0 150 0 0">
                                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"

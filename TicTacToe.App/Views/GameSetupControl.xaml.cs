@@ -1,9 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using TicTacToe.BL.DTOs.Game;
 using TicTacToe.Data.Entities.Enums;
 
@@ -22,9 +20,6 @@ namespace TicTacToe.App.Views
         public GameSetupControl()
         {
             InitializeComponent();
-
-            var tttBoard = $"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent}\\Images\\ttt-board.png";
-            TttBoard.Source = new BitmapImage(new Uri(tttBoard));
         }
 
         private void BtnCreateNewGame_Click(object _, RoutedEventArgs e)

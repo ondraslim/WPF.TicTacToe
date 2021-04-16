@@ -15,18 +15,12 @@ namespace TicTacToe.App.Views
 
         private void MainWindow_Loaded(object _, RoutedEventArgs __)
         {
-            RenderPages.Children.Clear();
-            RenderPages.Children.Add(new Dashboard());
+            LoadHomeControl();
         }
 
-        private void BtnExit_Click(object _, RoutedEventArgs __)
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
-        }
-
-        private void MainWindow_MouseDown(object _, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left) DragMove();
+            LoadHomeControl();
         }
 
         private void BtnGame_Click(object _, RoutedEventArgs __)
@@ -40,5 +34,22 @@ namespace TicTacToe.App.Views
             RenderPages.Children.Clear();
             RenderPages.Children.Add(new StatisticsControl());
         }
+
+        private void LoadHomeControl()
+        {
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new HomeControl());
+        }
+
+        private void BtnExit_Click(object _, RoutedEventArgs __)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void MainWindow_MouseDown(object _, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left) DragMove();
+        }
+
     }
 }

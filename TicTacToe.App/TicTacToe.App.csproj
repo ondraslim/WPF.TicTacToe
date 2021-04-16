@@ -7,17 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <None Remove="Images\ttt-board.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignColors" Version="2.0.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+    <ProjectReference Include="..\TicTacToe.BL\TicTacToe.BL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TicTacToe.BL\TicTacToe.BL.csproj" />
+    <Resource Include="Images\ttt-board.png" />
   </ItemGroup>
 
 </Project>

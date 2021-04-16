@@ -35,21 +35,20 @@
                 <ItemsControl x:Name="MostGamesListView">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical" MaxWidth="450"/>
+                            <WrapPanel Orientation="Vertical"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" MaxWidth="150">
-                                <TextBlock Width="90" Text="{Binding UserName}" Margin="0 0 10 0"/>
-                                <TextBlock Width="50" Text="{Binding GameCount}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="200" Text="{Binding UserName}" Margin="0 0 10 0"/>
+                                <TextBlock Width="50" Text="{Binding GameCount}" HorizontalAlignment="Right"/>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ListView>
         </StackPanel>
-
 
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
@@ -58,15 +57,15 @@
                 <ItemsControl x:Name="BestWinRateListView">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical" MaxWidth="450"/>
+                            <WrapPanel Orientation="Vertical"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" MaxWidth="150">
-                                <TextBlock Width="90" Text="{Binding UserName}" Margin="0 0 10 0"/>
-                                <TextBlock Width="50" Text="{Binding GamesPlayedCount}"/>
-                                <TextBlock Width="50" Text="{Binding WinRate}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="200" Text="{Binding UserName}" Margin="0 0 10 0"/>
+                                <TextBlock Width="50" Text="{Binding GamesPlayedCount}" HorizontalAlignment="Right"/>
+                                <TextBlock Width="50" Text="{Binding WinRate}" HorizontalAlignment="Right"/>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -82,15 +81,15 @@
                 <ItemsControl x:Name="LongestGamesListView">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical" MaxWidth="450"/>
+                            <WrapPanel Orientation="Vertical"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" MaxWidth="150">
-                                <TextBlock Width="90" Text="{Binding Opponent}" Margin="0 0 10 0"/>
-                                <TextBlock Width="50" Text="{Binding TurnCount}"/>
-                                <TextBlock Width="50" Text="{Binding Type}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="200" Text="{Binding Opponent}" Margin="0 0 10 0"/>
+                                <TextBlock Width="50" Text="{Binding TurnCount}" HorizontalAlignment="Right"/>
+                                <TextBlock Width="50" Text="{Binding Type}" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
