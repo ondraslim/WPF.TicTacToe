@@ -16,4 +16,8 @@
     <Folder Include="Images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TicTacToe.BL\TicTacToe.BL.csproj" />
+  </ItemGroup>
+
 </Project>

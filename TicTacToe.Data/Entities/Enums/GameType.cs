@@ -2,8 +2,7 @@
 {
     public enum GameType
     {
-        None = 0,
         Solo = 1,
-        Multiplayer = 2
+        Online = 2
     }
 }

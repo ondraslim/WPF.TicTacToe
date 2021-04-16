@@ -14,8 +14,7 @@ namespace TicTacToe.BL.DTOs.Game
 
         public int TurnCount { get; set; }
 
-        public int BoardWidth { get; set; }
-        public int BoardHeight { get; set; }
+        public int BoardSize { get; set; }
 
         public List<GameParticipationDTO> GameParticipation { get; set; }
     }

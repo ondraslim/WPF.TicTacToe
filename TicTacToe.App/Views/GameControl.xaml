@@ -19,22 +19,22 @@
         </Grid.Resources>
 
         <Border BorderBrush="Black" BorderThickness="0 0 0 1">
-            <Grid Grid.Row="0" Background="White">
+            <Grid Background="White">
                 <ListView>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <ListViewItem VerticalAlignment="Center" Grid.Column="0">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                     VerticalAlignment="Center"
                                     BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                    ToolTip="New Game" x:Name="BtnNewGame">
+                                    ToolTip="New Game" x:Name="BtnNewGame" Click="LoadGameSetup">
                                 <StackPanel>
                                     <md:PackIcon Kind="GridOff" />
                                 </StackPanel>
@@ -60,7 +60,9 @@
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
-                        <ListViewItem Grid.Column="3" />
+                        <ListViewItem Grid.Column="3" >
+                            <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Text="Player: ABCD" />
+                        </ListViewItem>
                         <ListViewItem VerticalAlignment="Center" Grid.Column="4">
                             <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Text="Turn 42">
                             </TextBlock>
