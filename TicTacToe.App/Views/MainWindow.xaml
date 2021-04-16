@@ -5,7 +5,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Height="1000" Width="1500" WindowStartupLocation="CenterScreen"
+        Height="800" Width="1200" WindowStartupLocation="CenterScreen"
         WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="true"
         MouseDown="MainWindow_MouseDown" Loaded="MainWindow_Loaded">
     <Grid>
@@ -28,6 +28,16 @@
                                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
+                                        ToolTip="Home">
+                                    <StackPanel Margin="-5">
+                                        <md:PackIcon Kind="Home" />
+                                    </StackPanel>
+                                </Button>
+                            </ListViewItem>
+                            <ListViewItem HorizontalAlignment="Center" Margin="0 10">
+                                <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                        HorizontalAlignment="Left"
+                                        BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
                                         ToolTip="Game" x:Name="BtnGame" Click="BtnGame_Click">
                                     <StackPanel Margin="-5">
                                         <md:PackIcon Kind="ControllerClassicOutline" />
@@ -41,16 +51,6 @@
                                         ToolTip="Stats" x:Name="BtnStats" Click="BtnStats_Click">
                                     <StackPanel Margin="-5">
                                         <md:PackIcon Kind="GraphOutline" />
-                                    </StackPanel>
-                                </Button>
-                            </ListViewItem>
-                            <ListViewItem HorizontalAlignment="Center" Margin="0 10">
-                                <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                        HorizontalAlignment="Left"
-                                        BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                        ToolTip="About">
-                                    <StackPanel Margin="-5">
-                                        <md:PackIcon Kind="AboutOutline" />
                                     </StackPanel>
                                 </Button>
                             </ListViewItem>

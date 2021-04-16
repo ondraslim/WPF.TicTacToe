@@ -37,7 +37,8 @@ namespace TicTacToe.App.Views
 
         private void BtnStats_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: implement
+            RenderPages.Children.Clear();
+            RenderPages.Children.Add(new StatisticsControl());
         }
     }
 }

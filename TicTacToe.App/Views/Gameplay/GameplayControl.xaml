@@ -8,7 +8,7 @@
              d:DesignHeight="800" d:DesignWidth="1200">
     <Grid>
         <Grid.DataContext>
-            <local:Board Rows="50" Columns="50"/>
+            <local:Board Rows="30" Columns="30"/>
         </Grid.DataContext>
 
         <ItemsControl x:Name="Board" ItemsSource="{Binding Path=Cells}">
