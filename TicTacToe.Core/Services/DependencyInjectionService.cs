@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TicTacToe.Core.Services.Interfaces;
 using TicTacToe.Core.ViewModels.Interface;
-using TypedParameter = TicTacToe.Core.IoC.TypedParameter;
 
 namespace TicTacToe.Core.Services
 {
@@ -20,7 +19,8 @@ namespace TicTacToe.Core.Services
             containerBuilder.Populate(serviceCollection);
             container = containerBuilder.Build();
 
-            var types = container.ComponentRegistry.Registrations.Where(r => typeof(IViewModel).IsAssignableFrom(r.Activator.LimitType))
+            var types = container.ComponentRegistry.Registrations
+                .Where(r => typeof(IViewModel).IsAssignableFrom(r.Activator.LimitType))
                 .Select(r => r.Activator.LimitType);
         }
 
@@ -29,11 +29,14 @@ namespace TicTacToe.Core.Services
             return container.Resolve<TService>();
         }
 
-        public TService Resolve<TService>(params TypedParameter[] parameters)
+        public TService Resolve<TService>(params IoC.TypedParameter[] parameters)
         {
             if (parameters.Any())
             {
-                var typedParameters = parameters.Select(parameter => new TypedParameter(parameter.Type, parameter.Value)).ToList();
+                var typedParameters = parameters
+                    .Select(parameter => new Autofac.TypedParameter(parameter.Type, parameter.Value))
+                    .ToList();
+                
                 return container.Resolve<TService>(typedParameters);
             }
 
@@ -46,11 +49,13 @@ namespace TicTacToe.Core.Services
             return container.Resolve(type);
         }
 
-        public object Resolve(Type type, params TypedParameter[] parameters)
+        public object Resolve(Type type, params IoC.TypedParameter[] parameters)
         {
             if (parameters.Any())
             {
-                var typedParameters = parameters.Select(parameter => new TypedParameter(parameter.Type, parameter.Value)).ToList();
+                var typedParameters = parameters
+                    .Select(parameter => new Autofac.TypedParameter(parameter.Type, parameter.Value))
+                    .ToList();
                 return container.Resolve(type, typedParameters);
             }
 

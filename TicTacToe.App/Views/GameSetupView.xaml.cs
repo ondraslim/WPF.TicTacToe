@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using TicTacToe.BL.DTOs.Game;
 using TicTacToe.Data.Entities.Enums;
 
 namespace TicTacToe.App.Views
 {
-    /// <summary>
-    /// Interaction logic for GameSetupView.xaml
-    /// </summary>
-    public partial class GameSetupView : UserControl
+    public partial class GameSetupView
     {
         public event EventHandler CreateNewGameButtonClicked;
         public event EventHandler JoinGameButtonClicked;

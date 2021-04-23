@@ -12,11 +12,11 @@ namespace TicTacToe.Core.ViewModels
             this.navigationService = navigationService;
         }
 
-        public void OnInitialized(Panel view)
-        {
-            navigationService.Initialize(view);
-            navigationService.NavigateTo<HomeView>();
-        }
+        //public void OnInitialized(Panel view)
+        //{
+        //    navigationService.Initialize(view);
+        //    navigationService.NavigateTo<HomeView>();
+        //}
         
     }
 }

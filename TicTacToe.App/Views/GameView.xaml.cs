@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using TicTacToe.App.Views.Gameplay;
 using TicTacToe.BL.DTOs.Game;
 
 namespace TicTacToe.App.Views
 {
-    /// <summary>
-    /// Interaction logic for GameControl.xaml
-    /// </summary>
-    public partial class GameView : UserControl
+    public partial class GameView
     {
         private GameSetupView gameSetupView;
         private GameplayView gameplayView;

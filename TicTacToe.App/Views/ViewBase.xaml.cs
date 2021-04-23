@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using TicTacToe.Core.ViewModels;
 
 namespace TicTacToe.App.Views
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public abstract partial class ViewBase : Window
     {
-        public MainWindow()
+        protected ViewBase()
         {
             InitializeComponent();
         }
@@ -24,7 +20,7 @@ namespace TicTacToe.App.Views
         {
             base.OnInitialized(e);
 
-            (DataContext as MainViewModel)?.OnInitialized(RenderPages);
+            //(DataContext as MainViewModel)?.OnInitialized(RenderPages);
         }
 
 
@@ -35,20 +31,20 @@ namespace TicTacToe.App.Views
 
         private void BtnGame_Click(object _, RoutedEventArgs __)
         {
-            RenderPages.Children.Clear();
-            RenderPages.Children.Add(new GameView());
+            //RenderPages.Children.Clear();
+            //RenderPages.Children.Add(new GameView());
         }
 
         private void BtnStats_Click(object sender, RoutedEventArgs e)
         {
-            RenderPages.Children.Clear();
-            RenderPages.Children.Add(new StatisticsView());
+            //RenderPages.Children.Clear();
+            //RenderPages.Children.Add(new StatisticsView());
         }
 
         private void LoadHomeControl()
         {
-            RenderPages.Children.Clear();
-            RenderPages.Children.Add(new HomeView());
+            //RenderPages.Children.Clear();
+            //RenderPages.Children.Add(new HomeView());
         }
 
         private void BtnExit_Click(object _, RoutedEventArgs __)

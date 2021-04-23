@@ -36,7 +36,7 @@ namespace TicTacToe.App
 
         private static void ConfigureServices(IConfiguration configuration, IServiceCollection services)
         {
-            services.AddSingleton<MainWindow>();
+            services.AddSingleton<ViewBase>();
             services.AddSingleton<MainViewModel>();
 
             // TODO: register as transients
@@ -82,7 +82,7 @@ namespace TicTacToe.App
             //            }
             //#endif
 
-            var mainWindow = host.Services.GetRequiredService<MainWindow>();
+            var mainWindow = host.Services.GetRequiredService<ViewBase>();
             mainWindow.Show();
 
             base.OnStartup(e);

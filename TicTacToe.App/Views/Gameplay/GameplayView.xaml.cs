@@ -3,10 +3,7 @@ using System.Windows.Controls;
 
 namespace TicTacToe.App.Views.Gameplay
 {
-    /// <summary>
-    /// Interaction logic for GameplayView.xaml
-    /// </summary>
-    public partial class GameplayView : UserControl
+    public partial class GameplayView
     {
         private bool firstPlayer = true;
 

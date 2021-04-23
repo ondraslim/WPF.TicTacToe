@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Controls;
+﻿using System.Collections.Generic;
 using TicTacToe.BL.DTOs.Stats;
 using TicTacToe.Core.ViewModels;
 using TicTacToe.Data.Entities.Enums;
 
 namespace TicTacToe.App.Views
 {
-    /// <summary>
-    /// Interaction logic for StatisticsControl.xaml
-    /// </summary>
-    public partial class StatisticsView : UserControl
+    public partial class StatisticsView
     {
         public ICollection<UserGameCountListDTO> GameCountList { get; set; }
         public ICollection<UserWinRateListDTO> UserWinRateList { get; set; }

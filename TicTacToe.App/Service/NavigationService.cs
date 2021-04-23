@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TicTacToe.App.Service.Interfaces;
 using TicTacToe.Core.Services.Interfaces;
 using TicTacToe.Core.ViewModels.Interface;
@@ -8,51 +7,28 @@ namespace TicTacToe.App.Service
 {
     public class NavigationService : INavigationService
     {
+        private readonly System.Windows.Navigation.NavigationService navigationService;
         private readonly IMvvmLocatorService mvvmLocatorService;
 
-        public NavigationService(IMvvmLocatorService mvvmLocatorService)
+        public NavigationService(IMvvmLocatorService mvvmLocatorService, System.Windows.Navigation.NavigationService navigationService)
         {
             this.mvvmLocatorService = mvvmLocatorService;
+            this.navigationService = navigationService;
         }
 
-        public async Task PopAsync(bool animated = false)
+        public async Task NavigateTo<TViewModel>(TViewModel viewModel) where TViewModel : class, IViewModel
         {
-            //await navigation.PopAsync(animated);
+            var view = mvvmLocatorService.ResolveView(viewModel);
+            navigationService.Navigate(view);
         }
 
-        public async Task PopToRootAsync(bool animated = false)
-        {
-            //await navigation.PopToRootAsync(animated);
-        }
-
-        public async Task PushAsync<TViewModel>(TViewModel viewModel = default, bool animated = false, bool clearHistory = false)
-            where TViewModel : class, IViewModel
-        {
-            try
-            {
-                var view = mvvmLocatorService.ResolveView(viewModel);
-                //await navigation.PushAsync(view, animated);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("------------------------------------------\n" + e.InnerException?.Message);
-                throw;
-            }
-        }
-
-        public async Task PushAsync<TViewModel, TViewModelParameter>(TViewModelParameter viewModelParameter = default, TViewModel viewModel = default, bool animated = default, bool clearHistory = default)
+        public async Task NavigateTo<TViewModel, TViewModelParameter>(TViewModel viewModel, TViewModelParameter viewModelParameter = default) 
             where TViewModel : class, IViewModel<TViewModelParameter>
         {
-            try
-            {
-                var view = mvvmLocatorService.ResolveView(viewModel, viewModelParameter);
-                //await navigation.PushAsync(view, animated);
-            }
-            catch (Exception e)
-            { 
-                Console.WriteLine("------------------------------------------\n" + e.InnerException?.Message);
-                throw;
-            }
+
+            var view = mvvmLocatorService.ResolveView(viewModel, viewModelParameter);
+            navigationService.Navigate(view);
         }
+
     }
 }
