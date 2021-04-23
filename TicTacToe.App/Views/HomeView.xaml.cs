@@ -5,9 +5,9 @@ namespace TicTacToe.App.Views
     /// <summary>
     /// Interaction logic for HomeControl.xaml
     /// </summary>
-    public partial class HomeControl : UserControl
+    public partial class HomeView : UserControl
     {
-        public HomeControl()
+        public HomeView()
         {
             InitializeComponent();
         }

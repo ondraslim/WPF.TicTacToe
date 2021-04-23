@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
+using TicTacToe.Core.ViewModels;
 
 namespace TicTacToe.App.Views
 {
@@ -18,6 +20,14 @@ namespace TicTacToe.App.Views
             LoadHomeControl();
         }
 
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+
+            (DataContext as MainViewModel)?.OnInitialized(RenderPages);
+        }
+
+
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
             LoadHomeControl();
@@ -26,19 +36,19 @@ namespace TicTacToe.App.Views
         private void BtnGame_Click(object _, RoutedEventArgs __)
         {
             RenderPages.Children.Clear();
-            RenderPages.Children.Add(new GameControl());
+            RenderPages.Children.Add(new GameView());
         }
 
         private void BtnStats_Click(object sender, RoutedEventArgs e)
         {
             RenderPages.Children.Clear();
-            RenderPages.Children.Add(new StatisticsControl());
+            RenderPages.Children.Add(new StatisticsView());
         }
 
         private void LoadHomeControl()
         {
             RenderPages.Children.Clear();
-            RenderPages.Children.Add(new HomeControl());
+            RenderPages.Children.Add(new HomeView());
         }
 
         private void BtnExit_Click(object _, RoutedEventArgs __)

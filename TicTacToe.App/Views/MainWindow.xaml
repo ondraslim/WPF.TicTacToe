@@ -5,6 +5,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
         Height="800" Width="1200" WindowStartupLocation="CenterScreen"
         WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="true"
         MouseDown="MainWindow_MouseDown" Loaded="MainWindow_Loaded">
@@ -67,9 +68,11 @@
                         </ListView>
                     </Grid>
                 </Border>
+
                 <Grid Grid.Column="1" Background="#F6F5F8" Name="RenderPages">
 
                 </Grid>
+
             </Grid>
         </md:Card>
     </Grid>

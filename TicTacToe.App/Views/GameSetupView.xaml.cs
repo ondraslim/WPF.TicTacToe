@@ -8,16 +8,16 @@ using TicTacToe.Data.Entities.Enums;
 namespace TicTacToe.App.Views
 {
     /// <summary>
-    /// Interaction logic for GameSetupControl.xaml
+    /// Interaction logic for GameSetupView.xaml
     /// </summary>
-    public partial class GameSetupControl : UserControl
+    public partial class GameSetupView : UserControl
     {
         public event EventHandler CreateNewGameButtonClicked;
         public event EventHandler JoinGameButtonClicked;
 
         public GameCreateDTO Game = new();
 
-        public GameSetupControl()
+        public GameSetupView()
         {
             InitializeComponent();
         }

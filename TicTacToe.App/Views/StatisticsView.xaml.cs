@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using TicTacToe.BL.DTOs.Stats;
+using TicTacToe.Core.ViewModels;
 using TicTacToe.Data.Entities.Enums;
 
 namespace TicTacToe.App.Views
@@ -8,15 +10,26 @@ namespace TicTacToe.App.Views
     /// <summary>
     /// Interaction logic for StatisticsControl.xaml
     /// </summary>
-    public partial class StatisticsControl : UserControl
+    public partial class StatisticsView : UserControl
     {
         public ICollection<UserGameCountListDTO> GameCountList { get; set; }
         public ICollection<UserWinRateListDTO> UserWinRateList { get; set; }
         public ICollection<LongGameListDTO> LongGameList { get; set; }
 
-        public StatisticsControl()
+        public StatisticsView()
         {
             InitializeComponent();
+
+            InitializeGameCountList();
+            InitializeUserWinRateList();
+            InitializeLongGameList();
+        }
+
+        public StatisticsView(StatisticsViewModel statisticsViewModel)
+        {
+            InitializeComponent();
+
+            DataContext = statisticsViewModel;
 
             InitializeGameCountList();
             InitializeUserWinRateList();

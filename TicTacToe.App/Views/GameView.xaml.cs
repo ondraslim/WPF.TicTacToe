@@ -9,12 +9,12 @@ namespace TicTacToe.App.Views
     /// <summary>
     /// Interaction logic for GameControl.xaml
     /// </summary>
-    public partial class GameControl : UserControl
+    public partial class GameView : UserControl
     {
-        private GameSetupControl gameSetupControl;
-        private GameplayControl gameplayControl;
+        private GameSetupView gameSetupView;
+        private GameplayView gameplayView;
 
-        public GameControl()
+        public GameView()
         {
             InitializeComponent();
         }
@@ -26,22 +26,22 @@ namespace TicTacToe.App.Views
 
         private void LoadGameSetup(object sender, EventArgs e)
         {
-            gameSetupControl = new GameSetupControl();
-            gameSetupControl.CreateNewGameButtonClicked += CreateNewGame_Clicked;
-            gameSetupControl.JoinGameButtonClicked += JoinGame_Clicked;
+            gameSetupView = new GameSetupView();
+            gameSetupView.CreateNewGameButtonClicked += CreateNewGame_Clicked;
+            gameSetupView.JoinGameButtonClicked += JoinGame_Clicked;
 
-            LoadControl(gameSetupControl);
+            LoadControl(gameSetupView);
         }
 
         private void CreateNewGame_Clicked(object sender, EventArgs e)
         {
-            LoadGameplay(gameSetupControl.Game);
+            LoadGameplay(gameSetupView.Game);
         }
 
         private void LoadGameplay(GameCreateDTO game)
         {
-            gameplayControl = new GameplayControl();
-            LoadControl(gameplayControl);
+            gameplayView = new GameplayView();
+            LoadControl(gameplayView);
         }
 
         private void JoinGame_Clicked(object sender, EventArgs e)
