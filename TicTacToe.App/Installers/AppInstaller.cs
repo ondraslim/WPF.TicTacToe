@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TicTacToe.App.Views;
-using TicTacToe.BL.Services.Common;
+using TicTacToe.Infrastructure.Services.Common;
 
 namespace TicTacToe.App.Installers
 {

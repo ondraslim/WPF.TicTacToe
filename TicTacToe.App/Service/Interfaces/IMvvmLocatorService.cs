@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
-using TicTacToe.BL.Services.Common;
 using TicTacToe.Core.ViewModels.Common;
+using TicTacToe.Infrastructure.Services.Common;
 
 namespace TicTacToe.App.Service.Interfaces
 {

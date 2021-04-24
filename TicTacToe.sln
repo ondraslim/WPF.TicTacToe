@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Core", "TicTacToe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.EntityFramework", "TicTacToe.EntityFramework\TicTacToe.EntityFramework.csproj", "{1C319AE6-314E-455D-B5CE-5C4A81BC0B57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Infrastructure", "TicTacToe.Infrastructure\TicTacToe.Infrastructure.csproj", "{8B0395EF-1E81-453F-B800-7A99ED08EFBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{1C319AE6-314E-455D-B5CE-5C4A81BC0B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C319AE6-314E-455D-B5CE-5C4A81BC0B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C319AE6-314E-455D-B5CE-5C4A81BC0B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0395EF-1E81-453F-B800-7A99ED08EFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0395EF-1E81-453F-B800-7A99ED08EFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0395EF-1E81-453F-B800-7A99ED08EFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0395EF-1E81-453F-B800-7A99ED08EFBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

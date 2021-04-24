@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using TicTacToe.App.Service.Interfaces;
-using TicTacToe.BL.Services.Interfaces;
 using TicTacToe.Core.Services;
 using TicTacToe.Core.ViewModels.Common;
+using TicTacToe.Infrastructure.Services.Interfaces;
 
 namespace TicTacToe.App.Service
 {

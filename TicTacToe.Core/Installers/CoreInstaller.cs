@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TicTacToe.BL.Services.Common;
 using TicTacToe.Core.Factories.Common;
 using TicTacToe.Core.ViewModels.Common;
+using TicTacToe.Infrastructure.Services.Common;
 
 namespace TicTacToe.Core.Installers
 {

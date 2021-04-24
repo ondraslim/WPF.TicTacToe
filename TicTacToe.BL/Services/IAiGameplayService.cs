@@ -1,5 +1,5 @@
 ﻿using TicTacToe.BL.DTOs.Gameplay;
-using TicTacToe.BL.Services.Common;
+using TicTacToe.Infrastructure.Services.Common;
 
 namespace TicTacToe.BL.Services
 {

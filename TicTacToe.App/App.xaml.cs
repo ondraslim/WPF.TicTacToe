@@ -8,9 +8,10 @@ using System.Windows;
 using TicTacToe.App.Installers;
 using TicTacToe.App.Views;
 using TicTacToe.BL.Installers;
-using TicTacToe.BL.Services;
-using TicTacToe.BL.Services.Interfaces;
 using TicTacToe.Core.Installers;
+using TicTacToe.Infrastructure.Installers;
+using TicTacToe.Infrastructure.Services;
+using TicTacToe.Infrastructure.Services.Interfaces;
 
 namespace TicTacToe.App
 {
@@ -43,7 +44,8 @@ namespace TicTacToe.App
 
         private void ConfigureServices(IConfiguration configuration, IServiceCollection services)
         {
-            new BusinessInstaller().Install(services, DependencyInjectionService);
+            new InfrastructureInstaller().Install(services, DependencyInjectionService);
+            new BusinessInstaller().Install(services);
             new CoreInstaller().Install(services);
             new AppInstaller().Install(services);
 

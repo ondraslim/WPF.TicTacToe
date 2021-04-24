@@ -1,22 +1,22 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TicTacToe.BL.Facades.Common;
 using TicTacToe.Infrastructure.Services.Common;
+using TicTacToe.Infrastructure.Services.Interfaces;
 
-namespace TicTacToe.BL.Installers
+namespace TicTacToe.Infrastructure.Installers
 {
-    public class BusinessInstaller
+    public class InfrastructureInstaller
     {
-        public void Install(IServiceCollection serviceCollection)
+
+        public void Install(IServiceCollection serviceCollection, IDependencyInjectionService dependencyInjectionService)
         {
+            serviceCollection.AddSingleton<IDependencyInjectionService>(dependencyInjectionService);
+
             serviceCollection.Scan(scan => scan
-                .FromAssemblyOf<BusinessInstaller>()
+                .FromAssemblyOf<InfrastructureInstaller>()
                 .AddClasses(classes => classes.AssignableTo<ISingletonService>())
                 .AsSelfWithInterfaces()
                 .WithSingletonLifetime()
                 .AddClasses(classes => classes.AssignableTo<ITransientService>())
-                .AsSelfWithInterfaces()
-                .WithTransientLifetime()
-                .AddClasses(classes => classes.AssignableTo<IFacade>())
                 .AsSelfWithInterfaces()
                 .WithTransientLifetime()
             );

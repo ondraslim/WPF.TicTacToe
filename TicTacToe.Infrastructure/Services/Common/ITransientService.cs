@@ -1,4 +1,4 @@
-﻿namespace TicTacToe.BL.Services.Common
+﻿namespace TicTacToe.Infrastructure.Services.Common
 {
     public interface ITransientService
     {
