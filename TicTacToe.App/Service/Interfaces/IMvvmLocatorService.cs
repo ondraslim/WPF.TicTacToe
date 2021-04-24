@@ -1,15 +1,15 @@
 ﻿using System.Windows.Controls;
-using TicTacToe.BL.Services.Interfaces;
-using TicTacToe.Core.ViewModels.Interface;
+using TicTacToe.BL.Services.Common;
+using TicTacToe.Core.ViewModels.Common;
 
 namespace TicTacToe.App.Service.Interfaces
 {
     public interface IMvvmLocatorService : ISingletonService
     {
-        Page ResolveView<TViewModel>(TViewModel viewModel = default)
+        UserControl ResolveView<TViewModel>(TViewModel viewModel = default)
             where TViewModel : class, IViewModel;
 
-        Page ResolveView<TViewModel, TViewModelParameter>(TViewModel viewModel = default, TViewModelParameter viewModelParameter = default)
+        UserControl ResolveView<TViewModel, TViewModelParameter>(TViewModel viewModel = default, TViewModelParameter viewModelParameter = default)
             where TViewModel : class, IViewModel<TViewModelParameter>;
     }
 }

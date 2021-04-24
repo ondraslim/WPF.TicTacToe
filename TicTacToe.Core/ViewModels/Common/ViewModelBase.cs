@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TicTacToe.Core.ViewModels.Interface;
 
 namespace TicTacToe.Core.ViewModels.Common
 {

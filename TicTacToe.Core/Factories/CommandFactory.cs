@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TicTacToe.Core.Commands;
 using TicTacToe.Core.Commands.Interfaces;
-using TicTacToe.Core.Factories.Interfaces;
 
 namespace TicTacToe.Core.Factories
 {

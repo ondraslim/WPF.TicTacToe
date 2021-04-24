@@ -1,7 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using TicTacToe.App.Views.Gameplay;
 
-namespace TicTacToe.App.Views.Gameplay
+namespace TicTacToe.App.Views
 {
     public partial class GameplayView
     {

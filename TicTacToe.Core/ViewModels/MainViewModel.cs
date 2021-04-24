@@ -1,4 +1,4 @@
-﻿using TicTacToe.Core.Services.Interfaces;
+﻿using TicTacToe.Core.Services;
 using TicTacToe.Core.ViewModels.Common;
 
 namespace TicTacToe.Core.ViewModels
@@ -10,13 +10,10 @@ namespace TicTacToe.Core.ViewModels
         public MainViewModel(INavigationService navigationService)
         {
             this.navigationService = navigationService;
+
+            navigationService.NavigateTo<HomeViewModel>();
         }
 
-        //public void OnInitialized(Panel view)
-        //{
-        //    navigationService.Initialize(view);
-        //    navigationService.NavigateTo<HomeView>();
-        //}
-        
+        public IViewModel CurrentViewModel => navigationService.CurrentViewModel;
     }
 }

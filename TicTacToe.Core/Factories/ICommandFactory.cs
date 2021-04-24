@@ -3,8 +3,9 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TicTacToe.Core.Commands.Interfaces;
+using TicTacToe.Core.Factories.Common;
 
-namespace TicTacToe.Core.Factories.Interfaces
+namespace TicTacToe.Core.Factories
 {
     public interface ICommandFactory : IFactory
     {

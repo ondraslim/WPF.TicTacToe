@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using TicTacToe.App.Service.Interfaces;
 using TicTacToe.BL.IoC;
 using TicTacToe.BL.Services.Interfaces;
-using TicTacToe.Core.ViewModels.Interface;
+using TicTacToe.Core.ViewModels.Common;
 
 namespace TicTacToe.App.Service
 {
@@ -16,14 +16,14 @@ namespace TicTacToe.App.Service
             this.dependencyInjectionService = dependencyInjectionService;
         }
 
-        public Page ResolveView<TViewModel>(TViewModel viewModel = default)
+        public UserControl ResolveView<TViewModel>(TViewModel viewModel = default)
             where TViewModel : class, IViewModel
         {
             var viewType = GetViewType(viewModel);
             return GetView<TViewModel>(viewType);
         }
 
-        public Page ResolveView<TViewModel, TViewModelParameter>(TViewModel viewModel = default, TViewModelParameter viewModelParameter = default)
+        public UserControl ResolveView<TViewModel, TViewModelParameter>(TViewModel viewModel = default, TViewModelParameter viewModelParameter = default)
             where TViewModel : class, IViewModel<TViewModelParameter>
         {
             var viewModelInstance = viewModel ?? dependencyInjectionService.Resolve<TViewModel>(new TypedParameter(typeof(TViewModelParameter), viewModelParameter));
@@ -48,15 +48,15 @@ namespace TicTacToe.App.Service
             throw new Exception();
         }
 
-        private Page GetView<TViewModel>(Type viewType, TViewModel viewModel = null)
+        private UserControl GetView<TViewModel>(Type viewType, TViewModel viewModel = null)
             where TViewModel : class, IViewModel
         {
             if (viewModel == null)
             {
-                return dependencyInjectionService.Resolve(viewType) as Page;
+                return dependencyInjectionService.Resolve(viewType) as UserControl;
             }
 
-            return dependencyInjectionService.Resolve(viewType, new TypedParameter(typeof(TViewModel), viewModel)) as Page;
+            return dependencyInjectionService.Resolve(viewType, new TypedParameter(typeof(TViewModel), viewModel)) as UserControl;
         }
     }
 }

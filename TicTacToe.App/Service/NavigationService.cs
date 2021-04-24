@@ -1,33 +1,36 @@
-﻿using System.Threading.Tasks;
+﻿using System.Windows;
 using TicTacToe.App.Service.Interfaces;
-using TicTacToe.Core.Services.Interfaces;
-using TicTacToe.Core.ViewModels.Interface;
+using TicTacToe.Core.Services;
+using TicTacToe.Core.ViewModels.Common;
 
 namespace TicTacToe.App.Service
 {
     public class NavigationService : INavigationService
     {
-        private readonly System.Windows.Navigation.NavigationService navigationService;
+        // TODO: use this instead of fixed binds in App.xaml
         private readonly IMvvmLocatorService mvvmLocatorService;
 
-        public NavigationService(IMvvmLocatorService mvvmLocatorService, System.Windows.Navigation.NavigationService navigationService)
+        public IViewModel CurrentViewModel { get; private set; }
+
+        public NavigationService(IMvvmLocatorService mvvmLocatorService)
         {
             this.mvvmLocatorService = mvvmLocatorService;
-            this.navigationService = navigationService;
         }
 
-        public async Task NavigateTo<TViewModel>(TViewModel viewModel) where TViewModel : class, IViewModel
+        public void NavigateTo<TViewModel>(TViewModel viewModel = default) where TViewModel : class, IViewModel
         {
-            var view = mvvmLocatorService.ResolveView(viewModel);
-            navigationService.Navigate(view);
+            CurrentViewModel = viewModel;
         }
 
-        public async Task NavigateTo<TViewModel, TViewModelParameter>(TViewModel viewModel, TViewModelParameter viewModelParameter = default) 
+        public void NavigateTo<TViewModel, TViewModelParameter>(TViewModel viewModel = default, TViewModelParameter viewModelParameter = default)
             where TViewModel : class, IViewModel<TViewModelParameter>
         {
+            CurrentViewModel = viewModel;
+        }
 
-            var view = mvvmLocatorService.ResolveView(viewModel, viewModelParameter);
-            navigationService.Navigate(view);
+        public void ExitApplication()
+        {
+            Application.Current.Shutdown();
         }
 
     }
