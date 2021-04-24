@@ -5,6 +5,7 @@ using System;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
+using TicTacToe.App.Installers;
 using TicTacToe.App.Views;
 using TicTacToe.BL.Installers;
 using TicTacToe.BL.Services;
@@ -44,6 +45,7 @@ namespace TicTacToe.App
         {
             new BusinessInstaller().Install(services, DependencyInjectionService);
             new CoreInstaller().Install(services);
+            new AppInstaller().Install(services);
 
             DependencyInjectionService.Build(services);
 

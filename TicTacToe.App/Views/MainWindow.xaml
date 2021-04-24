@@ -26,7 +26,7 @@
                     </Style>
                 </Grid.Resources>
                 <Border BorderBrush="Black" BorderThickness="0 0 1 0">
-                    <controls:NavigationBar />
+                    <controls:NavigationBar DataContext="{Binding NavigationViewModel}" />
                 </Border>
 
                 <Grid Grid.Column="1" Background="#F6F5F8">

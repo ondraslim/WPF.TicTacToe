@@ -1,5 +1,4 @@
 ﻿using TicTacToe.BL.Services.Common;
-using TicTacToe.BL.Services.Interfaces;
 using TicTacToe.Core.ViewModels.Common;
 
 namespace TicTacToe.Core.Services

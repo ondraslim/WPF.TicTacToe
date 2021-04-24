@@ -1,11 +1,15 @@
 ﻿using System.Windows.Input;
+using TicTacToe.Core.ViewModels;
 
 namespace TicTacToe.App.Views
 {
-    public abstract partial class MainWindow
+    public partial class MainWindow
     {
-        protected MainWindow()
+        // TODO: move DataContext = viewmodel to some base
+        public MainWindow(MainViewModel viewModel)
         {
+            DataContext = viewModel;
+
             InitializeComponent();
         }
 

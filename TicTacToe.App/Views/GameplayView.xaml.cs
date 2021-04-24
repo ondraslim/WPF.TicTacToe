@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using TicTacToe.App.Views.Gameplay;
+using TicTacToe.Core.ViewModels;
 
 namespace TicTacToe.App.Views
 {
@@ -8,8 +9,10 @@ namespace TicTacToe.App.Views
     {
         private bool firstPlayer = true;
 
-        public GameplayView()
+        public GameplayView(GameplayViewModel viewModel)
         {
+            DataContext = viewModel;
+
             InitializeComponent();
         }
 

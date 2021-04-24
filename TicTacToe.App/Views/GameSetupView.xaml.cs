@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using TicTacToe.BL.DTOs.Game;
+using TicTacToe.Core.ViewModels;
 using TicTacToe.Data.Models.Enums;
 
 namespace TicTacToe.App.Views
@@ -13,8 +14,10 @@ namespace TicTacToe.App.Views
 
         public GameCreateDTO Game = new();
 
-        public GameSetupView()
+        public GameSetupView(GameSetupViewModel viewModel)
         {
+            DataContext = viewModel;
+
             InitializeComponent();
         }
 
