@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using TicTacToe.Core.IoC;
+using TicTacToe.BL.IoC;
 
-namespace TicTacToe.Core.Services.Interfaces
+namespace TicTacToe.BL.Services.Interfaces
 {
     public interface IDependencyInjectionService
     {

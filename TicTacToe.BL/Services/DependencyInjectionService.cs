@@ -4,10 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TicTacToe.Core.Services.Interfaces;
-using TicTacToe.Core.ViewModels.Interface;
+using TicTacToe.BL.Services.Interfaces;
 
-namespace TicTacToe.Core.Services
+namespace TicTacToe.BL.Services
 {
     public class DependencyInjectionService : IDependencyInjectionService
     {
@@ -18,10 +17,6 @@ namespace TicTacToe.Core.Services
             var containerBuilder = new ContainerBuilder();
             containerBuilder.Populate(serviceCollection);
             container = containerBuilder.Build();
-
-            var types = container.ComponentRegistry.Registrations
-                .Where(r => typeof(IViewModel).IsAssignableFrom(r.Activator.LimitType))
-                .Select(r => r.Activator.LimitType);
         }
 
         public TService Resolve<TService>()

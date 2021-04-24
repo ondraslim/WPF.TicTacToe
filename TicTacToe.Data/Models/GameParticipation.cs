@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TicTacToe.Data.Entities
+namespace TicTacToe.Data.Models
 {
     public class GameParticipation
     {

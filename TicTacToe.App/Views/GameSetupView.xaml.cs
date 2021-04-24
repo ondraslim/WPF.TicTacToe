@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using TicTacToe.BL.DTOs.Game;
-using TicTacToe.Data.Entities.Enums;
+using TicTacToe.Data.Models.Enums;
 
 namespace TicTacToe.App.Views
 {

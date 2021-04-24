@@ -1,4 +1,4 @@
-﻿namespace TicTacToe.Core.Services.Interfaces
+﻿namespace TicTacToe.BL.Services.Interfaces
 {
     public interface ISingletonService
     {

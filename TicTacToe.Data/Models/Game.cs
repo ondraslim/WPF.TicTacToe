@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using TicTacToe.Data.Entities.Base;
-using TicTacToe.Data.Entities.Enums;
+using TicTacToe.Data.Models.Base;
+using TicTacToe.Data.Models.Enums;
 
-namespace TicTacToe.Data.Entities
+namespace TicTacToe.Data.Models
 {
-    public class Game : EntityBase
+    public class Game : ModelBase
     {
         public GameType Type { get; set; }
         

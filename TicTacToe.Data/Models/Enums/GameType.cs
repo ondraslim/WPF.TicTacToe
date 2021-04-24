@@ -1,4 +1,4 @@
-﻿namespace TicTacToe.Data.Entities.Enums
+﻿namespace TicTacToe.Data.Models.Enums
 {
     public enum GameType
     {

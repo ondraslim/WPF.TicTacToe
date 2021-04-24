@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using TicTacToe.Data.Entities.Base;
+using TicTacToe.Data.Models.Base;
 
-namespace TicTacToe.Data.Entities
+namespace TicTacToe.Data.Models
 {
-    public class User : EntityBase
+    public class User : ModelBase
     {
         public string Name { get; set; }
         public string PreferredLanguage { get; set; }

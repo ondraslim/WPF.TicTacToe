@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TicTacToe.BL.DTOs.Stats;
 using TicTacToe.Core.ViewModels;
-using TicTacToe.Data.Entities.Enums;
+using TicTacToe.Data.Models.Enums;
 
 namespace TicTacToe.App.Views
 {

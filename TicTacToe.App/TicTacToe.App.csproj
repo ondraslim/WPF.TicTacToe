@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TicTacToe.BL\TicTacToe.BL.csproj" />
     <ProjectReference Include="..\TicTacToe.Core\TicTacToe.Core.csproj" />
   </ItemGroup>
 

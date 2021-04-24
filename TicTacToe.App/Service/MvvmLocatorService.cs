@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Controls;
 using TicTacToe.App.Service.Interfaces;
-using TicTacToe.Core.IoC;
-using TicTacToe.Core.Services.Interfaces;
+using TicTacToe.BL.IoC;
+using TicTacToe.BL.Services.Interfaces;
 using TicTacToe.Core.ViewModels.Interface;
 
 namespace TicTacToe.App.Service

@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.App", "TicTacToe.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{DF277DD6-7239-402E-958C-DA9FD3A9392A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Core", "TicTacToe.Core\TicTacToe.Core.csproj", "{EF84E5F7-E76B-48AC-99B9-AF41DB892EFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Core", "TicTacToe.Core\TicTacToe.Core.csproj", "{EF84E5F7-E76B-48AC-99B9-AF41DB892EFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.EntityFramework", "TicTacToe.EntityFramework\TicTacToe.EntityFramework.csproj", "{1C319AE6-314E-455D-B5CE-5C4A81BC0B57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{EF84E5F7-E76B-48AC-99B9-AF41DB892EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF84E5F7-E76B-48AC-99B9-AF41DB892EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF84E5F7-E76B-48AC-99B9-AF41DB892EFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C319AE6-314E-455D-B5CE-5C4A81BC0B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C319AE6-314E-455D-B5CE-5C4A81BC0B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C319AE6-314E-455D-B5CE-5C4A81BC0B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C319AE6-314E-455D-B5CE-5C4A81BC0B57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

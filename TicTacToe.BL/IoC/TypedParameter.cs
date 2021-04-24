@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TicTacToe.Core.IoC
+namespace TicTacToe.BL.IoC
 {
     public class TypedParameter
     {

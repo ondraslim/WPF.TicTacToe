@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using TicTacToe.BL.Services.Interfaces;
 using TicTacToe.Core.ViewModels.Interface;
 
 namespace TicTacToe.Core.Services.Interfaces

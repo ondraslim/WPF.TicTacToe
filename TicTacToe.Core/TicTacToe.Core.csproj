@@ -5,14 +5,6 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Autofac" Version="6.2.0" />
-		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
-		<PackageReference Include="Fody" Version="6.5.1">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="PropertyChanged.Fody" Version="3.3.3" />
-		<PackageReference Include="Scrutor" Version="3.3.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+	  <ProjectReference Include="..\TicTacToe.BL\TicTacToe.BL.csproj" />
 	</ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace TicTacToe.BL.Services.Common
+﻿namespace TicTacToe.BL.Services.Interfaces
 {
     public interface IService
     {
