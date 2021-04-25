@@ -11,7 +11,5 @@ namespace TicTacToe.Core.Services
             where TViewModel : class, IViewModel<TViewModelParameter>;
 
         void ExitApplication();
-
-        void Initialize(INavigationRootBase navigationRootBase);
     }
 }

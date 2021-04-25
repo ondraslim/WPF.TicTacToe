@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TicTacToe.App.Controls;
+using TicTacToe.App.Controls.Interfaces;
 using TicTacToe.App.Service;
+using TicTacToe.App.Service.Interfaces;
 using TicTacToe.App.Views;
 using TicTacToe.Common;
 using TicTacToe.Common.IoC;
@@ -11,7 +14,9 @@ namespace TicTacToe.App.Installers
         public void Install(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<MainWindow>();
-            serviceCollection.AddSingleton<INavigationRoot, MainWindow>();
+
+            serviceCollection.AddSingleton<IMainContentWrapper, ContentWrapperPanel>();
+            serviceCollection.AddSingleton<IMainContentViewUpdater, MainContentViewUpdater>();
 
             serviceCollection.AddTransient<HomeView>();
             serviceCollection.AddTransient<GameSetupView>();

@@ -15,7 +15,7 @@
 
     <Grid>
         <md:Card Margin="10" UniformCornerRadius="15">
-            <Grid>
+            <Grid x:Name="MainContentGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="15*" />

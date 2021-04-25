@@ -1,30 +1,19 @@
-﻿using System;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
-using TicTacToe.App.Service;
-using TicTacToe.Core.Services;
+using TicTacToe.App.Controls.Interfaces;
 using TicTacToe.Core.ViewModels;
 
 namespace TicTacToe.App.Views
 {
-    public partial class MainWindow : INavigationRoot
+    public partial class MainWindow
     {
-        private readonly INavigationService navigationService;
-
-        public MainWindow(MainViewModel viewModel, INavigationService navigationService) : base(viewModel)
+        public MainWindow(MainViewModel viewModel, IMainContentWrapper mainContentWrapper)
+            : base(viewModel)
         {
-            this.navigationService = navigationService;
-
             InitializeComponent();
-        }
 
-        public Panel ContentPlaceholder => Content;
-
-        protected override void OnInitialized(EventArgs e)
-        {
-            navigationService.Initialize(this);
-
-            base.OnInitialized(e);
+            mainContentWrapper.SetValue(Grid.ColumnProperty, 1);
+            MainContentGrid.Children.Add(mainContentWrapper.MainContentWrapper);
         }
 
         private void MainWindow_MouseDown(object _, MouseButtonEventArgs e)

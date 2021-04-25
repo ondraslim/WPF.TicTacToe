@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Threading;
 using System.Windows;
 using TicTacToe.App.Installers;
-using TicTacToe.App.Service;
+using TicTacToe.App.Views;
 using TicTacToe.Common;
 using TicTacToe.Core.Installers;
 using TicTacToe.Data.EntityFramework.Factories;
@@ -70,7 +70,7 @@ namespace TicTacToe.App
             }
 #endif
 
-            var mainWindow = DependencyInjectionService.Resolve<INavigationRoot>();
+            var mainWindow = DependencyInjectionService.Resolve<MainWindow>();
             mainWindow.Show();
 
             base.OnStartup(e);
