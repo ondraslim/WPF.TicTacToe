@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TicTacToe.Infrastructure.Services.Common;
+using TicTacToe.Common.IoC;
 using TicTacToe.Infrastructure.Services.Interfaces;
 
 namespace TicTacToe.Infrastructure.Installers
 {
     public class InfrastructureInstaller
     {
-
         public void Install(IServiceCollection serviceCollection, IDependencyInjectionService dependencyInjectionService)
         {
             serviceCollection.AddSingleton<IDependencyInjectionService>(dependencyInjectionService);

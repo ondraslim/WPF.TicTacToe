@@ -1,18 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TicTacToe.BL.Installers;
+using TicTacToe.Common;
+using TicTacToe.Common.IoC;
 using TicTacToe.Core.Factories.Common;
 using TicTacToe.Core.ViewModels.Common;
-using TicTacToe.Infrastructure.Services.Common;
-using TicTacToe.Infrastructure.Services.Interfaces;
 
 namespace TicTacToe.Core.Installers
 {
-    public class CoreInstaller
+    public class CoreInstaller : IInstaller
     {
-        public void Install(IServiceCollection serviceCollection, IDependencyInjectionService dependencyInjectionService)
+        public void Install(IServiceCollection serviceCollection)
         {
-            new BusinessInstaller().Install(serviceCollection, dependencyInjectionService);
-
             serviceCollection.Scan(scan => scan
                 .FromAssemblyOf<CoreInstaller>()
                 .AddClasses(classes => classes.AssignableTo<IFactory>())

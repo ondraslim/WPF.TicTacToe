@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TicTacToe.Common\TicTacToe.Common.csproj" />
     <ProjectReference Include="..\TicTacToe.Data\TicTacToe.Data.csproj" />
     <ProjectReference Include="..\TicTacToe.Infrastructure.EntityFramework\TicTacToe.Infrastructure.EntityFramework.csproj" />
     <ProjectReference Include="..\TicTacToe.Infrastructure\TicTacToe.Infrastructure.csproj" />
