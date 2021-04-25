@@ -8,15 +8,18 @@ namespace TicTacToe.Core.ViewModels
     {
         private readonly INavigationService navigationService;
 
-        public MainViewModel(INavigationService navigationService, NavigationViewModel navigationViewModel)
+        public MainViewModel(NavigationViewModel navigationViewModel, INavigationService navigationService)
         {
             NavigationViewModel = navigationViewModel;
             this.navigationService = navigationService;
-
-            navigationService.NavigateTo<HomeViewModel>();
         }
 
         public NavigationViewModel NavigationViewModel { get; set; }
-        public IViewModel CurrentViewModel => navigationService.CurrentViewModel;
+
+        public override void OnInitialized()
+        {
+            base.OnInitialized();
+            navigationService.NavigateTo<HomeViewModel>();
+        }
     }
 }

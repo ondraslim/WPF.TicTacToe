@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 using TicTacToe.App.Service.Interfaces;
+using TicTacToe.App.Views;
 using TicTacToe.Core.ViewModels.Common;
 using TicTacToe.Infrastructure.IoC;
 using TicTacToe.Infrastructure.Services.Interfaces;
@@ -36,7 +37,7 @@ namespace TicTacToe.App.Service
             var viewModelType = viewModel?.GetType() ?? typeof(TViewModel);
             var viewTypeName = viewModelType
                 .AssemblyQualifiedName
-                .Replace(viewModelType.Assembly.GetName().Name, typeof(ViewBase).Assembly.GetName().Name)
+                .Replace(viewModelType.Assembly.GetName().Name, typeof(MainWindow).Assembly.GetName().Name)
                 .Replace("ViewModel", "View");
 
             var viewType = Type.GetType(viewTypeName);

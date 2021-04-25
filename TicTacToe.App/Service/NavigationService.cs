@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using TicTacToe.App.Service.Interfaces;
+using TicTacToe.App.Views;
 using TicTacToe.Core.Services;
 using TicTacToe.Core.ViewModels.Common;
 using TicTacToe.Infrastructure.Services.Interfaces;
@@ -8,12 +9,10 @@ namespace TicTacToe.App.Service
 {
     public class NavigationService : INavigationService
     {
-        // TODO: use this instead of fixed binds in App.xaml
         private readonly IMvvmLocatorService mvvmLocatorService;
-
         private readonly IDependencyInjectionService dependencyInjectionService;
 
-        public IViewModel CurrentViewModel { get; private set; }
+        private INavigationRoot navigationRoot;
 
         public NavigationService(IMvvmLocatorService mvvmLocatorService, IDependencyInjectionService dependencyInjectionService)
         {
@@ -21,15 +20,27 @@ namespace TicTacToe.App.Service
             this.dependencyInjectionService = dependencyInjectionService;
         }
 
+        // TODO: come up with clearer solution
+        public void Initialize(INavigationRootBase navigationRoot)
+        {
+            this.navigationRoot = navigationRoot as INavigationRoot;
+        }
+
         public void NavigateTo<TViewModel>(TViewModel viewModel = default) where TViewModel : class, IViewModel
         {
-            CurrentViewModel = viewModel ?? dependencyInjectionService.Resolve<TViewModel>();
+            var view = mvvmLocatorService.ResolveView(viewModel ?? dependencyInjectionService.Resolve<TViewModel>());
+            
+            navigationRoot.ContentPlaceholder.Children.Clear();
+            navigationRoot.ContentPlaceholder.Children.Add(view);
         }
 
         public void NavigateTo<TViewModel, TViewModelParameter>(TViewModel viewModel = default, TViewModelParameter viewModelParameter = default)
             where TViewModel : class, IViewModel<TViewModelParameter>
         {
-            CurrentViewModel = viewModel ?? dependencyInjectionService.Resolve<TViewModel>();
+            var view = mvvmLocatorService.ResolveView(viewModel ?? dependencyInjectionService.Resolve<TViewModel>());
+
+            navigationRoot.ContentPlaceholder.Children.Clear();
+            navigationRoot.ContentPlaceholder.Children.Add(view);
         }
 
         public void ExitApplication()

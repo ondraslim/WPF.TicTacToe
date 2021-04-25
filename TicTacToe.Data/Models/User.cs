@@ -3,7 +3,7 @@ using TicTacToe.Data.Models.Base;
 
 namespace TicTacToe.Data.Models
 {
-    public class User : ModelBase
+    public class User : EntityBase
     {
         public string Name { get; set; }
         public string PreferredLanguage { get; set; }

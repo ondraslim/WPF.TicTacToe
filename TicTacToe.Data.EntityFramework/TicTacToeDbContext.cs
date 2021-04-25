@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TicTacToe.Data.Models;
 
-namespace TicTacToe.EntityFramework
+namespace TicTacToe.Data.EntityFramework
 {
     public class TicTacToeDbContext : DbContext
     {

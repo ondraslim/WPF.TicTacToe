@@ -4,7 +4,7 @@ using TicTacToe.Data.Models.Enums;
 
 namespace TicTacToe.Data.Models
 {
-    public class Game : ModelBase
+    public class Game : EntityBase
     {
         public GameType Type { get; set; }
         

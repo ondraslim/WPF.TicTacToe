@@ -1,8 +1,9 @@
 ﻿using System;
+using TicTacToe.Data.Models.Base;
 
 namespace TicTacToe.Data.Models
 {
-    public class GameParticipation
+    public class GameParticipation : EntityBase
     {
         public Guid PlayerId { get; set; }
         public Guid GameId { get; set; }

@@ -11,6 +11,8 @@ namespace TicTacToe.Core.ViewModels.Common
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public virtual void OnInitialized() { }
     }
 
     public abstract class ViewModelBase<TViewModelParameter> : ViewModelBase, IViewModel<TViewModelParameter>
