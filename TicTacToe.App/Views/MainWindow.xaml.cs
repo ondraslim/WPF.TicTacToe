@@ -1,49 +1,30 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows.Controls;
 using System.Windows.Input;
+using TicTacToe.App.Service;
+using TicTacToe.Core.Services;
+using TicTacToe.Core.ViewModels;
 
 namespace TicTacToe.App.Views
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : INavigationRoot
     {
-        public MainWindow()
+        private readonly INavigationService navigationService;
+
+        public MainWindow(MainViewModel viewModel, INavigationService navigationService) : base(viewModel)
         {
+            this.navigationService = navigationService;
+
             InitializeComponent();
         }
 
-        private void MainWindow_Loaded(object _, RoutedEventArgs __)
-        {
-            LoadHomeControl();
-        }
+        public Panel ContentPlaceholder => Content;
 
-        private void BtnHome_Click(object sender, RoutedEventArgs e)
+        protected override void OnInitialized(EventArgs e)
         {
-            LoadHomeControl();
-        }
+            navigationService.Initialize(this);
 
-        private void BtnGame_Click(object _, RoutedEventArgs __)
-        {
-            RenderPages.Children.Clear();
-            RenderPages.Children.Add(new GameControl());
-        }
-
-        private void BtnStats_Click(object sender, RoutedEventArgs e)
-        {
-            RenderPages.Children.Clear();
-            RenderPages.Children.Add(new StatisticsControl());
-        }
-
-        private void LoadHomeControl()
-        {
-            RenderPages.Children.Clear();
-            RenderPages.Children.Add(new HomeControl());
-        }
-
-        private void BtnExit_Click(object _, RoutedEventArgs __)
-        {
-            Application.Current.Shutdown();
+            base.OnInitialized(e);
         }
 
         private void MainWindow_MouseDown(object _, MouseButtonEventArgs e)

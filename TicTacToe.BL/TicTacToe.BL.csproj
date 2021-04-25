@@ -5,16 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TicTacToe.Common\TicTacToe.Common.csproj" />
     <ProjectReference Include="..\TicTacToe.Data\TicTacToe.Data.csproj" />
+    <ProjectReference Include="..\TicTacToe.Infrastructure.EntityFramework\TicTacToe.Infrastructure.EntityFramework.csproj" />
+    <ProjectReference Include="..\TicTacToe.Infrastructure\TicTacToe.Infrastructure.csproj" />
   </ItemGroup>
 
-
 	<ItemGroup>
-		<PackageReference Include="Autofac" Version="6.1.0" />
 		<PackageReference Include="AutoMapper" Version="10.1.1" />
-		<PackageReference Include="Scrutor" Version="3.3.0" />
+		<PackageReference Include="PropertyChanged.Fody" Version="3.3.3" />
+		<PackageReference Include="Fody" Version="6.5.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
-
 
 	<ItemGroup>
 	  <Folder Include="Installers\" />

@@ -1,9 +1,9 @@
 ﻿using TicTacToe.BL.DTOs.Gameplay;
-using TicTacToe.BL.Services.Common;
+using TicTacToe.Common.IoC;
 
 namespace TicTacToe.BL.Services
 {
-    public interface IAiGameplayService : IService
+    public interface IAiGameplayService : ITransientService
     {
         // TODO: add argument BoardStateDTO?
         BoardPositionDTO MakeMove();

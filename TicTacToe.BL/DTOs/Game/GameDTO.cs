@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TicTacToe.BL.DTOs.GameParticipation;
-using TicTacToe.Data.Entities.Enums;
+using TicTacToe.Data.Models.Enums;
 
 namespace TicTacToe.BL.DTOs.Game
 {

@@ -1,5 +1,5 @@
 ﻿using System;
-using TicTacToe.Data.Entities.Enums;
+using TicTacToe.Data.Models.Enums;
 
 namespace TicTacToe.BL.DTOs.Stats
 {
