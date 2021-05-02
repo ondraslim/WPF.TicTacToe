@@ -2,7 +2,7 @@
 using TicTacToe.BL.DTOs.User;
 using TicTacToe.BL.Facades.Common;
 
-namespace TicTacToe.BL.Facades
+namespace TicTacToe.BL.Facades.Interfaces
 {
     public interface IUserFacade : IFacade
     {

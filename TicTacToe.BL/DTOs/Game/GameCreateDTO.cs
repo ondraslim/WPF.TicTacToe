@@ -6,11 +6,22 @@ namespace TicTacToe.BL.DTOs.Game
 {
     public class GameCreateDTO
     {
-        public GameType Type { get; set; }
-        public string AccessCode { get; set; }
+        private GameType type = GameType.Multiplayer;
 
-        public int BoardSize { get; set; }
+        public GameType Type
+        {
+            get => type;
+            set
+            {
+                type = value;
+                Difficulty = type == GameType.Solo ? AiDifficulty.Normal : AiDifficulty.None;
+            }
+        }
 
-        public List<GameParticipationDTO> GameParticipation { get; set; }
+        public AiDifficulty Difficulty{ get; set; } = AiDifficulty.Normal;
+
+        public int BoardSize { get; set; } = 20;
+
+        public List<GameParticipationDTO> GameParticipation { get; set; } = new();
     }
 }

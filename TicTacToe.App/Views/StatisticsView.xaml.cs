@@ -81,13 +81,13 @@ namespace TicTacToe.App.Views
                 {
                     Opponent = "Opponent1",
                     TurnCount = 42,
-                    Type = GameType.Online
+                    Type = GameType.Multiplayer
                 },
                 new()
                 {
                     Opponent = "Opponent2",
                     TurnCount = 39,
-                    Type = GameType.Online
+                    Type = GameType.Multiplayer
                 },
                 new()
                 {

@@ -8,6 +8,7 @@ using System.Threading;
 using System.Windows;
 using TicTacToe.App.Installers;
 using TicTacToe.App.Views;
+using TicTacToe.BL.Installers;
 using TicTacToe.Common;
 using TicTacToe.Core.Installers;
 using TicTacToe.Data.EntityFramework.Factories;
@@ -49,6 +50,7 @@ namespace TicTacToe.App
         {
             new InfrastructureInstaller().Install(services, DependencyInjectionService);
             InstallerHelper.Install<EntityFrameworkInfrastructureInstaller>(services);
+            InstallerHelper.Install<BusinessInstaller>(services);
             InstallerHelper.Install<CoreInstaller>(services);
             InstallerHelper.Install<AppInstaller>(services);
 

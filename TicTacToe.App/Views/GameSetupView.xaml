@@ -3,7 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:TicTacToe.App.Converters"
              xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
+             xmlns:enums="clr-namespace:TicTacToe.Data.Models.Enums;assembly=TicTacToe.Data"
              d:DataContext="{d:DesignInstance viewModels:GameSetupViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1200">
@@ -16,6 +18,10 @@
 
     <Grid>
         <Grid>
+            <Grid.Resources>
+                <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+                <converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+            </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -39,13 +45,6 @@
                        Style="{StaticResource MaterialDesignHeadline2TextBlock}"
                        Text="Game Setup" />
 
-            <Button HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Width="400" Height="50" Margin="10"
-                    Style="{StaticResource MaterialDesignFlatAccentButton}"
-                    BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
-                    ToolTip="Join a game using code" x:Name="BtnJoinGame" Click="BtnJoinGame_Click">
-                <TextBlock Text="Join Online Game" Style="{StaticResource MaterialDesignBody1TextBlock}" />
-            </Button>
-
             <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center"
                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                        Text="Game Creation" />
@@ -60,7 +59,7 @@
                     <Run Text="{Binding Value, ElementName=BoardSizeSlider, Mode=OneWay}" FontStyle="Italic" />
                 </TextBlock>
                 <Slider x:Name="BoardSizeSlider" HorizontalAlignment="Left" Width="300"
-                        Minimum="5" Maximum="50" Value="15" IsSnapToTickEnabled="True" TickFrequency="1" />
+                        Minimum="5" Maximum="50" Value="{Binding GameCreateModel.BoardSize}" IsSnapToTickEnabled="True" TickFrequency="1" />
             </StackPanel>
 
             <Label Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
@@ -68,28 +67,49 @@
                 Game Mode:
             </Label>
             <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
-                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4"
-                             IsChecked="True" Content="SOLO" x:Name="RadBtnGameModeLocal"/>
-                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4"
-                             Content="ONLINE" x:Name="RadBtnGameModeOnline"/>
+                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="SOLO" 
+                             IsChecked="{Binding Path=GameCreateModel.Type, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:GameType.Solo}}" />
+                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Multiplayer" 
+                             IsChecked="{Binding Path=GameCreateModel.Type, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:GameType.Multiplayer}}" />
             </StackPanel>
-            <Label Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
-                   Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                AI Difficulty:
-            </Label>
-            <StackPanel Grid.Row="5" Grid.Column="2" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
-                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4"
-                             IsChecked="True" Content="EASY" x:Name="RadBtnAiEasy"/>
-                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4"
-                             Content="MEDIUM" x:Name="RadBtnAiMedium"/>
-                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4"
-                             Content="HARD" x:Name="RadBtnAiHard"/>
-            </StackPanel>
+            <Grid Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
+                  Visibility="{Binding IsSoloGameTypeSelected, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
+                       Style="{StaticResource MaterialDesignLabel}" FontSize="20">
+                    AI Difficulty:
+                </Label>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="EASY"
+                                 IsChecked="{Binding Path=GameCreateModel.Difficulty, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:AiDifficulty.Easy}}" />
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="MEDIUM"
+                                 IsChecked="{Binding Path=GameCreateModel.Difficulty, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:AiDifficulty.Normal}}" />
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="HARD"
+                                 IsChecked="{Binding Path=GameCreateModel.Difficulty, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:AiDifficulty.Hard}}" />
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
+                  Visibility="{Binding IsMultiplayerGameTypeSelected, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
+                       Style="{StaticResource MaterialDesignLabel}" FontSize="20">
+                    Who Is Your Opponent?
+                </Label>
+
+                <!--TODO: add opponent picker-->
+            </Grid>
 
             <Button HorizontalAlignment="Center" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Width="400" Height="50" Margin="10"
                     Style="{StaticResource MaterialDesignFlatAccentButton}"
                     BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
-                    ToolTip="Create a new game" x:Name="BtnCreateNewGame" Click="BtnCreateNewGame_Click">
+                    ToolTip="Create a new game" Command="{Binding CreateGameCommand}">
                 <TextBlock Text="Create Game" Style="{StaticResource MaterialDesignBody1TextBlock}" />
             </Button>
         </Grid>

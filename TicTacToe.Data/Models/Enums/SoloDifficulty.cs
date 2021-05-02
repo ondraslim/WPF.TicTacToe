@@ -1,9 +1,10 @@
 ﻿namespace TicTacToe.Data.Models.Enums
 {
-    public enum SoloDifficulty
+    public enum AiDifficulty
     {
         None = 0,
-        Normal = 1,
-        Hard = 2
+        Easy = 1,
+        Normal = 2,
+        Hard = 3
     }
 }

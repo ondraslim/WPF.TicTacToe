@@ -3,6 +3,6 @@
     public enum GameType
     {
         Solo = 1,
-        Online = 2
+        Multiplayer = 2
     }
 }
