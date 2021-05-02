@@ -9,7 +9,7 @@ namespace TicTacToe.Infrastructure.UnitOfWork.Interfaces
         /// <summary>
         /// Commit all changes made within this unit of work.
         /// </summary>
-        Task Commit();
+        Task CommitAsync();
 
         /// <summary>
         /// Registers an action, which is executed if and only if commit is succesfull.

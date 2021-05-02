@@ -52,13 +52,13 @@
                 <Button HorizontalAlignment="Center" Width="200" Height="50" Margin="10"
                         Style="{StaticResource MaterialDesignFlatAccentButton}"
                         BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
-                        ToolTip="Sign In" >
+                        ToolTip="Sign In" Command="{Binding SignInCommand}">
                     <TextBlock Text="Sign In" Style="{StaticResource MaterialDesignBody1TextBlock}" />
                 </Button>                
                 <Button HorizontalAlignment="Center" Width="200" Height="50" Margin="10"
                         Style="{StaticResource MaterialDesignFlatAccentButton}"
                         BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
-                        ToolTip="Sign Up">
+                        ToolTip="Sign Up" Command="{Binding SignUpCommand}">
                     <TextBlock Text="Sign Up" Style="{StaticResource MaterialDesignBody1TextBlock}" />
                 </Button>
             </StackPanel>

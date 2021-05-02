@@ -16,7 +16,7 @@ namespace TicTacToe.Infrastructure.UnitOfWork
         /// Commits the changes inside this instance of UOW
         /// </summary>
         /// <returns></returns>
-        public async Task Commit()
+        public async Task CommitAsync()
         {
             await CommitCore();
             foreach (var action in postCommitActions)

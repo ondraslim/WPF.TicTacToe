@@ -8,26 +8,26 @@ namespace TicTacToe.Infrastructure
         /// <summary>
         /// get entity by id
         /// </summary>
-        Task<TEntity> GetByIdAsync(TKey id);
+        public Task<TEntity> GetByIdAsync(TKey id);
 
         /// <summary>
         /// get entity by id with includes
         /// </summary>
-        Task<TEntity> GetByIdAsync(TKey id, params string[] includes);
+        public Task<TEntity> GetByIdAsync(TKey id, params string[] includes);
 
         /// <summary>
         /// Persists the given entity.
         /// </summary>
-        TKey Create(TEntity entity);
+        public TKey Create(TEntity entity);
 
         /// <summary>
         /// Updates the given entity.
         /// </summary>
-        void Update(TEntity entity);
+        public void Update(TEntity entity);
 
         /// <summary>
         /// Deletes an entity with the given id.
         /// </summary>
-        void Delete(TKey id);
+        public void Delete(TKey id);
     }
 }

@@ -11,7 +11,7 @@ using TicTacToe.App.Views;
 using TicTacToe.BL.Installers;
 using TicTacToe.Common;
 using TicTacToe.Core.Installers;
-using TicTacToe.Data.EntityFramework.Factories;
+using TicTacToe.Data.EntityFramework;
 using TicTacToe.Infrastructure.EntityFramework.Installers;
 using TicTacToe.Infrastructure.Installers;
 using TicTacToe.Infrastructure.Services;
@@ -54,7 +54,8 @@ namespace TicTacToe.App
             InstallerHelper.Install<CoreInstaller>(services);
             InstallerHelper.Install<AppInstaller>(services);
 
-            services.AddSingleton<IDbContextFactory>(_ => new SqlServerDbContextFactory(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<TicTacToeDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
+            services.AddSingleton(provider => new Func<DbContext>(provider.GetRequiredService<TicTacToeDbContext>));
 
             DependencyInjectionService.Build(services);
         }
@@ -63,10 +64,10 @@ namespace TicTacToe.App
         {
             await host.StartAsync();
 
-            var dbContextFactory = DependencyInjectionService.Resolve<IDbContextFactory>();
+            var dbContextFactory = DependencyInjectionService.Resolve<Func<TicTacToeDbContext>>();
 
 #if DEBUG
-            await using (var dbx = dbContextFactory.CreateDbContext())
+            await using (var dbx = dbContextFactory.Invoke())
             {
                 await dbx.Database.MigrateAsync();
             }

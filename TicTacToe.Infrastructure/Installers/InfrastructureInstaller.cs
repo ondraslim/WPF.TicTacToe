@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TicTacToe.Common.IoC;
+using TicTacToe.Infrastructure.Services;
 using TicTacToe.Infrastructure.Services.Interfaces;
 
 namespace TicTacToe.Infrastructure.Installers
@@ -9,6 +10,7 @@ namespace TicTacToe.Infrastructure.Installers
         public void Install(IServiceCollection serviceCollection, IDependencyInjectionService dependencyInjectionService)
         {
             serviceCollection.AddSingleton<IDependencyInjectionService>(dependencyInjectionService);
+            serviceCollection.AddSingleton<IPasswordHasher, PasswordHasher>();
 
             serviceCollection.Scan(scan => scan
                 .FromAssemblyOf<InfrastructureInstaller>()
