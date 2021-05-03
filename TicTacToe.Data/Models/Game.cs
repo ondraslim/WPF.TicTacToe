@@ -7,14 +7,11 @@ namespace TicTacToe.Data.Models
     public class Game : EntityBase
     {
         public GameType Type { get; set; }
-        
-        // TODO: multiplayer might require more information
-        public string AccessCode { get; set; }
+        public AiDifficulty Difficulty { get; set; }
 
         public int TurnCount { get; set; }
 
-        public int BoardWidth { get; set; }
-        public int BoardHeight { get; set; }
+        public int BoardSize { get; set; }
 
         public virtual ICollection<GameParticipation> GameParticipation { get; set; }
     }

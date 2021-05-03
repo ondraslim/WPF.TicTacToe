@@ -22,15 +22,15 @@ namespace TicTacToe.Infrastructure.EntityFramework
             this.provider = provider;
         }
 
-        public TKey Create(TEntity entity)
+        public async Task<TKey> CreateAsync(TEntity entity)
         {
-            Context.Set<TEntity>().Add(entity);
+            await Context.Set<TEntity>().AddAsync(entity);
             return entity.Id;
         }
 
-        public void Delete(TKey id)
+        public async Task DeleteAsync(TKey id)
         {
-            var entity = Context.Set<TEntity>().Find(id);
+            var entity = await Context.Set<TEntity>().FindAsync(id);
             if (entity != null)
             {
                 Context.Set<TEntity>().Remove(entity);
@@ -53,9 +53,9 @@ namespace TicTacToe.Infrastructure.EntityFramework
             return await ctx.SingleOrDefaultAsync(entity => entity.Id.Equals(id));
         }
 
-        public void Update(TEntity entity)
+        public async Task UpdateAsync(TEntity entity)
         {
-            var foundEntity = Context.Set<TEntity>().Find(entity.Id);
+            var foundEntity = await Context.Set<TEntity>().FindAsync(entity.Id);
             Context.Entry(foundEntity).CurrentValues.SetValues(entity);
         }
     }

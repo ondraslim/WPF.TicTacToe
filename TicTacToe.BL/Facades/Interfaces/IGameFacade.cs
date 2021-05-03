@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TicTacToe.BL.DTOs.Game;
+using TicTacToe.BL.DTOs.Gameplay;
 using TicTacToe.BL.Facades.Common;
 
 namespace TicTacToe.BL.Facades.Interfaces
@@ -9,7 +10,7 @@ namespace TicTacToe.BL.Facades.Interfaces
     {
         Task<GameDTO> CreateGameAsync(GameCreateDTO game);
 
-        Task StartGame(GameDTO game);
+        Task<GameplayDTO> StartGame(GameDTO game);
 
         void SaveGameResult(GameDTO game);
 

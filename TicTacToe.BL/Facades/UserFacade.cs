@@ -57,7 +57,7 @@ namespace TicTacToe.BL.Facades
             var user = PrepareNewUser(registration);
 
             using var uow = UnitOfWorkProvider.Create();
-            user.Id = userRepository.Create(user);
+            user.Id = await userRepository.CreateAsync(user);
             await uow.CommitAsync();
             
             var authorizedUser = mapper.Map<UserDTO>(user);

@@ -1,15 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using TicTacToe.BL.Annotations;
-using TicTacToe.BL.DTOs.GameParticipation;
+﻿using System;
 using TicTacToe.Data.Models.Enums;
 
 namespace TicTacToe.BL.DTOs.Game
 {
-    public class GameCreateDTO : INotifyPropertyChanged
+    public class GameCreateDTO
     {
-        private GameType type = GameType.Multiplayer;
+        private GameType type = GameType.Solo;
 
         public GameType Type
         {
@@ -21,20 +17,10 @@ namespace TicTacToe.BL.DTOs.Game
             }
         }
 
-        public AiDifficulty Difficulty{ get; set; } = AiDifficulty.Normal;
+        public AiDifficulty Difficulty { get; set; } = AiDifficulty.Normal;
 
         public int BoardSize { get; set; } = 20;
 
-        public List<GameParticipationDTO> GameParticipation { get; set; } = new();
-
-
-        // TODO: remove
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public Guid GameCreatorId { get; set; }
     }
 }

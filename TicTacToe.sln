@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Data.EntityFramework", "TicTacToe.Data.EntityFramework\TicTacToe.Data.EntityFramework.csproj", "{CF3FB167-04EA-4AFC-B477-A72A4000F05D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Common", "TicTacToe.Common\TicTacToe.Common.csproj", "{8956664A-C3B8-45EC-8FB4-7B3180E9BEA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Common", "TicTacToe.Common\TicTacToe.Common.csproj", "{8956664A-C3B8-45EC-8FB4-7B3180E9BEA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +74,7 @@ Global
 		{8B0395EF-1E81-453F-B800-7A99ED08EFBD} = {87059A8B-7240-4A1C-9ADF-84842C178AB1}
 		{B0C75D8A-C208-4B49-BB57-2E727B9C538F} = {87059A8B-7240-4A1C-9ADF-84842C178AB1}
 		{CF3FB167-04EA-4AFC-B477-A72A4000F05D} = {76CBC211-024E-438A-9095-B1B3E87D7759}
+		{8956664A-C3B8-45EC-8FB4-7B3180E9BEA0} = {87059A8B-7240-4A1C-9ADF-84842C178AB1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28E4046D-49A8-431D-B3D9-8C8098C6BEF4}
