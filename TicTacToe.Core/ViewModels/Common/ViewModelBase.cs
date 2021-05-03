@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace TicTacToe.Core.ViewModels.Common
 {
@@ -12,7 +13,7 @@ namespace TicTacToe.Core.ViewModels.Common
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public virtual void OnInitialized() { }
+        public virtual Task OnInitialized() => Task.CompletedTask;
     }
 
     public abstract class ViewModelBase<TViewModelParameter> : ViewModelBase, IViewModel<TViewModelParameter>

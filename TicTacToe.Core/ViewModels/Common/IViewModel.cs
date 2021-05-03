@@ -1,8 +1,10 @@
-﻿namespace TicTacToe.Core.ViewModels.Common
+﻿using System.Threading.Tasks;
+
+namespace TicTacToe.Core.ViewModels.Common
 {
     public interface IViewModel
     {
-        void OnInitialized();
+        Task OnInitialized();
     }
 
     public interface IViewModel<TViewModelParameter> : IViewModel

@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
         xmlns:controls="clr-namespace:TicTacToe.App.Controls"
-        xmlns:views="clr-namespace:TicTacToe.App.Views"
+        xmlns:views="clr-namespace:TicTacToe.App.Views.Common"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
         Height="800" Width="1200" WindowStartupLocation="CenterScreen"

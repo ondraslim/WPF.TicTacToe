@@ -4,10 +4,8 @@ namespace TicTacToe.App.Views
 {
     public partial class GameSetupView
     {
-        public GameSetupView(GameSetupViewModel viewModel)
+        public GameSetupView(GameSetupViewModel viewModel) : base(viewModel)
         {
-            DataContext = viewModel;
-
             InitializeComponent();
         }
 

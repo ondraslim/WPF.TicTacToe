@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TicTacToe.BL.DTOs.User;
 using TicTacToe.BL.Exceptions;
@@ -77,9 +79,11 @@ namespace TicTacToe.BL.Facades
             return user;
         }
 
-        public UserDTO GetUserInfo(Guid userId)
+        // TODO: move to query object
+        public async Task<List<UserDTO>> GetUserListAsync()
         {
-            throw new NotImplementedException();
+            var users = await userRepository.GetAllAsync();
+            return users.Select(u => mapper.Map<UserDTO>(u)).ToList();
         }
 
         private async Task<UserDTO> AuthorizeUserAsync(UserCreateDTO user)

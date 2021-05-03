@@ -1,10 +1,11 @@
-﻿<UserControl x:Class="TicTacToe.App.Views.GameSetupView"
+﻿<views:ViewBase x:Class="TicTacToe.App.Views.GameSetupView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converters="clr-namespace:TicTacToe.App.Converters"
              xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
+             xmlns:views="clr-namespace:TicTacToe.App.Views.Common"
              xmlns:enums="clr-namespace:TicTacToe.Data.Models.Enums;assembly=TicTacToe.Data"
              d:DataContext="{d:DesignInstance viewModels:GameSetupViewModel}"
              mc:Ignorable="d"
@@ -23,13 +24,11 @@
                 <converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
             </Grid.Resources>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -39,21 +38,17 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Image Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                   Width="100" Height="100" Margin="5" Source="{StaticResource TttBoard}" />
+            <Image Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                   Width="200" Height="200" Margin="30" Source="{StaticResource TttBoard}" />
             <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                       Style="{StaticResource MaterialDesignHeadline2TextBlock}"
+                       Margin="0 50 0 0" Style="{StaticResource MaterialDesignHeadline2TextBlock}"
                        Text="Game Setup" />
 
-            <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center"
-                       Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                       Text="Game Creation" />
-
-            <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
+            <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                    Style="{StaticResource MaterialDesignLabel}" FontSize="20">
                 Board Size:
             </Label>
-            <StackPanel Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
+            <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
                 <TextBlock FontSize="16">
                     <Run Text="Size: " />
                     <Run Text="{Binding Value, ElementName=BoardSizeSlider, Mode=OneWay}" FontStyle="Italic" />
@@ -62,17 +57,17 @@
                         Minimum="5" Maximum="50" Value="{Binding GameCreateModel.BoardSize}" IsSnapToTickEnabled="True" TickFrequency="1" />
             </StackPanel>
 
-            <Label Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
+            <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                    Style="{StaticResource MaterialDesignLabel}" FontSize="20">
                 Game Mode:
             </Label>
-            <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
+            <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
                 <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="SOLO" 
                              IsChecked="{Binding Path=GameCreateModel.Type, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:GameType.Solo}}" />
                 <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Multiplayer" 
                              IsChecked="{Binding Path=GameCreateModel.Type, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:GameType.Multiplayer}}" />
             </StackPanel>
-            <Grid Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
+            <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" 
                   Visibility="{Binding IsSoloGameTypeSelected, Converter={StaticResource BoolToVisibilityConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -92,7 +87,7 @@
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
+            <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" 
                   Visibility="{Binding IsMultiplayerGameTypeSelected, Converter={StaticResource BoolToVisibilityConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -106,7 +101,7 @@
                 <!--TODO: add opponent picker-->
             </Grid>
 
-            <Button HorizontalAlignment="Center" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Width="400" Height="50" Margin="10"
+            <Button HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Width="400" Height="50" Margin="40"
                     Style="{StaticResource MaterialDesignFlatAccentButton}"
                     BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
                     ToolTip="Create a new game" Command="{Binding CreateGameCommand}">
@@ -114,4 +109,4 @@
             </Button>
         </Grid>
     </Grid>
-</UserControl>
+</views:ViewBase>

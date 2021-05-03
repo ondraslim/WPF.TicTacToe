@@ -4,10 +4,8 @@ namespace TicTacToe.App.Views
 {
     public partial class HomeView
     {
-        public HomeView(HomeViewModel viewModel)
+        public HomeView(HomeViewModel viewModel) : base(viewModel)
         {
-            DataContext = viewModel;
-
             InitializeComponent();
         }
     }

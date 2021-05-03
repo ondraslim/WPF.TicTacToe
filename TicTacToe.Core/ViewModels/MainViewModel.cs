@@ -1,4 +1,5 @@
-﻿using TicTacToe.Core.Services;
+﻿using System.Threading.Tasks;
+using TicTacToe.Core.Services;
 using TicTacToe.Core.ViewModels.Common;
 using TicTacToe.Core.ViewModels.ControlViewModels;
 
@@ -16,9 +17,9 @@ namespace TicTacToe.Core.ViewModels
 
         public NavigationViewModel NavigationViewModel { get; set; }
 
-        public override void OnInitialized()
+        public override async Task OnInitialized()
         {
-            base.OnInitialized();
+            await base.OnInitialized();
             navigationService.NavigateTo<HomeViewModel>();
         }
     }

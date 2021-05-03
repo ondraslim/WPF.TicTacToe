@@ -9,10 +9,8 @@ namespace TicTacToe.App.Views
     {
         private bool firstPlayer = true;
 
-        public GameplayView(GameplayViewModel viewModel)
+        public GameplayView(GameplayViewModel viewModel) : base(viewModel)
         {
-            DataContext = viewModel;
-
             InitializeComponent();
         }
 

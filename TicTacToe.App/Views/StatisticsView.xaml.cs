@@ -11,10 +11,8 @@ namespace TicTacToe.App.Views
         public ICollection<UserWinRateListDTO> UserWinRateList { get; set; }
         public ICollection<LongGameListDTO> LongGameList { get; set; }
 
-        public StatisticsView(StatisticsViewModel viewModel)
+        public StatisticsView(StatisticsViewModel viewModel) : base(viewModel)
         {
-            DataContext = viewModel;
-
             InitializeComponent();
 
             InitializeGameCountList();

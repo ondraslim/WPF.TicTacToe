@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TicTacToe.BL.Repositories.Interfaces;
 using TicTacToe.Data.Models;
@@ -20,5 +21,9 @@ namespace TicTacToe.BL.Repositories
             return Context.Set<User>().FirstOrDefaultAsync(u => u.Name == name);
         }
 
+        public Task<List<User>> GetAllAsync()
+        {
+            return Context.Set<User>().ToListAsync();
+        }
     }
 }

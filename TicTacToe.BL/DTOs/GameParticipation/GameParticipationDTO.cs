@@ -5,8 +5,6 @@ namespace TicTacToe.BL.DTOs.GameParticipation
 {
     public class GameParticipationDTO
     {
-        public bool IsWinner { get; set; }
-
         public UserDTO Player { get; set; }
         public GameDTO Game { get; set; }
     }

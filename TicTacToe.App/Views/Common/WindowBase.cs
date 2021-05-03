@@ -2,7 +2,7 @@
 using System.Windows;
 using TicTacToe.Core.ViewModels.Common;
 
-namespace TicTacToe.App.Views
+namespace TicTacToe.App.Views.Common
 {
     public abstract class WindowBase : Window
     {
@@ -17,7 +17,8 @@ namespace TicTacToe.App.Views
 
             if (DataContext is IViewModel viewModel)
             {
-                viewModel.OnInitialized();
+                // TODO: async OnInitialized??
+                viewModel.OnInitialized().GetAwaiter().GetResult();
             }
         }
     }

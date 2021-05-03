@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TicTacToe.BL.DTOs.Game;
-using TicTacToe.BL.DTOs.Gameplay;
 using TicTacToe.BL.Facades.Interfaces;
 using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
@@ -47,8 +46,7 @@ namespace TicTacToe.Core.ViewModels
 
             var createdGame = await gameFacade.CreateGameAsync(GameCreateModel);
 
-            // TODO: pick players and symbols
-            //navigationService.NavigateTo<GameplayViewModel, GameplayDTO>(createdGame);
+            navigationService.NavigateTo<GameParticipationSetupViewModel, GameDTO>(viewModelParameter: createdGame);
         }
 
     }
