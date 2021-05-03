@@ -24,8 +24,9 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.ColumnSpan="3" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -34,36 +35,51 @@
                    Text="Tic Tac Toe" />
 
         <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="TOP">
-            <Image Width="200" Height="200" Margin="5" Source="{StaticResource TttBoard}" />
+            <Image Width="200" Height="200" Source="{StaticResource TttBoard}" />
         </Grid>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 30 0 0" HorizontalAlignment="Center">
-            <Label Style="{StaticResource MaterialDesignLabel}" FontSize="30" HorizontalAlignment="Center">
+        <Grid Grid.Row="2" Grid.Column="1" Margin="0 30 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource MaterialDesignLabel}" FontSize="30" HorizontalAlignment="Center">
                 Who are you?
             </Label>
-            <TextBox x:Name="NameTextBox" md:HintAssist.Hint="Name" Width="400"
+            <TextBox Grid.Row="1" Grid.Column="0"  x:Name="NameTextBox" md:HintAssist.Hint="Name" Width="250"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-            <PasswordBox x:Name="PasswordTextBox" Width="400"
+            <PasswordBox Grid.Row="2" Grid.Column="0" 
+                         x:Name="PasswordTextBox" Width="250"
                          md:HintAssist.Hint="Password"
                          md:HintAssist.Foreground="Black"
                          md:TextFieldAssist.UnderlineBrush="Black"
                          Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-            <StackPanel Margin="0 10" Orientation="Horizontal">
-                <Button HorizontalAlignment="Center" Width="200" Height="50" Margin="10"
-                        Style="{StaticResource MaterialDesignFlatAccentButton}"
-                        BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
-                        ToolTip="Sign In" Command="{Binding SignInCommand}">
-                    <TextBlock Text="Sign In" Style="{StaticResource MaterialDesignBody1TextBlock}" />
-                </Button>                
-                <Button HorizontalAlignment="Center" Width="200" Height="50" Margin="10"
-                        Style="{StaticResource MaterialDesignFlatAccentButton}"
-                        BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
-                        ToolTip="Sign Up" Command="{Binding SignUpCommand}">
-                    <TextBlock Text="Sign Up" Style="{StaticResource MaterialDesignBody1TextBlock}" />
-                </Button>
-            </StackPanel>
-           
-        </StackPanel>
+            <Button Grid.Row="3" Grid.Column="0" 
+                    HorizontalAlignment="Center" Width="250" Height="50" Margin="0 30 0 0"
+                    Style="{StaticResource MaterialDesignFlatAccentButton}"
+                    BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
+                    ToolTip="Sign In" Command="{Binding SignInCommand}">
+                <TextBlock Text="Sign In" Style="{StaticResource MaterialDesignBody1TextBlock}" />
+            </Button>
 
+            <Label Grid.Row="0" Grid.Column="1" 
+                   Style="{StaticResource MaterialDesignLabel}" FontSize="30" HorizontalAlignment="Center">
+                New Here?
+            </Label>
+            <Button Grid.Row="3" Grid.Column="1" 
+                    HorizontalAlignment="Center" Width="250" Height="50" Margin="0 30 0 0"
+                    Style="{StaticResource MaterialDesignFlatAccentButton}"
+                    BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
+                    ToolTip="Sign Up" Command="{Binding SignUpCommand}">
+                <TextBlock Text="Sign Up" Style="{StaticResource MaterialDesignBody1TextBlock}" />
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>

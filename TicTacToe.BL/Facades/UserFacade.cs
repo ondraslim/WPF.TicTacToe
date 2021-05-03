@@ -46,10 +46,6 @@ namespace TicTacToe.BL.Facades
             {
                 throw new UserAuthException($"Error while trying to login user '{user.Name}'", e);
             }
-            finally
-            {
-                await uow.CommitAsync();
-            }
 
             currentUserProvider.SetCurrentUser(authorizedUser);
 
@@ -58,11 +54,7 @@ namespace TicTacToe.BL.Facades
 
         public async Task<UserDTO> RegisterAsync(UserCreateDTO registration)
         {
-            var user = mapper.Map<User>(registration);
-            
-            var (hash, salt) = passwordHasher.CreateHash(registration.Password);
-            user.PasswordHash = string.Join(',', hash, salt);
-            user.PreferredLanguage = "en";
+            var user = PrepareNewUser(registration);
 
             using var uow = UnitOfWorkProvider.Create();
             user.Id = userRepository.Create(user);
@@ -72,6 +64,17 @@ namespace TicTacToe.BL.Facades
             currentUserProvider.SetCurrentUser(authorizedUser);
             
             return authorizedUser;
+        }
+
+        private User PrepareNewUser(UserCreateDTO registration)
+        {
+            var user = mapper.Map<User>(registration);
+
+            var (hash, salt) = passwordHasher.CreateHash(registration.Password);
+            user.PasswordHash = string.Join(',', hash, salt);
+            user.PreferredLanguage = "en";
+
+            return user;
         }
 
         public UserDTO GetUserInfo(Guid userId)
@@ -89,15 +92,21 @@ namespace TicTacToe.BL.Facades
 
             var userEntity = await userRepository.GetByIdAsync(storedUser.Id);
 
+            if (IsLoginCredentialsValid(user, userEntity))
+            {
+                throw new UserAuthException($"Password verification for user '{user.Name}' failed.");
+            }
+
+            return mapper.Map<UserDTO>(userEntity);
+        }
+
+        private bool IsLoginCredentialsValid(UserCreateDTO user, User userEntity)
+        {
             string hash;
             string salt;
 
             (hash, salt) = userEntity is not null ? passwordHasher.GetPassAndSalt(userEntity.PasswordHash) : (string.Empty, string.Empty);
-            var succ = userEntity is not null && passwordHasher.VerifyHashedPassword(hash, salt, user.Password);
-
-            if (!succ) throw new UserAuthException($"Password verification for user '{user.Name}' failed.");
-
-            return mapper.Map<UserDTO>(userEntity);
+            return userEntity is not null && passwordHasher.VerifyHashedPassword(hash, salt, user.Password);
         }
     }
 }
