@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
 using TicTacToe.Core.Services;
 using TicTacToe.Core.ViewModels.Common;
@@ -7,7 +8,11 @@ namespace TicTacToe.Core.ViewModels.ControlViewModels
 {
     public class NavigationViewModel : ViewModelBase
     {
+        private readonly ICurrentUserProvider currentUserProvider;
         private readonly INavigationService navigationService;
+
+        // TODO: add this check somewhere
+        public bool IsGameEnabled => currentUserProvider.CurrentUser is not null;
 
         public ICommand GoToHomeCommand { get; set; }
         public ICommand GoToGameSetupCommand { get; set; }
@@ -15,10 +20,13 @@ namespace TicTacToe.Core.ViewModels.ControlViewModels
         
         public ICommand ExitApplicationCommand { get; set; }
 
-
-        public NavigationViewModel(ICommandFactory commandFactory, INavigationService navigationService)
+        public NavigationViewModel(
+            ICommandFactory commandFactory, 
+            INavigationService navigationService, 
+            ICurrentUserProvider currentUserProvider)
         {
             this.navigationService = navigationService;
+            this.currentUserProvider = currentUserProvider;
 
             GoToHomeCommand = commandFactory.CreateCommand(NavigateToHome);
             GoToGameSetupCommand = commandFactory.CreateCommand(NavigateToGameSetup);

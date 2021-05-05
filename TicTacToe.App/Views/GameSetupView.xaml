@@ -38,15 +38,17 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Image Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top" 
+            <Image Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Right" VerticalAlignment="Top" 
                    Width="200" Height="200" Margin="30" Source="{StaticResource TttBoard}" />
-            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
                        Margin="0 50 0 0" Style="{StaticResource MaterialDesignHeadline2TextBlock}"
                        Text="Game Setup" />
 
             <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                    Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                Board Size:
+                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="Board size:" />
             </Label>
             <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
                 <TextBlock FontSize="16">
@@ -59,7 +61,7 @@
 
             <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                    Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                Game Mode:
+                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="Game mode:" />
             </Label>
             <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
                 <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="SOLO" 
@@ -75,7 +77,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                        Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                    AI Difficulty:
+                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="AI Difficulty:" />
                 </Label>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
                     <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="EASY"
@@ -85,20 +87,6 @@
                     <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="HARD"
                                  IsChecked="{Binding Path=GameCreateModel.Difficulty, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:AiDifficulty.Hard}}" />
                 </StackPanel>
-            </Grid>
-
-            <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" 
-                  Visibility="{Binding IsMultiplayerGameTypeSelected, Converter={StaticResource BoolToVisibilityConverter}}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
-                       Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                    Who Is Your Opponent?
-                </Label>
-
-                <!--TODO: add opponent picker-->
             </Grid>
 
             <Button HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Width="400" Height="50" Margin="40"

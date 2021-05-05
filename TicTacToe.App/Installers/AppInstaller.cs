@@ -20,6 +20,7 @@ namespace TicTacToe.App.Installers
 
             serviceCollection.AddTransient<HomeView>();
             serviceCollection.AddTransient<GameSetupView>();
+            serviceCollection.AddTransient<GameParticipationSetupView>();
             serviceCollection.AddTransient<GameplayView>();
             serviceCollection.AddTransient<StatisticsView>();
 

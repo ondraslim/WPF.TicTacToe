@@ -54,10 +54,9 @@
             <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource MaterialDesignLabel}" FontSize="30" HorizontalAlignment="Center">
                 Who are you?
             </Label>
-            <TextBox Grid.Row="1" Grid.Column="0"  x:Name="NameTextBox" md:HintAssist.Hint="Name" Width="250"
+            <TextBox Grid.Row="1" Grid.Column="0" md:HintAssist.Hint="Name" Width="250"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-            <PasswordBox Grid.Row="2" Grid.Column="0" 
-                         x:Name="PasswordTextBox" Width="250"
+            <PasswordBox Grid.Row="2" Grid.Column="0" Width="250"
                          md:HintAssist.Hint="Password"
                          md:HintAssist.Foreground="Black"
                          md:TextFieldAssist.UnderlineBrush="Black"

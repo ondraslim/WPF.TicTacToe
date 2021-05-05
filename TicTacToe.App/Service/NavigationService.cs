@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using TicTacToe.App.Service.Interfaces;
 using TicTacToe.Core.Services;
 using TicTacToe.Core.ViewModels.Common;
@@ -31,8 +32,16 @@ namespace TicTacToe.App.Service
         public void NavigateTo<TViewModel, TViewModelParameter>(TViewModel viewModel = default, TViewModelParameter viewModelParameter = default)
             where TViewModel : class, IViewModel<TViewModelParameter>
         {
-            var view = mvvmLocatorService.ResolveView(viewModel ?? dependencyInjectionService.Resolve<TViewModel>());
-            mainContentViewUpdater.SetMainContentView(view);
+            try
+            {
+                var view = mvvmLocatorService.ResolveView(viewModel, viewModelParameter);
+                mainContentViewUpdater.SetMainContentView(view);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public void ExitApplication()

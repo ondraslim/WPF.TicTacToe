@@ -23,7 +23,6 @@ namespace TicTacToe.Core.ViewModels
 
         // TODO: fix visibility converter
         public bool IsSoloGameTypeSelected => GameCreateModel.Type == GameType.Solo;
-        public bool IsMultiplayerGameTypeSelected => GameCreateModel.Type == GameType.Multiplayer;
 
         public GameSetupViewModel(
             ICommandFactory commandFactory,
@@ -39,11 +38,8 @@ namespace TicTacToe.Core.ViewModels
 
         private async Task CreateGameAsync()
         {
-            GameCreateModel.GameCreatorId = currentUserProvider.CurrentUser.Id;
-
-            // TODO: temporary
-            GameCreateModel.GameCreatorId = Guid.Empty;
-
+            // TODO: temporary, add check user is authenticated
+            GameCreateModel.GameCreatorId = currentUserProvider.CurrentUser?.Id ?? Guid.Empty;
             var createdGame = await gameFacade.CreateGameAsync(GameCreateModel);
 
             navigationService.NavigateTo<GameParticipationSetupViewModel, GameDTO>(viewModelParameter: createdGame);

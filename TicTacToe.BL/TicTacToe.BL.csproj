@@ -22,7 +22,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Installers\" />
-	  <Folder Include="Mappings\" />
 	</ItemGroup>
 
 </Project>
