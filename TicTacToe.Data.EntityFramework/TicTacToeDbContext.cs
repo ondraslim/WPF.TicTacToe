@@ -5,10 +5,6 @@ namespace TicTacToe.Data.EntityFramework
 {
     public class TicTacToeDbContext : DbContext
     {
-        public TicTacToeDbContext()
-        {
-        }
-
         public TicTacToeDbContext(DbContextOptions<TicTacToeDbContext> options) 
             : base(options)
         {
@@ -17,10 +13,5 @@ namespace TicTacToe.Data.EntityFramework
         public DbSet<User> User { get; set; }
         public DbSet<Game> Game { get; set; }
         public DbSet<GameParticipation> GameParticipation { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
     }
 }

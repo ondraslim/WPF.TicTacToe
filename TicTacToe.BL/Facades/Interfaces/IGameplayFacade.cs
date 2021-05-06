@@ -14,7 +14,7 @@ namespace TicTacToe.BL.Facades.Interfaces
         
         GameplayDTO InitializeGameMultiplayer(GameDTO game);
 
-        void MakeMove(BoardPositionDTO position, Guid playerId);
+        void MakeMove(BoardCellDTO cell, Guid playerId);
 
     }
 }

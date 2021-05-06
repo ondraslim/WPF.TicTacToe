@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TicTacToe.BL.DTOs.Game;
 using TicTacToe.BL.DTOs.GameParticipation;
+using TicTacToe.BL.DTOs.Gameplay;
 using TicTacToe.BL.DTOs.User;
 using TicTacToe.BL.Facades.Interfaces;
 using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
+using TicTacToe.Core.Services;
 using TicTacToe.Core.ViewModels.Common;
 using TicTacToe.Data.Models.Enums;
 
@@ -19,9 +21,29 @@ namespace TicTacToe.Core.ViewModels
         private readonly ICurrentUserProvider currentUserProvider;
         private readonly IUserFacade userFacade;
         private readonly IGameFacade gameFacade;
+        private readonly INavigationService navigationService;
 
         private bool creatorStarts = true;
         private bool opponentStarts = false;
+
+        public ICommand StartGameCommand { get; set; }
+
+        public GameParticipationSetupViewModel(
+            GameDTO viewModelParameter,
+            ICommandFactory commandFactory,
+            ICurrentUserProvider currentUserProvider,
+            IUserFacade userFacade,
+            IGameFacade gameFacade,
+            INavigationService navigationService)
+            : base(viewModelParameter)
+        {
+            this.currentUserProvider = currentUserProvider;
+            this.userFacade = userFacade;
+            this.gameFacade = gameFacade;
+            this.navigationService = navigationService;
+
+            StartGameCommand = commandFactory.CreateAsyncCommand(StartGameAsync);
+        }
 
         public GameDTO Game
         {
@@ -60,22 +82,6 @@ namespace TicTacToe.Core.ViewModels
             }
         }
 
-        public ICommand StartGameCommand { get; set; }
-
-        public GameParticipationSetupViewModel(
-            GameDTO viewModelParameter,
-            ICommandFactory commandFactory,
-            ICurrentUserProvider currentUserProvider,
-            IUserFacade userFacade, 
-            IGameFacade gameFacade)
-            : base(viewModelParameter)
-        {
-            this.currentUserProvider = currentUserProvider;
-            this.userFacade = userFacade;
-            this.gameFacade = gameFacade;
-
-            StartGameCommand = commandFactory.CreateAsyncCommand(StartGameAsync);
-        }
 
         public override async Task OnLoadedAsync()
         {
@@ -97,8 +103,8 @@ namespace TicTacToe.Core.ViewModels
             var gameParticipationList = PrepareGameParticipationList();
             await gameFacade.AddGameParticipationAsync(gameParticipationList);
 
-            var gameplay = gameFacade.StartGameAsync(Game.Id);
-            // navigate to gameplayVM
+            var gameplay = await gameFacade.StartGameAsync(Game.Id);
+            navigationService.NavigateTo<GameplayViewModel, GameplayDTO>(viewModelParameter: gameplay);
         }
 
         private List<GameParticipationSetupDTO> PrepareGameParticipationList()

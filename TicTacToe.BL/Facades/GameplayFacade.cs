@@ -18,7 +18,7 @@ namespace TicTacToe.BL.Facades
             throw new NotImplementedException();
         }
 
-        public void MakeMove(BoardPositionDTO position, Guid playerId)
+        public void MakeMove(BoardCellDTO cell, Guid playerId)
         {
             throw new NotImplementedException();
         }

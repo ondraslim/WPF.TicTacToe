@@ -1,6 +1,7 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using TicTacToe.BL.Builders.Interfaces;
 using TicTacToe.BL.Facades.Common;
 using TicTacToe.BL.Mappings;
 using TicTacToe.Common;
@@ -28,6 +29,9 @@ namespace TicTacToe.BL.Installers
                 .AsSelfWithInterfaces()
                 .WithTransientLifetime()
                 .AddClasses(classes => classes.AssignableTo(typeof(IRepository<,>)))
+                .AsSelfWithInterfaces()
+                .WithTransientLifetime()
+                .AddClasses(classes => classes.AssignableTo(typeof(IBuilder)))
                 .AsSelfWithInterfaces()
                 .WithTransientLifetime()
             );

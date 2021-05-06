@@ -2,7 +2,7 @@
 
 namespace TicTacToe.BL.DTOs.Gameplay
 {
-    public class BoardPositionDTO
+    public class BoardCellDTO
     {
         public int X { get; set; }
         public int Y { get; set; }

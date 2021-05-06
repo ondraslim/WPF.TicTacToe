@@ -7,7 +7,6 @@ using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
 using TicTacToe.Core.Services;
 using TicTacToe.Core.ViewModels.Common;
-using TicTacToe.Data.Models.Enums;
 
 namespace TicTacToe.Core.ViewModels
 {

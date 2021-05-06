@@ -23,6 +23,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <ListViewItem VerticalAlignment="Center" Grid.Column="1">
                     <Button Style="{StaticResource MaterialDesignFloatingActionButton}"

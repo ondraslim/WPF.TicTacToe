@@ -6,6 +6,6 @@ namespace TicTacToe.BL.Services
     public interface IAiGameplayService : ITransientService
     {
         // TODO: add argument BoardStateDTO?
-        BoardPositionDTO MakeMove();
+        BoardCellDTO MakeMove();
     }
 }
