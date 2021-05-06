@@ -13,10 +13,11 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -35,69 +36,41 @@
         <StackPanel Grid.Row="1" Grid.Column="0">
             <TextBlock HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                        Text="Most Games"/>
-            <ListView HorizontalAlignment="Stretch">
-                <ItemsControl x:Name="MostGamesListView">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="200" Text="{Binding UserName}" Margin="0 0 10 0"/>
-                                <TextBlock Width="50" Text="{Binding GameCount}" HorizontalAlignment="Right"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+            <ListView HorizontalAlignment="Center" IsEnabled="False" ItemsSource="{Binding MostGamesList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="150" Header="User" DisplayMemberBinding="{Binding UserName}" />
+                        <GridViewColumn Width="150" Header="Games Played" DisplayMemberBinding="{Binding GameCount}" />
+                    </GridView>
+                </ListView.View>
             </ListView>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                        Text="Best WinRate"/>
-            <ListView>
-                <ItemsControl x:Name="BestWinRateListView">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="200" Text="{Binding UserName}" Margin="0 0 10 0"/>
-                                <TextBlock Width="50" Text="{Binding GamesPlayedCount}" HorizontalAlignment="Right"/>
-                                <TextBlock Width="50" Text="{Binding WinRate}" HorizontalAlignment="Right"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+            <ListView HorizontalAlignment="Center" IsEnabled="False" ItemsSource="{Binding UserWinRateList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="150" Header="User" DisplayMemberBinding="{Binding UserName}" />
+                        <GridViewColumn Width="150" Header="Games Played" DisplayMemberBinding="{Binding GamesPlayedCount}" />
+                        <GridViewColumn Width="150" Header="Win Ratio" DisplayMemberBinding="{Binding WinRate}" />
+                    </GridView>
+                </ListView.View>
             </ListView>
         </StackPanel>
 
-
-        <StackPanel Grid.Row="1" Grid.Column="2">
+        <StackPanel Grid.Row="2" Grid.Column="0">
             <TextBlock HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                        Text="Longest Games"/>
-            <ListView>
-                <ItemsControl x:Name="LongestGamesListView">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="200" Text="{Binding Opponent}" Margin="0 0 10 0"/>
-                                <TextBlock Width="50" Text="{Binding TurnCount}" HorizontalAlignment="Right"/>
-                                <TextBlock Width="50" Text="{Binding Type}" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+            <ListView HorizontalAlignment="Center" IsEnabled="False" ItemsSource="{Binding LongGameList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="150" Header="Opponent" DisplayMemberBinding="{Binding Opponent}" />
+                        <GridViewColumn Width="150" Header="Turn Count" DisplayMemberBinding="{Binding TurnCount}" />
+                        <GridViewColumn Width="150" Header="Game Type" DisplayMemberBinding="{Binding Type}" />
+                    </GridView>
+                </ListView.View>
             </ListView>
         </StackPanel>
     </Grid>

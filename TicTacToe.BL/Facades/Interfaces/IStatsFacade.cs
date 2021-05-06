@@ -6,8 +6,8 @@ namespace TicTacToe.BL.Facades.Interfaces
 {
     public interface IStatsFacade : IFacade
     {
-        List<LongGameListDTO> GetLongestGamesList();
-        List<UserGameCountListDTO> GetMostGamesUserList();
-        List<UserWinRateListDTO> GetBestWinRateUserList();
+        List<LongGameListDTO> GetLongestGamesListAsync();
+        List<UserGameCountListDTO> GetMostGamesUserListAsync();
+        List<UserWinRateListDTO> GetBestWinRateUserListAsync();
     }
 }
