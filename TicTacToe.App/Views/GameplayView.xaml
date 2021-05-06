@@ -57,20 +57,22 @@
         </ListView>
         
         <Grid Grid.Row="1">
-            <Grid.DataContext>
+            <!--<Grid.DataContext>
                 <gameplay:Board Rows="30" Columns="30"/>
-            </Grid.DataContext>
+            </Grid.DataContext>-->
 
-            <ItemsControl x:Name="Board" ItemsSource="{Binding Path=Cells}">
+            <ItemsControl ItemsSource="{Binding Gameplay.Board.Cells}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate >
-                        <UniformGrid Rows="{Binding Path=Rows}" Columns="{Binding Path=Columns}"/>
+                        <UniformGrid Rows="{Binding Gameplay.Board.Size}" Columns="{Binding Gameplay.Board.Size}"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding Path=Sign}" IsEnabled="{Binding Path=CanSelect}" Click="CellClick" Style="{x:Null}"/>
+                        <Button Content="{Binding Sign}" IsEnabled="{Binding IsEmpty}" 
+                                Command="{Binding TakeCellCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=viewModels:GameplayViewModel}}" 
+                                CommandParameter="{Binding}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

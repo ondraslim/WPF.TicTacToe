@@ -21,14 +21,22 @@ namespace TicTacToe.BL.Builders
         public GamePlayBuilder AddPlayers(ICollection<GameParticipation> gameParticipation)
         {
             var firstPlayer = gameParticipation.FirstOrDefault(p => p.IsFirst);
-            gameplay.PlayerOneId = firstPlayer?.Id ?? Guid.NewGuid();
-            gameplay.PlayerOneName = firstPlayer?.User?.Name ?? "AI";
+            gameplay.PlayerOne = new PlayerDTO
+            {
+                Id = firstPlayer?.Id ?? Guid.NewGuid(),
+                Name = firstPlayer?.User?.Name ?? "AI",
+                Sign = "X",
+            };
 
             var secondPlayer = gameParticipation.FirstOrDefault(p => !p.IsFirst);
-            gameplay.PlayerTwoId = secondPlayer?.Id ?? Guid.NewGuid();
-            gameplay.PlayerTwoName = secondPlayer?.User?.Name ?? "AI";
+            gameplay.PlayerTwo = new PlayerDTO
+            {
+                Id = secondPlayer?.Id ?? Guid.NewGuid(),
+                Name = secondPlayer?.User?.Name ?? "AI",
+                Sign = "O"
+            };
 
-            gameplay.CurrentPlayerId = gameplay.PlayerOneId;
+            gameplay.CurrentPlayerId = gameplay.PlayerOne.Id;
 
             return this;
         }
@@ -46,10 +54,10 @@ namespace TicTacToe.BL.Builders
             var cells = new List<BoardCellDTO>(boardSize * boardSize);
 
             for (var row = 0; row < boardSize; row++)
-            for (var col = 0; col < boardSize; col++)
-            {
-                cells[row * boardSize + col] = new BoardCellDTO { X = row, Y = col };
-            }
+                for (var col = 0; col < boardSize; col++)
+                {
+                    cells.Add(new BoardCellDTO { X = row, Y = col });
+                }
 
             return cells;
         }

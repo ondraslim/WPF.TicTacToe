@@ -1,4 +1,5 @@
-﻿using TicTacToe.BL.DTOs.Gameplay;
+﻿using System.Windows.Input;
+using TicTacToe.BL.DTOs.Gameplay;
 using TicTacToe.BL.Facades.Interfaces;
 using TicTacToe.Core.Factories;
 using TicTacToe.Core.Services;
@@ -17,6 +18,8 @@ namespace TicTacToe.Core.ViewModels
             set => ViewModelParameter = value;
         }
 
+        public ICommand TakeCellCommand { get; set; }
+
         public GameplayViewModel(
             GameplayDTO viewModelParameter,
             ICommandFactory commandFactory,
@@ -26,6 +29,16 @@ namespace TicTacToe.Core.ViewModels
         {
             this.gameFacade = gameFacade;
             this.navigationService = navigationService;
+
+            TakeCellCommand = commandFactory.CreateCommand<BoardCellDTO>(TakeCell);
+        }
+
+        public void TakeCell(BoardCellDTO selectedCell)
+        {
+            var cell = Gameplay.Board.GetCell(selectedCell.X, selectedCell.Y);
+            cell.Sign = Gameplay.CurrentPlayer.Sign;
+
+            Gameplay.TurnFinished();
         }
     }
 }

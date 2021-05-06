@@ -8,17 +8,21 @@ namespace TicTacToe.BL.DTOs.Gameplay
         public Guid GameId { get; set; }
         public GameType GameType { get; set; }
 
+        public int TurnCount { get; set; } = 1;
+
         public BoardDTO Board { get; set; }
 
-        public Guid PlayerOneId { get; set; }
-        public Guid? PlayerTwoId { get; set; }
-
-        public string PlayerOneName { get; set; }
-        public string PlayerTwoName { get; set; }
+        public PlayerDTO PlayerOne { get; set; }
+        public PlayerDTO PlayerTwo { get; set; }
 
         public Guid CurrentPlayerId { get; set; }
 
-        public bool IsPlayersTurn(Guid playerId)
-            => CurrentPlayerId == playerId;
+        public PlayerDTO CurrentPlayer => PlayerOne.Id == CurrentPlayerId ? PlayerOne : PlayerTwo;
+
+        public void TurnFinished()
+        {
+            CurrentPlayerId = CurrentPlayerId == PlayerOne.Id ? PlayerTwo.Id : PlayerOne.Id;
+            TurnCount++;
+        }
     }
 }
