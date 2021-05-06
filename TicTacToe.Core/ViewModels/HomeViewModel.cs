@@ -2,30 +2,30 @@
 using System.Windows.Input;
 using TicTacToe.BL.DTOs.User;
 using TicTacToe.BL.Facades.Interfaces;
-using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
+using TicTacToe.Core.Services;
 using TicTacToe.Core.ViewModels.Common;
 
 namespace TicTacToe.Core.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
-        private readonly ICurrentUserProvider currentUserProvider;
         private readonly IUserFacade userFacade;
+        private readonly INavigationService navigationService;
 
-        public string Name { get; set; }
-        public string Password { get; set; }
+        public UserLoginDTO LoginModel { get; set; } = new();
+        public UserRegisterDTO RegisterModel { get; set; } = new();
 
         public ICommand SignInCommand { get; set; }
         public ICommand SignUpCommand { get; set; }
 
         public HomeViewModel(
             ICommandFactory commandFactory,
-            ICurrentUserProvider currentUserProvider,
-            IUserFacade userFacade)
+            IUserFacade userFacade,
+            INavigationService navigationService)
         {
-            this.currentUserProvider = currentUserProvider;
             this.userFacade = userFacade;
+            this.navigationService = navigationService;
 
             SignInCommand = commandFactory.CreateAsyncCommand(SignInAsync);
             SignUpCommand = commandFactory.CreateAsyncCommand(SignUpAsync);
@@ -33,14 +33,18 @@ namespace TicTacToe.Core.ViewModels
 
         private Task SignInAsync()
         {
-            var user = new UserCreateDTO { Name = Name, Password = Password };
-            return userFacade.LoginAsync(user);
+            // TODO: check input data, show validation
+            return userFacade.LoginAsync(LoginModel);
         }
 
         private Task SignUpAsync()
         {
-            var user = new UserCreateDTO { Name = Name, Password = Password };
-            return userFacade.RegisterAsync(user);
+            // TODO: check input data, show validation
+            var result = navigationService.DisplayModal<SignUpViewModel>();
+
+            if (result != true) return Task.CompletedTask;
+
+            return userFacade.RegisterAsync(RegisterModel);
         }
     }
 }

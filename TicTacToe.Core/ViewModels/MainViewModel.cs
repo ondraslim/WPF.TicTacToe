@@ -17,9 +17,9 @@ namespace TicTacToe.Core.ViewModels
 
         public NavigationViewModel NavigationViewModel { get; set; }
 
-        public override async Task OnInitialized()
+        public override async Task OnLoadedAsync()
         {
-            await base.OnInitialized();
+            await base.OnLoadedAsync();
             navigationService.NavigateTo<HomeViewModel>();
         }
     }

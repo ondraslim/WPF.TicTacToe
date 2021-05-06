@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using TicTacToe.App.Service.Interfaces;
 using TicTacToe.App.Views;
@@ -15,6 +16,12 @@ namespace TicTacToe.App.Service
         public MvvmLocatorService(IDependencyInjectionService dependencyInjectionService)
         {
             this.dependencyInjectionService = dependencyInjectionService;
+        }
+
+        public Window ResolveWindow<TViewModel>(TViewModel viewModel = default) where TViewModel : class, IViewModel
+        {
+            var windowType = GetWindowType(viewModel);
+            return GetWindow<TViewModel>(windowType);
         }
 
         public UserControl ResolveView<TViewModel>(TViewModel viewModel = default)
@@ -49,6 +56,23 @@ namespace TicTacToe.App.Service
             throw new Exception();
         }
 
+        private Type GetWindowType<TViewModel>(TViewModel viewModel)
+        {
+            var viewModelType = viewModel?.GetType() ?? typeof(TViewModel);
+            var windowTypeName = viewModelType
+                .AssemblyQualifiedName
+                .Replace(viewModelType.Assembly.GetName().Name, typeof(MainWindow).Assembly.GetName().Name)
+                .Replace("ViewModel", "Window");
+
+            var windowType = Type.GetType(windowTypeName);
+            if (windowType != null)
+            {
+                return windowType;
+            }
+
+            throw new Exception();
+        }
+
         private UserControl GetView<TViewModel>(Type viewType, TViewModel viewModel = null)
             where TViewModel : class, IViewModel
         {
@@ -58,6 +82,17 @@ namespace TicTacToe.App.Service
             }
 
             return dependencyInjectionService.Resolve(viewType, new TypedParameter(typeof(TViewModel), viewModel)) as UserControl;
+        }
+
+        private Window GetWindow<TViewModel>(Type viewType, TViewModel viewModel = null)
+            where TViewModel : class, IViewModel
+        {
+            if (viewModel == null)
+            {
+                return dependencyInjectionService.Resolve(viewType) as Window;
+            }
+
+            return dependencyInjectionService.Resolve(viewType, new TypedParameter(typeof(TViewModel), viewModel)) as Window;
         }
     }
 }

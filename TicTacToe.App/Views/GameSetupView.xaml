@@ -20,7 +20,7 @@
     <Grid>
         <Grid>
             <Grid.Resources>
-                <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+                <converters:GameTypeToVisibilityConverter x:Key="GameTypeToVisibilityConverter" />
                 <converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
             </Grid.Resources>
             <Grid.RowDefinitions>
@@ -70,7 +70,7 @@
                              IsChecked="{Binding Path=GameCreateModel.Type, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:GameType.Multiplayer}}" />
             </StackPanel>
             <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" 
-                  Visibility="{Binding IsSoloGameTypeSelected, Converter={StaticResource BoolToVisibilityConverter}}">
+                  Visibility="{Binding Path=GameCreateModel.Type, Converter={StaticResource GameTypeToVisibilityConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>

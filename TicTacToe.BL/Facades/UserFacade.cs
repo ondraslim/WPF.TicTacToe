@@ -35,7 +35,14 @@ namespace TicTacToe.BL.Facades
             this.passwordHasher = passwordHasher;
         }
 
-        public async Task<UserDTO> LoginAsync(UserCreateDTO user)
+        public async Task<List<UserDTO>> GetUserListAsync()
+        {
+            using var uow = UnitOfWorkProvider.Create();
+            var users = await userRepository.GetAllAsync();
+            return users.Select(u => mapper.Map<UserDTO>(u)).ToList();
+        }
+
+        public async Task<UserDTO> LoginAsync(UserLoginDTO user)
         {
             using var uow = UnitOfWorkProvider.Create();
 
@@ -54,8 +61,11 @@ namespace TicTacToe.BL.Facades
             return authorizedUser;
         }
 
-        public async Task<UserDTO> RegisterAsync(UserCreateDTO registration)
+        public async Task<UserDTO> RegisterAsync(UserRegisterDTO registration)
         {
+            if (registration.Password != registration.PasswordConfirmation)
+                throw new UserAuthException($"Passwords do no match!");
+
             var user = PrepareNewUser(registration);
 
             using var uow = UnitOfWorkProvider.Create();
@@ -68,7 +78,7 @@ namespace TicTacToe.BL.Facades
             return authorizedUser;
         }
 
-        private User PrepareNewUser(UserCreateDTO registration)
+        private User PrepareNewUser(UserRegisterDTO registration)
         {
             var user = mapper.Map<User>(registration);
 
@@ -79,14 +89,7 @@ namespace TicTacToe.BL.Facades
             return user;
         }
 
-        // TODO: move to query object
-        public async Task<List<UserDTO>> GetUserListAsync()
-        {
-            var users = await userRepository.GetAllAsync();
-            return users.Select(u => mapper.Map<UserDTO>(u)).ToList();
-        }
-
-        private async Task<UserDTO> AuthorizeUserAsync(UserCreateDTO user)
+        private async Task<UserDTO> AuthorizeUserAsync(UserLoginDTO user)
         {
             var storedUser = await userRepository.GetUserByNameAsync(user.Name);
             if (storedUser is null)
@@ -104,7 +107,7 @@ namespace TicTacToe.BL.Facades
             return mapper.Map<UserDTO>(userEntity);
         }
 
-        private bool IsLoginCredentialsValid(UserCreateDTO user, User userEntity)
+        private bool IsLoginCredentialsValid(UserLoginDTO user, User userEntity)
         {
             string hash;
             string salt;

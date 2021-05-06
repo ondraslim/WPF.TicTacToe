@@ -11,5 +11,6 @@ namespace TicTacToe.Core.Services
             where TViewModel : class, IViewModel<TViewModelParameter>;
 
         void ExitApplication();
+        bool? DisplayModal<TViewModel>(TViewModel viewModel = default) where TViewModel : class, IViewModel;
     }
 }

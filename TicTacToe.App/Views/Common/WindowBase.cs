@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using TicTacToe.Core.ViewModels.Common;
 
@@ -9,16 +9,14 @@ namespace TicTacToe.App.Views.Common
         protected WindowBase(IViewModel viewModel)
         {
             DataContext = viewModel;
+            Loaded += async (s, e) => await OnLoadedAsync();
         }
 
-        protected override void OnInitialized(EventArgs e)
+        protected async Task OnLoadedAsync()
         {
-            base.OnInitialized(e);
-
             if (DataContext is IViewModel viewModel)
             {
-                // TODO: async OnInitialized??
-                viewModel.OnInitialized().GetAwaiter().GetResult();
+                await viewModel.OnLoadedAsync();
             }
         }
     }

@@ -74,7 +74,7 @@ namespace TicTacToe.Core.ViewModels
             StartGameCommand = commandFactory.CreateAsyncCommand(StartGameAsync);
         }
 
-        public override async Task OnInitialized()
+        public override async Task OnLoadedAsync()
         {
             if (!CanSelectOpponent)
             {
@@ -83,6 +83,7 @@ namespace TicTacToe.Core.ViewModels
             }
 
             GameCreator = currentUserProvider.CurrentUser;
+
             var userList = await userFacade.GetUserListAsync();
             UserList = new ObservableCollection<UserDTO>(userList.Where(u => u.Id != GameCreator.Id));
         }

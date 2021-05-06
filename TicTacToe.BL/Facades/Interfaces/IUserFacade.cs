@@ -7,9 +7,9 @@ namespace TicTacToe.BL.Facades.Interfaces
 {
     public interface IUserFacade : IFacade
     {
-        Task<UserDTO> LoginAsync(UserCreateDTO user);
+        Task<UserDTO> LoginAsync(UserLoginDTO user);
 
-        Task<UserDTO> RegisterAsync(UserCreateDTO user);
+        Task<UserDTO> RegisterAsync(UserRegisterDTO user);
 
         Task<List<UserDTO>> GetUserListAsync();
     }

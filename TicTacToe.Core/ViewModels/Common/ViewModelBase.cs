@@ -13,7 +13,7 @@ namespace TicTacToe.Core.ViewModels.Common
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public virtual Task OnInitialized() => Task.CompletedTask;
+        public virtual Task OnLoadedAsync() => Task.CompletedTask;
     }
 
     public abstract class ViewModelBase<TViewModelParameter> : ViewModelBase, IViewModel<TViewModelParameter>

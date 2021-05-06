@@ -4,7 +4,7 @@ namespace TicTacToe.Core.ViewModels.Common
 {
     public interface IViewModel
     {
-        Task OnInitialized();
+        Task OnLoadedAsync();
     }
 
     public interface IViewModel<TViewModelParameter> : IViewModel

@@ -4,6 +4,7 @@ using TicTacToe.App.Controls.Interfaces;
 using TicTacToe.App.Service;
 using TicTacToe.App.Service.Interfaces;
 using TicTacToe.App.Views;
+using TicTacToe.App.Windows;
 using TicTacToe.Common;
 using TicTacToe.Common.IoC;
 
@@ -23,6 +24,8 @@ namespace TicTacToe.App.Installers
             serviceCollection.AddTransient<GameParticipationSetupView>();
             serviceCollection.AddTransient<GameplayView>();
             serviceCollection.AddTransient<StatisticsView>();
+
+            serviceCollection.AddTransient<SignUpWindow>();
 
             serviceCollection.Scan(scan => scan
                 .FromAssemblyOf<AppInstaller>()
