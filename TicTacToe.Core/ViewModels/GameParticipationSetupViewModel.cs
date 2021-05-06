@@ -1,10 +1,10 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TicTacToe.BL.DTOs.Game;
+using TicTacToe.BL.DTOs.GameParticipation;
 using TicTacToe.BL.DTOs.User;
 using TicTacToe.BL.Facades.Interfaces;
 using TicTacToe.BL.Services;
@@ -18,6 +18,7 @@ namespace TicTacToe.Core.ViewModels
     {
         private readonly ICurrentUserProvider currentUserProvider;
         private readonly IUserFacade userFacade;
+        private readonly IGameFacade gameFacade;
 
         private bool creatorStarts = true;
         private bool opponentStarts = false;
@@ -65,24 +66,26 @@ namespace TicTacToe.Core.ViewModels
             GameDTO viewModelParameter,
             ICommandFactory commandFactory,
             ICurrentUserProvider currentUserProvider,
-            IUserFacade userFacade)
+            IUserFacade userFacade, 
+            IGameFacade gameFacade)
             : base(viewModelParameter)
         {
             this.currentUserProvider = currentUserProvider;
             this.userFacade = userFacade;
+            this.gameFacade = gameFacade;
 
             StartGameCommand = commandFactory.CreateAsyncCommand(StartGameAsync);
         }
 
         public override async Task OnLoadedAsync()
         {
+            GameCreator = currentUserProvider.CurrentUser;
+
             if (!CanSelectOpponent)
             {
                 ExternalOpponentName = "AI";
                 return;
             }
-
-            GameCreator = currentUserProvider.CurrentUser;
 
             var userList = await userFacade.GetUserListAsync();
             UserList = new ObservableCollection<UserDTO>(userList.Where(u => u.Id != GameCreator.Id));
@@ -90,10 +93,34 @@ namespace TicTacToe.Core.ViewModels
 
         public async Task StartGameAsync()
         {
-            // check input
-            // add game participants
-            // prepare gameplayDTO
+            // TODO: check input
+            var gameParticipationList = PrepareGameParticipationList();
+            await gameFacade.AddGameParticipationAsync(gameParticipationList);
+
+            var gameplay = gameFacade.StartGameAsync(Game.Id);
             // navigate to gameplayVM
+        }
+
+        private List<GameParticipationSetupDTO> PrepareGameParticipationList()
+        {
+            var gameParticipation = new List<GameParticipationSetupDTO>
+            {
+                new()
+                {
+                    GameId = Game.Id,
+                    UserId = GameCreator.Id,
+                    IsFirst = CreatorStarts
+                },
+                new()
+                {
+                    GameId = Game.Id,
+                    UserId = SelectedOpponent?.Id,
+                    IsFirst = OpponentStarts,
+                    ExternalPlayerName = ExternalOpponentName,
+                }
+            };
+
+            return gameParticipation;
         }
     }
 }

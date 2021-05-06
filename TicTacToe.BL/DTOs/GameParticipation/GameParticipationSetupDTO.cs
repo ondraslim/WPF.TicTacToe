@@ -7,6 +7,6 @@ namespace TicTacToe.BL.DTOs.GameParticipation
         public Guid GameId { get; set; }
         public Guid? UserId { get; set; }
         public bool IsFirst { get; set; }
-        public string PlayerName { get; set; }
+        public string ExternalPlayerName { get; set; }
     }
 }

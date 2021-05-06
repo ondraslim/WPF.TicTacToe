@@ -21,9 +21,6 @@ namespace TicTacToe.Core.ViewModels
 
         public ICommand CreateGameCommand { get; set; }
 
-        // TODO: fix visibility converter
-        public bool IsSoloGameTypeSelected => GameCreateModel.Type == GameType.Solo;
-
         public GameSetupViewModel(
             ICommandFactory commandFactory,
             IGameFacade gameFacade,
@@ -33,6 +30,7 @@ namespace TicTacToe.Core.ViewModels
             this.gameFacade = gameFacade;
             this.currentUserProvider = currentUserProvider;
             this.navigationService = navigationService;
+
             CreateGameCommand = commandFactory.CreateAsyncCommand(CreateGameAsync);
         }
 

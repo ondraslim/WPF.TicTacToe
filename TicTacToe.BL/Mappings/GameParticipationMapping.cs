@@ -9,7 +9,13 @@ namespace TicTacToe.BL.Mappings
         public GameParticipationMapping()
         {
             CreateMap<GameParticipation, GameParticipationDTO>()
-                .ForMember(d => d.Player, o => o.MapFrom(e => e.User));
+                .ForMember(d => d.User, o => o.MapFrom(e => e.User));
+
+            CreateMap<GameParticipationSetupDTO, GameParticipation>()
+                .ForMember(e => e.Id, o => o.Ignore())
+                .ForMember(e => e.IsWinner, o => o.Ignore())
+                .ForMember(e => e.User, o => o.Ignore())
+                .ForMember(e => e.Game, o => o.Ignore());
         }
     }
 }

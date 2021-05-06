@@ -61,12 +61,13 @@
                    HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                    Style="{StaticResource MaterialDesignHeadline5TextBlock}" 
                    Text="Who is your Opponent?" />
-        <!--IsEnabled="{Binding CanSelectOpponent}"-->
+
         <ComboBox Grid.Row="2" Grid.Column="2" 
                   VerticalAlignment="Center" Margin="5"
                   MaxWidth="250"
                   ItemsSource="{Binding UserList}" 
                   SelectedItem="{Binding SelectedOpponent, Mode=TwoWay}"
+                  IsEnabled="{Binding CanSelectOpponent}"
                   DisplayMemberPath="Name" />
         <ToggleButton Grid.Row="2" Grid.Column="3"
                       Style="{StaticResource MaterialDesignActionToggleButton}"
