@@ -39,7 +39,25 @@
             <Image Width="200" Height="200" Source="{StaticResource TttBoard}" />
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="1" Margin="0 30 0 0">
+        <Grid Grid.Row="2" Grid.Column="1" Margin="30"
+              Visibility="{Binding IsUserAuthenticated, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="1" Style="{StaticResource MaterialDesignLabel}" FontSize="30" HorizontalAlignment="Center">
+                Hello!
+            </Label>
+            <TextBlock Grid.Row="2" md:HintAssist.Hint="Name" Width="250" TextAlignment="Center"
+                     Style="{StaticResource MaterialDesignHeadline3TextBlock}" 
+                     Text="{Binding CurrentUser.Name}" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="1" Margin="0 30 0 0"
+              Visibility="{Binding ShowLogin, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -51,7 +69,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-
             <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource MaterialDesignLabel}" FontSize="30" HorizontalAlignment="Center">
                 Who are you?
             </Label>

@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using TicTacToe.BL.DTOs.User;
 using TicTacToe.BL.Facades.Interfaces;
+using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
 using TicTacToe.Core.Services.Interfaces;
 using TicTacToe.Core.ViewModels.Common;
@@ -10,8 +11,8 @@ namespace TicTacToe.Core.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
+        private readonly ICurrentUserProvider currentUserProvider;
         private readonly IUserFacade userFacade;
-        private readonly INavigationService navigationService;
 
         public UserLoginDTO LoginModel { get; set; } = new();
         public UserRegisterDTO RegisterModel { get; set; } = new();
@@ -19,13 +20,18 @@ namespace TicTacToe.Core.ViewModels
         public ICommand SignInCommand { get; set; }
         public ICommand SignUpCommand { get; set; }
 
+        public UserDTO CurrentUser => currentUserProvider.CurrentUser;
+
+        public bool IsUserAuthenticated => CurrentUser is not null;
+        public bool ShowLogin => !IsUserAuthenticated;
+
         public HomeViewModel(
             ICommandFactory commandFactory,
             IUserFacade userFacade,
-            INavigationService navigationService)
+            ICurrentUserProvider currentUserProvider)
         {
             this.userFacade = userFacade;
-            this.navigationService = navigationService;
+            this.currentUserProvider = currentUserProvider;
 
             SignInCommand = commandFactory.CreateAsyncCommand(SignInAsync);
             SignUpCommand = commandFactory.CreateAsyncCommand(SignUpAsync);
@@ -36,6 +42,7 @@ namespace TicTacToe.Core.ViewModels
             if (LoginModel.IsValid())
             {
                 await userFacade.LoginAsync(LoginModel);
+                NotifyAuthChanged();
             }
         }
 
@@ -44,7 +51,16 @@ namespace TicTacToe.Core.ViewModels
             if (RegisterModel.IsValid())
             {
                 await userFacade.RegisterAsync(RegisterModel);
+                NotifyAuthChanged();
             }
         }
+
+        private void NotifyAuthChanged()
+        {
+            OnPropertyChanged(nameof(CurrentUser));
+            OnPropertyChanged(nameof(IsUserAuthenticated));
+            OnPropertyChanged(nameof(ShowLogin));
+        }
+
     }
 }

@@ -64,7 +64,7 @@ namespace TicTacToe.BL.Facades
         public async Task<UserDTO> RegisterAsync(UserRegisterDTO registration)
         {
             if (registration.Password != registration.PasswordConfirmation)
-                throw new UserAuthException($"Passwords do no match!");
+                throw new UserAuthException("Passwords do no match!");
 
             var user = PrepareNewUser(registration);
 
@@ -91,20 +91,18 @@ namespace TicTacToe.BL.Facades
 
         private async Task<UserDTO> AuthorizeUserAsync(UserLoginDTO user)
         {
-            var storedUser = await userRepository.GetUserByNameAsync(user.Name);
-            if (storedUser is null)
+            var entity = await userRepository.GetUserByNameAsync(user.Name);
+            if (entity is null)
             {
                 throw new EntityNotFoundException($"User with name '{user.Name}' was not found.");
             }
 
-            var userEntity = await userRepository.GetByIdAsync(storedUser.Id);
-
-            if (IsLoginCredentialsValid(user, userEntity))
+            if (!IsLoginCredentialsValid(user, entity))
             {
                 throw new UserAuthException($"Password verification for user '{user.Name}' failed.");
             }
 
-            return mapper.Map<UserDTO>(userEntity);
+            return mapper.Map<UserDTO>(entity);
         }
 
         private bool IsLoginCredentialsValid(UserLoginDTO user, User userEntity)
