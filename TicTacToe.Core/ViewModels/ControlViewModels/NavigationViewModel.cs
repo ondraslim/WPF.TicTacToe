@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.ComponentModel;
+using System.Windows.Input;
 using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
 using TicTacToe.Core.Services.Interfaces;
@@ -11,7 +12,6 @@ namespace TicTacToe.Core.ViewModels.ControlViewModels
         private readonly ICurrentUserProvider currentUserProvider;
         private readonly INavigationService navigationService;
 
-        // TODO: add this check somewhere
         public bool IsGameEnabled => currentUserProvider.CurrentUser is not null;
 
         public ICommand GoToHomeCommand { get; set; }
@@ -28,11 +28,18 @@ namespace TicTacToe.Core.ViewModels.ControlViewModels
             this.navigationService = navigationService;
             this.currentUserProvider = currentUserProvider;
 
+            currentUserProvider.PropertyChanged += UpdateGameEnabled;
+
             GoToHomeCommand = commandFactory.CreateCommand(NavigateToHome);
             GoToGameSetupCommand = commandFactory.CreateCommand(NavigateToGameSetup);
             GoToStatisticsCommand = commandFactory.CreateCommand(NavigateToStatistics);
 
             ExitApplicationCommand = commandFactory.CreateCommand(ExitApplication);
+        }
+
+        private void UpdateGameEnabled(object sender, PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(IsGameEnabled));
         }
 
         public void NavigateToHome()

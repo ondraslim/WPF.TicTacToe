@@ -16,7 +16,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid>
+        <Border BorderThickness="0 0 0 1" BorderBrush="Black">
+            <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -71,20 +72,34 @@
                 </StackPanel>
             </Border>
         </Grid>
-
-        <Grid Grid.Row="1">
+        </Border>
+        <Grid Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <ItemsControl ItemsSource="{Binding Gameplay.Board.Cells}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate >
-                        <UniformGrid Rows="{Binding Gameplay.Board.Size}" Columns="{Binding Gameplay.Board.Size}"/>
+                        <UniformGrid Rows="{Binding Gameplay.Board.Size}" Columns="{Binding Gameplay.Board.Size}" 
+                                     VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding Sign}" IsEnabled="{Binding IsEmpty}" 
+                        <Button Content="{Binding Sign}" IsEnabled="{Binding IsEmpty}" Background="{x:Null}" BorderThickness="1" Margin="0" Foreground="Black"
+                                VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                                 Command="{Binding DataContext.TakeCellCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:ViewBase}}" 
                                 CommandParameter="{Binding}"/>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding IsWinningCell}" Value="True">
+                                <Setter Property="Border.BorderThickness" Value="2" />
+                                <Setter Property="Border.BorderBrush" Value="Green" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Sign}" Value="X">
+                                <Setter Property="Control.Foreground" Value="LightSkyBlue"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Sign}" Value="O">
+                                <Setter Property="Control.Foreground" Value="Coral" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

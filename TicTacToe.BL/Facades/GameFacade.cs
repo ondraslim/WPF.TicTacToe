@@ -22,12 +22,6 @@ namespace TicTacToe.BL.Facades
         private readonly IMapper mapper;
         private readonly IGamePlayBuilder gamePlayBuilder;
 
-        private static Game _game = new()
-        {
-            Id = Guid.NewGuid(), 
-            GameParticipation = new List<GameParticipation>()
-        };
-
         public GameFacade(
             IUnitOfWorkProvider unitOfWorkProvider,
             IGameRepository gameRepository,
@@ -52,7 +46,7 @@ namespace TicTacToe.BL.Facades
             var createdGame = await gameRepository.GetByIdAsync(gameId);
             await uow.CommitAsync();
 
-            return mapper.Map<GameDTO>(_game);
+            return mapper.Map<GameDTO>(createdGame);
         }
 
         public async Task AddGameParticipationAsync(IList<GameParticipationSetupDTO> gameParticipationList)
@@ -73,12 +67,12 @@ namespace TicTacToe.BL.Facades
             Game game;
             using (UnitOfWorkProvider.Create())
             {
-                game = await gameRepository.GetByIdAsync(gameId, nameof(Game.GameParticipation));
+                game = await gameRepository.GetByIdAsync(gameId);
+                game.GameParticipation = await gameParticipationRepository.GetGameParticipationAsync(gameId);
             }
 
-
             var gameplayDto = gamePlayBuilder
-                .CreateGameplay(game.Id, _game.Type)
+                .CreateGameplay(game.Id, game.Type)
                 .PrepareBoard(game.BoardSize)
                 .AddPlayers(game.GameParticipation)
                 .Build();

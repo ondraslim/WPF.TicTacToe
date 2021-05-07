@@ -24,7 +24,7 @@ namespace TicTacToe.BL.Builders
             gameplay.PlayerOne = new PlayerDTO
             {
                 Id = firstPlayer?.Id ?? Guid.NewGuid(),
-                Name = firstPlayer?.User?.Name ?? "AI",
+                Name = firstPlayer?.User?.Name ?? firstPlayer?.ExternalPlayerName,
                 Sign = 'X',
             };
 
@@ -32,7 +32,7 @@ namespace TicTacToe.BL.Builders
             gameplay.PlayerTwo = new PlayerDTO
             {
                 Id = secondPlayer?.Id ?? Guid.NewGuid(),
-                Name = secondPlayer?.User?.Name ?? "AI",
+                Name = secondPlayer?.User?.Name ?? secondPlayer?.ExternalPlayerName,
                 Sign = 'O'
             };
 

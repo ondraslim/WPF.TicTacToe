@@ -99,7 +99,6 @@ namespace TicTacToe.Core.ViewModels
 
         public async Task StartGameAsync()
         {
-            // TODO: check input
             var gameParticipationList = PrepareGameParticipationList();
             await gameFacade.AddGameParticipationAsync(gameParticipationList);
 

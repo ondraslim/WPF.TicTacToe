@@ -21,11 +21,12 @@
                     </StackPanel>
                 </Button>
             </ListViewItem>
-            <ListViewItem HorizontalAlignment="Center">
+            <ListViewItem HorizontalAlignment="Center" ToolTip="Game">
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                         HorizontalAlignment="Left"
                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                        ToolTip="Game" Command="{Binding GoToGameSetupCommand}">
+                        IsEnabled="{Binding IsGameEnabled}"
+                        Command="{Binding GoToGameSetupCommand}">
                     <StackPanel Margin="-5">
                         <materialDesign:PackIcon Kind="ControllerClassicOutline" />
                     </StackPanel>

@@ -35,8 +35,7 @@ namespace TicTacToe.Core.ViewModels
 
         private async Task CreateGameAsync()
         {
-            // TODO: temporary, add check user is authenticated
-            GameCreateModel.GameCreatorId = currentUserProvider.CurrentUser?.Id ?? Guid.Empty;
+            GameCreateModel.GameCreatorId = currentUserProvider.CurrentUser.Id;
             var createdGame = await gameFacade.CreateGameAsync(GameCreateModel);
 
             navigationService.NavigateTo<GameParticipationSetupViewModel, GameDTO>(viewModelParameter: createdGame);

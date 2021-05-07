@@ -13,7 +13,6 @@ namespace TicTacToe.Core.ViewModels
     {
         private readonly IGameplayService gameplayService;
         private readonly IGameFacade gameFacade;
-        private readonly INavigationService navigationService;
 
         public GameplayDTO Gameplay
         {
@@ -30,12 +29,10 @@ namespace TicTacToe.Core.ViewModels
             GameplayDTO viewModelParameter,
             ICommandFactory commandFactory,
             IGameFacade gameFacade,
-            INavigationService navigationService,
             IGameplayService gameplayService)
             : base(viewModelParameter)
         {
             this.gameFacade = gameFacade;
-            this.navigationService = navigationService;
             this.gameplayService = gameplayService;
 
             RestartCommand = commandFactory.CreateCommand(Restart);

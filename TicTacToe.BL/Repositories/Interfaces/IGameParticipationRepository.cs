@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TicTacToe.Data.Models;
 
@@ -11,5 +12,6 @@ namespace TicTacToe.BL.Repositories.Interfaces
         Task<GameParticipation> GetByIdAsync(Guid id);
         Task<GameParticipation> GetByIdAsync(Guid id, params string[] includes);
         Task UpdateAsync(GameParticipation entity);
+        Task<List<GameParticipation>> GetGameParticipationAsync(Guid gameId);
     }
 }

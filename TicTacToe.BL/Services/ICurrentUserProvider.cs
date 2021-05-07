@@ -1,8 +1,9 @@
-﻿using TicTacToe.BL.DTOs.User;
+﻿using System.ComponentModel;
+using TicTacToe.BL.DTOs.User;
 
 namespace TicTacToe.BL.Services
 {
-    public interface ICurrentUserProvider
+    public interface ICurrentUserProvider : INotifyPropertyChanged
     {
         UserDTO CurrentUser { get; }
 
