@@ -1,8 +1,6 @@
-﻿using System;
-using System.Windows;
-using MaterialDesignThemes.Wpf;
+﻿using System.Windows;
 using TicTacToe.App.Service.Interfaces;
-using TicTacToe.Core.Services;
+using TicTacToe.Core.Services.Interfaces;
 using TicTacToe.Core.ViewModels.Common;
 using TicTacToe.Infrastructure.Services.Interfaces;
 

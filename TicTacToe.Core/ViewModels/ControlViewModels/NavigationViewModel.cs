@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
-using TicTacToe.Core.Services;
+using TicTacToe.Core.Services.Interfaces;
 using TicTacToe.Core.ViewModels.Common;
 
 namespace TicTacToe.Core.ViewModels.ControlViewModels

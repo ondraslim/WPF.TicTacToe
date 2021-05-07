@@ -25,7 +25,7 @@ namespace TicTacToe.BL.Builders
             {
                 Id = firstPlayer?.Id ?? Guid.NewGuid(),
                 Name = firstPlayer?.User?.Name ?? "AI",
-                Sign = "X",
+                Sign = 'X',
             };
 
             var secondPlayer = gameParticipation.FirstOrDefault(p => !p.IsFirst);
@@ -33,7 +33,7 @@ namespace TicTacToe.BL.Builders
             {
                 Id = secondPlayer?.Id ?? Guid.NewGuid(),
                 Name = secondPlayer?.User?.Name ?? "AI",
-                Sign = "O"
+                Sign = 'O'
             };
 
             gameplay.CurrentPlayerId = gameplay.PlayerOne.Id;
@@ -56,7 +56,7 @@ namespace TicTacToe.BL.Builders
             for (var row = 0; row < boardSize; row++)
                 for (var col = 0; col < boardSize; col++)
                 {
-                    cells.Add(new BoardCellDTO { X = row, Y = col });
+                    cells.Add(new BoardCellDTO { Row = row, Col = col });
                 }
 
             return cells;

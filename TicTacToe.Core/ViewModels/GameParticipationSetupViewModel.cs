@@ -10,7 +10,7 @@ using TicTacToe.BL.DTOs.User;
 using TicTacToe.BL.Facades.Interfaces;
 using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
-using TicTacToe.Core.Services;
+using TicTacToe.Core.Services.Interfaces;
 using TicTacToe.Core.ViewModels.Common;
 using TicTacToe.Data.Models.Enums;
 

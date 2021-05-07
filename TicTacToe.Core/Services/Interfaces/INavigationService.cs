@@ -1,7 +1,7 @@
 ﻿using TicTacToe.Common.IoC;
 using TicTacToe.Core.ViewModels.Common;
 
-namespace TicTacToe.Core.Services
+namespace TicTacToe.Core.Services.Interfaces
 {
     public interface INavigationService : ISingletonService
     {

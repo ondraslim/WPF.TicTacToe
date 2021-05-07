@@ -20,6 +20,8 @@ namespace TicTacToe.BL.DTOs.Gameplay
 
         public PlayerDTO CurrentPlayer => PlayerOne.Id == CurrentPlayerId ? PlayerOne : PlayerTwo;
 
+        public bool IsGameOver { get; set; }
+
         public void TurnFinished()
         {
             CurrentPlayerId = CurrentPlayerId == PlayerOne.Id ? PlayerTwo.Id : PlayerOne.Id;

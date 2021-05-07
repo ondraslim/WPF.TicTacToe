@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using TicTacToe.Core.Services;
+using TicTacToe.Core.Services.Interfaces;
 using TicTacToe.Core.ViewModels.Common;
 using TicTacToe.Core.ViewModels.ControlViewModels;
 
