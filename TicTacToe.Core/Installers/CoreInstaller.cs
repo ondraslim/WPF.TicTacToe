@@ -27,8 +27,8 @@ namespace TicTacToe.Core.Installers
                 .AsSelfWithInterfaces()
                 .WithTransientLifetime());
 
-            //serviceCollection.AddSingleton<ICurrentUserProvider, CurrentUserProvider>();
-            serviceCollection.AddSingleton<ICurrentUserProvider, HardcodedUserProvider>();
+            serviceCollection.AddSingleton<ICurrentUserProvider, CurrentUserProvider>();
+            //serviceCollection.AddSingleton<ICurrentUserProvider, HardcodedUserProvider>();
         }
 
     }

@@ -13,7 +13,6 @@ namespace TicTacToe.BL.Facades.Interfaces
         Task<GameDTO> CreateGameAsync(GameCreateDTO game);
         Task AddGameParticipationAsync(IList<GameParticipationSetupDTO> gameParticipationList);
         Task<GameplayDTO> StartGameAsync(Guid gameId);
-        void SaveGameResult(GameDTO game);
-        List<UserGameListDTO> GetLastGamesOfUser(int gameCountRequested);
+        Task SaveGameResultAsync(GameResultDTO result);
     }
 }

@@ -16,50 +16,63 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="0">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <ListViewItem VerticalAlignment="Center" Grid.Column="1">
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                    VerticalAlignment="Center"
-                                    BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                    ToolTip="Restart Game" IsEnabled="False">
-                        <StackPanel>
-                            <materialDesign:PackIcon Kind="Restart" />
-                        </StackPanel>
-                    </Button>
-                </ListViewItem>
-                <ListViewItem VerticalAlignment="Center" Grid.Column="2">
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                    VerticalAlignment="Center"
-                                    BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                    ToolTip="Restart Game" IsEnabled="False">
-                        <StackPanel>
-                            <materialDesign:PackIcon Kind="FlagVariantOutline" />
-                        </StackPanel>
-                    </Button>
-                </ListViewItem>
-                <ListViewItem Grid.Column="3" >
-                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Text="Player: ABCD" />
-                </ListViewItem>
-                <ListViewItem VerticalAlignment="Center" Grid.Column="4">
-                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Text="Turn 42">
-                    </TextBlock>
-                </ListViewItem>
-            </Grid>
-        </ListView>
-        
-        <Grid Grid.Row="1">
-            <!--<Grid.DataContext>
-                <gameplay:Board Rows="30" Columns="30"/>
-            </Grid.DataContext>-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderThickness="0 0 1 0" BorderBrush="Black">
+                <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                        BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
+                        ToolTip="Restart Game"
+                        Command="{Binding RestartCommand}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="Restart" />
+                    </StackPanel>
+                </Button>
+            </Border>
 
+            <Border Grid.Column="1" BorderThickness="0 0 1 0" BorderBrush="Black">
+                <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        VerticalAlignment="Center"
+                        BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
+                        ToolTip="Surrender" IsEnabled="{Binding Gameplay.IsGameOver}"
+                        Command="{Binding SurrenderCommand}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="FlagVariantOutline" />
+                    </StackPanel>
+                </Button>
+            </Border>
+
+            <Border Grid.Column="3" BorderThickness="0 0 1 0" BorderBrush="Black">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
+                               VerticalAlignment="Center" TextAlignment="Center" FontSize="16"
+                               Text="Current Player: "/>
+                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Margin="5"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20"
+                               Text="{Binding Gameplay.CurrentPlayer.Name}" />
+                </StackPanel>
+
+            </Border>
+            <Border Grid.Column="4" BorderThickness="0 0 1 0" BorderBrush="Black">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="16"
+                               Text="Turn: "/>
+                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}"  Margin="5"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20"
+                               Text="{Binding Gameplay.TurnCount}" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1">
             <ItemsControl ItemsSource="{Binding Gameplay.Board.Cells}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate >

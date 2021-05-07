@@ -8,5 +8,6 @@ namespace TicTacToe.BL.DTOs.Gameplay
         public Guid Id { get; init; }
         public string Name { get; init; }
         public char Sign { get; init; }
+        public bool IsWinner { get; set; }
     }
 }

@@ -31,20 +31,20 @@ namespace TicTacToe.Core.ViewModels
             SignUpCommand = commandFactory.CreateAsyncCommand(SignUpAsync);
         }
 
-        private Task SignInAsync()
+        private async Task SignInAsync()
         {
-            // TODO: check input data, show validation
-            return userFacade.LoginAsync(LoginModel);
+            if (LoginModel.IsValid())
+            {
+                await userFacade.LoginAsync(LoginModel);
+            }
         }
 
-        private Task SignUpAsync()
+        private async Task SignUpAsync()
         {
-            // TODO: check input data, show validation
-            var result = navigationService.DisplayModal<SignUpViewModel>();
-
-            if (result != true) return Task.CompletedTask;
-
-            return userFacade.RegisterAsync(RegisterModel);
+            if (RegisterModel.IsValid())
+            {
+                await userFacade.RegisterAsync(RegisterModel);
+            }
         }
     }
 }
