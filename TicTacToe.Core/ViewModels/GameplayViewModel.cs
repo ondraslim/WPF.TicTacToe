@@ -37,8 +37,9 @@ namespace TicTacToe.Core.ViewModels
         {
             var cell = Gameplay.Board.GetCell(selectedCell.X, selectedCell.Y);
             cell.Sign = Gameplay.CurrentPlayer.Sign;
-
             Gameplay.TurnFinished();
+
+            OnPropertyChanged(nameof(Gameplay));
         }
     }
 }

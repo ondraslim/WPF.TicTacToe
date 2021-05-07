@@ -5,7 +5,7 @@ namespace TicTacToe.Data.EntityFramework
 {
     public class TicTacToeDbContext : DbContext
     {
-        public TicTacToeDbContext(DbContextOptions<TicTacToeDbContext> options) 
+        public TicTacToeDbContext(DbContextOptions options) 
             : base(options)
         {
         }

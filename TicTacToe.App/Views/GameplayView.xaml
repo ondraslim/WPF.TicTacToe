@@ -4,7 +4,6 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                 xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
-                xmlns:gameplay="clr-namespace:TicTacToe.App.Views.Gameplay"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                 xmlns:views="clr-namespace:TicTacToe.App.Views.Common"
                 mc:Ignorable="d"
@@ -71,7 +70,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Content="{Binding Sign}" IsEnabled="{Binding IsEmpty}" 
-                                Command="{Binding TakeCellCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=viewModels:GameplayViewModel}}" 
+                                Command="{Binding DataContext.TakeCellCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:ViewBase}}" 
                                 CommandParameter="{Binding}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

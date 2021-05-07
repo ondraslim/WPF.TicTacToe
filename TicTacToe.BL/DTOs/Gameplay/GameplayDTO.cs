@@ -1,9 +1,10 @@
 ﻿using System;
+using TicTacToe.BL.DTOs.Gameplay.Common;
 using TicTacToe.Data.Models.Enums;
 
 namespace TicTacToe.BL.DTOs.Gameplay
 {
-    public class GameplayDTO
+    public class GameplayDTO : GameplayBaseDTO
     {
         public Guid GameId { get; set; }
         public GameType GameType { get; set; }
