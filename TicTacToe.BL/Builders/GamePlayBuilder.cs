@@ -70,7 +70,10 @@ namespace TicTacToe.BL.Builders
         public GameplayDTO Build()
         {
             var gameplay = this.gameplay;
+            gameplay.IsActive = true;
+
             Reset();
+            
             return gameplay;
         }
     }

@@ -50,7 +50,7 @@ namespace TicTacToe.Core.ViewModels
         public async Task SurrenderAsync()
         {
             Gameplay.TurnFinished();
-            Gameplay.IsGameOver = true;
+            Gameplay.IsActive = false;
             Gameplay.CurrentPlayer.IsWinner = true;
 
             await SaveResultAsync();
@@ -65,7 +65,7 @@ namespace TicTacToe.Core.ViewModels
             var isWin = gameplayService.CheckIsWin(Gameplay.Board, cell);
             if (isWin)
             {
-                Gameplay.IsGameOver = true;
+                Gameplay.IsActive = false;
                 Gameplay.CurrentPlayer.IsWinner = true;
             }
 

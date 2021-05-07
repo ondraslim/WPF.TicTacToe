@@ -42,7 +42,7 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                         VerticalAlignment="Center"
                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                        ToolTip="Surrender" IsEnabled="{Binding Gameplay.IsGameOver}"
+                        ToolTip="Surrender" IsEnabled="{Binding Gameplay.IsActive}"
                         Command="{Binding SurrenderCommand}">
                     <StackPanel>
                         <materialDesign:PackIcon Kind="FlagVariantOutline" />
@@ -73,19 +73,18 @@
             </Border>
         </Grid>
         </Border>
-        <Grid Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid Grid.Row="1" IsEnabled="{Binding Gameplay.IsActive}">
             <ItemsControl ItemsSource="{Binding Gameplay.Board.Cells}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate >
-                        <UniformGrid Rows="{Binding Gameplay.Board.Size}" Columns="{Binding Gameplay.Board.Size}" 
-                                     VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0" />
+                        <UniformGrid Rows="{Binding Gameplay.Board.Size}" Columns="{Binding Gameplay.Board.Size}"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding Sign}" IsEnabled="{Binding IsEmpty}" Background="{x:Null}" BorderThickness="1" Margin="0" Foreground="Black"
-                                VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                        <Button Content="{Binding Sign}" IsEnabled="{Binding IsEmpty}" Background="{x:Null}" BorderThickness="1" Foreground="Black"
+                                Style="{x:Null}"
                                 Command="{Binding DataContext.TakeCellCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:ViewBase}}" 
                                 CommandParameter="{Binding}"/>
                         <DataTemplate.Triggers>
