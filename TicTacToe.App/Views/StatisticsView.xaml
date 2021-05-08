@@ -5,6 +5,7 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
                 xmlns:views="clr-namespace:TicTacToe.App.Views.Common"
+                xmlns:l="clr-namespace:TicTacToe.App.Localization"
                 d:DataContext="{d:DesignInstance viewModels:StatisticsViewModel}"
                 mc:Ignorable="d"
                 d:DesignHeight="450" d:DesignWidth="800">
@@ -29,18 +30,18 @@
             </Grid.ColumnDefinitions>
             <Border Grid.Column="1" BorderThickness="0 0 0 1" BorderBrush="Black"  HorizontalAlignment="Center">
                 <TextBlock HorizontalAlignment="Center" Margin="5" 
-                           Style="{StaticResource MaterialDesignHeadline2TextBlock}" Text="Statistics" />
+                           Style="{StaticResource MaterialDesignHeadline2TextBlock}" Text="{x:Static l:Texts.Stats_Title}" />
             </Border>
         </Grid>
 
         <StackPanel Grid.Row="1" Grid.Column="0">
             <TextBlock HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-                       Text="Most Games"/>
+                       Text="{x:Static l:Texts.Stats_Header_MostGames}"/>
             <ListView HorizontalAlignment="Center" IsEnabled="False" ItemsSource="{Binding MostGamesList}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="150" Header="User" DisplayMemberBinding="{Binding UserName}" />
-                        <GridViewColumn Width="150" Header="Games Played" DisplayMemberBinding="{Binding GameCount}" />
+                        <GridViewColumn Width="150" Header="{x:Static l:Texts.Stats_User}" DisplayMemberBinding="{Binding UserName}" />
+                        <GridViewColumn Width="150" Header="{x:Static l:Texts.Stats_GamesPlayed}" DisplayMemberBinding="{Binding GameCount}" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -48,13 +49,13 @@
 
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-                       Text="Best WinRate"/>
+                       Text="{x:Static l:Texts.Stats_Header_WinRate}"/>
             <ListView HorizontalAlignment="Center" IsEnabled="False" ItemsSource="{Binding UserWinRateList}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="150" Header="User" DisplayMemberBinding="{Binding UserName}" />
-                        <GridViewColumn Width="150" Header="Games Played" DisplayMemberBinding="{Binding GamesPlayedCount}" />
-                        <GridViewColumn Width="150" Header="Win Ratio" DisplayMemberBinding="{Binding WinRate}" />
+                        <GridViewColumn Width="150" Header="{x:Static l:Texts.Stats_User}" DisplayMemberBinding="{Binding UserName}" />
+                        <GridViewColumn Width="150" Header="{x:Static l:Texts.Stats_GamesPlayed}" DisplayMemberBinding="{Binding GamesPlayedCount}" />
+                        <GridViewColumn Width="150" Header="{x:Static l:Texts.Stats_WinRatio}" DisplayMemberBinding="{Binding WinRate}" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -62,13 +63,13 @@
 
         <StackPanel Grid.Row="2" Grid.Column="0">
             <TextBlock HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-                       Text="Longest Games"/>
+                       Text="{x:Static l:Texts.Stats_Header_LongGames}"/>
             <ListView HorizontalAlignment="Center" IsEnabled="False" ItemsSource="{Binding LongGameList}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="150" Header="Opponent" DisplayMemberBinding="{Binding Opponent}" />
-                        <GridViewColumn Width="150" Header="Turn Count" DisplayMemberBinding="{Binding TurnCount}" />
-                        <GridViewColumn Width="150" Header="Game Type" DisplayMemberBinding="{Binding Type}" />
+                        <GridViewColumn Width="150" Header="{x:Static l:Texts.Stats_Opponent}" DisplayMemberBinding="{Binding Opponent}" />
+                        <GridViewColumn Width="150" Header="{x:Static l:Texts.Stats_Turns}" DisplayMemberBinding="{Binding TurnCount}" />
+                        <GridViewColumn Width="150" Header="{x:Static l:Texts.Stats_GameType}" DisplayMemberBinding="{Binding Type}" />
                     </GridView>
                 </ListView.View>
             </ListView>

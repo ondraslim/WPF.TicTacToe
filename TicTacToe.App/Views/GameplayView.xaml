@@ -6,6 +6,7 @@
                 xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                 xmlns:views="clr-namespace:TicTacToe.App.Views.Common"
+                xmlns:l="clr-namespace:TicTacToe.App.Localization"
                 mc:Ignorable="d"
                 d:DataContext="{d:DesignInstance viewModels:GameplayViewModel}"
                 d:DesignHeight="800" d:DesignWidth="1200">
@@ -30,7 +31,7 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                         VerticalAlignment="Center" HorizontalAlignment="Center"
                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                        ToolTip="Restart Game"
+                        ToolTip="{x:Static l:Texts.Gameplay_Restart}"
                         Command="{Binding RestartCommand}">
                     <StackPanel>
                         <materialDesign:PackIcon Kind="Restart" />
@@ -42,7 +43,7 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                         VerticalAlignment="Center"
                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                        ToolTip="Surrender" IsEnabled="{Binding Gameplay.IsActive}"
+                        ToolTip="{x:Static l:Texts.Gameplay_Surr}" IsEnabled="{Binding Gameplay.IsActive}"
                         Command="{Binding SurrenderCommand}">
                     <StackPanel>
                         <materialDesign:PackIcon Kind="FlagVariantOutline" />
@@ -54,7 +55,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                     <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
                                VerticalAlignment="Center" TextAlignment="Center" FontSize="16"
-                               Text="Current Player: "/>
+                               Text="{x:Static l:Texts.Gameplay_Player}"/>
                     <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Margin="5"
                                HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20"
                                Text="{Binding Gameplay.CurrentPlayer.Name}" />
@@ -65,7 +66,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
                                HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="16"
-                               Text="Turn: "/>
+                               Text="{x:Static l:Texts.Gameplay_Turn}"/>
                     <TextBlock Style="{StaticResource MaterialDesignTextBlock}"  Margin="5"
                                HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20"
                                Text="{Binding Gameplay.TurnCount}" />

@@ -7,6 +7,7 @@
              xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
              xmlns:views="clr-namespace:TicTacToe.App.Views.Common"
              xmlns:enums="clr-namespace:TicTacToe.Data.Models.Enums;assembly=TicTacToe.Data"
+             xmlns:l="clr-namespace:TicTacToe.App.Localization"
              d:DataContext="{d:DesignInstance viewModels:GameSetupViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1200">
@@ -44,15 +45,15 @@
             <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" 
                        HorizontalAlignment="Center" VerticalAlignment="Center"
                        Margin="0 50 0 0" Style="{StaticResource MaterialDesignHeadline2TextBlock}"
-                       Text="Game Setup" />
+                       Text="{x:Static l:Texts.GameSetup_Title}" />
 
             <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                    Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="Board size:" />
+                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GameSetup_BoardSize}" />
             </Label>
             <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
                 <TextBlock FontSize="16">
-                    <Run Text="Size: " />
+                    <Run Text="{x:Static l:Texts.GameSetup_BoardSizeValue}" />
                     <Run Text="{Binding Value, ElementName=BoardSizeSlider, Mode=OneWay}" FontStyle="Italic" />
                 </TextBlock>
                 <Slider x:Name="BoardSizeSlider" HorizontalAlignment="Left" Width="300"
@@ -61,12 +62,12 @@
 
             <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                    Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="Game mode:" />
+                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GameSetup_Mode}" />
             </Label>
             <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
-                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="SOLO" 
+                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="{x:Static l:Texts.GameSetup_Mode_Solo}" 
                              IsChecked="{Binding Path=GameCreateModel.Type, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:GameType.Solo}}" />
-                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Multiplayer" 
+                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="{x:Static l:Texts.GameSetup_Mode_Multi}" 
                              IsChecked="{Binding Path=GameCreateModel.Type, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:GameType.Multiplayer}}" />
             </StackPanel>
             <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" 
@@ -77,14 +78,14 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                        Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="AI Difficulty:" />
+                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GameSetup_AI}" />
                 </Label>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
-                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="EASY"
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="{x:Static l:Texts.GameSetup_AI_Easy}"
                                  IsChecked="{Binding Path=GameCreateModel.Difficulty, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:AiDifficulty.Easy}}" />
-                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="MEDIUM"
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="{x:Static l:Texts.GameSetup_AI_Med}"
                                  IsChecked="{Binding Path=GameCreateModel.Difficulty, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:AiDifficulty.Normal}}" />
-                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="HARD"
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="{x:Static l:Texts.GameSetup_AI_Hard}"
                                  IsChecked="{Binding Path=GameCreateModel.Difficulty, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:AiDifficulty.Hard}}" />
                 </StackPanel>
             </Grid>
@@ -92,8 +93,8 @@
             <Button HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Width="400" Height="50" Margin="40"
                     Style="{StaticResource MaterialDesignFlatAccentButton}"
                     BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
-                    ToolTip="Create a new game" Command="{Binding CreateGameCommand}">
-                <TextBlock Text="Create Game" Style="{StaticResource MaterialDesignBody1TextBlock}" />
+                    ToolTip="{x:Static l:Texts.GameSetup_CreateGame_ToolTip}" Command="{Binding CreateGameCommand}">
+                <TextBlock Text="{x:Static l:Texts.GameSetup_CreateGame}" Style="{StaticResource MaterialDesignBody1TextBlock}" />
             </Button>
         </Grid>
     </Grid>

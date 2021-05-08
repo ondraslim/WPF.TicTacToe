@@ -6,6 +6,7 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:views="clr-namespace:TicTacToe.App.Views.Common"
                 xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
+                xmlns:l="clr-namespace:TicTacToe.App.Localization"
                 mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewModels:HomeViewModel}"
              d:DesignHeight="800" d:DesignWidth="1200">
@@ -33,7 +34,7 @@
         <TextBlock Grid.ColumnSpan="3" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"
                    Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontFamily="#Bradley Hand ITC"
                    FontWeight="Black" FontSize="150"
-                   Text="Tic Tac Toe" />
+                   Text="{x:Static l:Texts.Home_Title}" />
 
         <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="TOP">
             <Image Width="200" Height="200" Source="{StaticResource TttBoard}" />
@@ -48,10 +49,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="1" Style="{StaticResource MaterialDesignLabel}" FontSize="30" HorizontalAlignment="Center">
-                Hello!
-            </Label>
-            <TextBlock Grid.Row="2" md:HintAssist.Hint="Name" Width="250" TextAlignment="Center"
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" FontSize="30" Text="{x:Static l:Texts.Home_Hello}" />
+            <TextBlock Grid.Row="2" Width="250" TextAlignment="Center"
                      Style="{StaticResource MaterialDesignHeadline3TextBlock}" 
                      Text="{Binding CurrentUser.Name}" />
         </Grid>
@@ -69,16 +68,16 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource MaterialDesignLabel}" FontSize="30" HorizontalAlignment="Center">
-                Who are you?
+            <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource MaterialDesignLabel}" HorizontalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center" FontSize="30" Text="{x:Static l:Texts.Home_Name}" />
             </Label>
-            <TextBox Grid.Row="1" Grid.Column="0" md:HintAssist.Hint="Name" Width="250"
+            <TextBox Grid.Row="1" Grid.Column="0" md:HintAssist.Hint="{x:Static l:Texts.Home_Name}" Width="250"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                      Text="{Binding LoginModel.Name}" />
 
             <!-- Should be PasswordBox, omitted on school project  for MVVM binding complications -->
             <TextBox Grid.Row="2" Grid.Column="0" Width="250"
-                     md:HintAssist.Hint="Password"
+                     md:HintAssist.Hint="{x:Static l:Texts.Home_Pwd}"
                      md:HintAssist.Foreground="Black"
                      md:TextFieldAssist.UnderlineBrush="Black"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -87,25 +86,25 @@
                     HorizontalAlignment="Center" Width="250" Height="50" Margin="0 30 0 0"
                     Style="{StaticResource MaterialDesignFlatAccentButton}"
                     BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
-                    ToolTip="Sign In" Command="{Binding SignInCommand}">
-                <TextBlock Text="Sign In" Style="{StaticResource MaterialDesignBody1TextBlock}" />
+                    ToolTip="{x:Static l:Texts.Home_SignIn}" Command="{Binding SignInCommand}">
+                <TextBlock Text="{x:Static l:Texts.Home_SignIn}" Style="{StaticResource MaterialDesignBody1TextBlock}" />
             </Button>
 
-            <Label Grid.Row="0" Grid.Column="1" 
-                   Style="{StaticResource MaterialDesignLabel}" FontSize="30" HorizontalAlignment="Center">
-                New Here?
-            </Label>
+            <TextBlock Grid.Row="0" Grid.Column="1" 
+                       Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="30" HorizontalAlignment="Center"
+                       Text="{x:Static l:Texts.Home_New}" />
+            
             <TextBox Grid.Row="1" Grid.Column="1" md:HintAssist.Hint="Name" Width="250"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Text="{Binding RegisterModel.Name}" />
             <TextBox Grid.Row="2" Grid.Column="1" Width="250"
-                     md:HintAssist.Hint="Password"
+                     md:HintAssist.Hint="{x:Static l:Texts.Home_Pwd}"
                      md:HintAssist.Foreground="Black"
                      md:TextFieldAssist.UnderlineBrush="Black"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Text="{Binding RegisterModel.Password}" />
             <TextBox Grid.Row="3" Grid.Column="1" Width="250"
-                     md:HintAssist.Hint="Password Confirmation"
+                     md:HintAssist.Hint="{x:Static l:Texts.Home_PwdConf}"
                      md:HintAssist.Foreground="Black"
                      md:TextFieldAssist.UnderlineBrush="Black"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
@@ -114,8 +113,8 @@
                     HorizontalAlignment="Center" Width="250" Height="50" Margin="0 30 0 0"
                     Style="{StaticResource MaterialDesignFlatAccentButton}"
                     BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
-                    ToolTip="Sign Up" Command="{Binding SignUpCommand}">
-                <TextBlock Text="Sign Up" Style="{StaticResource MaterialDesignBody1TextBlock}" />
+                    ToolTip="{x:Static l:Texts.Home_SignUp}" Command="{Binding SignUpCommand}">
+                <TextBlock Text="{x:Static l:Texts.Home_SignUp}" Style="{StaticResource MaterialDesignBody1TextBlock}" />
             </Button>
         </Grid>
     </Grid>
