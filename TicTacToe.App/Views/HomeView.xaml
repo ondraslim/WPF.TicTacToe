@@ -25,22 +25,22 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="3*" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.ColumnSpan="3" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"
                    Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontFamily="#Bradley Hand ITC"
-                   FontWeight="Black" FontSize="150"
+                   FontWeight="Black" FontSize="200"
                    Text="{x:Static l:Texts.Home_Title}" />
 
         <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="TOP">
-            <Image Width="200" Height="200" Source="{StaticResource TttBoard}" />
+            <Image Width="220" Height="220" Source="{StaticResource TttBoard}" />
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="1" Margin="30"
+        <Grid Grid.Row="2" Grid.Column="1"
               Visibility="{Binding IsUserAuthenticated, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

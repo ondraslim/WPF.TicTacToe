@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows.Input;
 using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
@@ -11,8 +13,17 @@ namespace TicTacToe.Core.ViewModels.ControlViewModels
     {
         private readonly ICurrentUserProvider currentUserProvider;
         private readonly INavigationService navigationService;
+        private readonly ILocalizationService localizationService;
 
         public bool IsGameEnabled => currentUserProvider.CurrentUser is not null;
+
+        public CultureInfo SelectedCulture
+        {
+            get => localizationService.CurrentCultureInfo; 
+            set => localizationService.SetCulture(value);
+        }
+
+        public IList<CultureInfo> SupportedLanguages { get; set; }
 
         public ICommand GoToHomeCommand { get; set; }
         public ICommand GoToGameSetupCommand { get; set; }
@@ -23,10 +34,14 @@ namespace TicTacToe.Core.ViewModels.ControlViewModels
         public NavigationViewModel(
             ICommandFactory commandFactory, 
             INavigationService navigationService, 
-            ICurrentUserProvider currentUserProvider)
+            ICurrentUserProvider currentUserProvider, 
+            ILocalizationService localizationService)
         {
             this.navigationService = navigationService;
             this.currentUserProvider = currentUserProvider;
+            this.localizationService = localizationService;
+
+            SupportedLanguages = localizationService.SupportedLanguages;
 
             currentUserProvider.PropertyChanged += UpdateGameEnabled;
 

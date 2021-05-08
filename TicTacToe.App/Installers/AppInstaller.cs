@@ -7,6 +7,7 @@ using TicTacToe.App.Views;
 using TicTacToe.App.Windows;
 using TicTacToe.Common;
 using TicTacToe.Common.IoC;
+using TicTacToe.Core.Services.Interfaces;
 
 namespace TicTacToe.App.Installers
 {
@@ -14,6 +15,8 @@ namespace TicTacToe.App.Installers
     {
         public void Install(IServiceCollection serviceCollection)
         {
+            serviceCollection.AddSingleton<ILocalizationService, LocalizationService>();
+
             serviceCollection.AddSingleton<MainWindow>();
 
             serviceCollection.AddSingleton<IMainContentWrapper, ContentWrapperPanel>();

@@ -9,9 +9,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Margin="0 20 0 0">
-        <ListView Margin="0 15">
-            <ListViewItem HorizontalAlignment="Center" Margin="0 50 0 0">
+    <Grid>
+        <ListView Margin="0 20 0 0">
+            <ListViewItem HorizontalAlignment="Stretch">
+                <ComboBox HorizontalAlignment="Center" HorizontalContentAlignment="Center" Width="50"
+                          ItemsSource="{Binding SupportedLanguages}" SelectedItem="{Binding SelectedCulture, Mode=TwoWay}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TwoLetterISOLanguageName}" FontSize="18" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
@@ -42,7 +52,7 @@
                     </StackPanel>
                 </Button>
             </ListViewItem>
-            <ListViewItem HorizontalAlignment="Center" Margin="0 150 0 0">
+            <ListViewItem HorizontalAlignment="Center" Margin="0 120 0 0">
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"

@@ -49,7 +49,7 @@
 
             <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                    Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GameSetup_BoardSize}" />
+                <TextBlock FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GameSetup_BoardSize}" />
             </Label>
             <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
                 <TextBlock FontSize="16">
@@ -62,7 +62,7 @@
 
             <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                    Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GameSetup_Mode}" />
+                <TextBlock FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GameSetup_Mode}" />
             </Label>
             <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
                 <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="{x:Static l:Texts.GameSetup_Mode_Solo}" 
@@ -78,7 +78,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"
                        Style="{StaticResource MaterialDesignLabel}" FontSize="20">
-                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GameSetup_AI}" />
+                    <TextBlock FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GameSetup_AI}" />
                 </Label>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="4" VerticalAlignment="Center">
                     <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="{x:Static l:Texts.GameSetup_AI_Easy}"

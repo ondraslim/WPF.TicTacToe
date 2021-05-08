@@ -35,7 +35,7 @@
         </Grid>
 
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <TextBlock HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+            <TextBlock FontSize="22" HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                        Text="{x:Static l:Texts.Stats_Header_MostGames}"/>
             <ListView HorizontalAlignment="Center" IsEnabled="False" ItemsSource="{Binding MostGamesList}">
                 <ListView.View>
@@ -48,8 +48,8 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-                       Text="{x:Static l:Texts.Stats_Header_WinRate}"/>
+            <TextBlock FontSize="22"  HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                     Text="{x:Static l:Texts.Stats_Header_WinRate}"/>
             <ListView HorizontalAlignment="Center" IsEnabled="False" ItemsSource="{Binding UserWinRateList}">
                 <ListView.View>
                     <GridView>
@@ -62,7 +62,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0">
-            <TextBlock HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+            <TextBlock FontSize="22" HorizontalAlignment="Center" Margin="5" Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                        Text="{x:Static l:Texts.Stats_Header_LongGames}"/>
             <ListView HorizontalAlignment="Center" IsEnabled="False" ItemsSource="{Binding LongGameList}">
                 <ListView.View>
