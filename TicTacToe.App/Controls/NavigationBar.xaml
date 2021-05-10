@@ -5,13 +5,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controlViewModels="clr-namespace:TicTacToe.Core.ViewModels.ControlViewModels;assembly=TicTacToe.Core"
+             xmlns:l="clr-namespace:TicTacToe.App.Localization"
+             xmlns:converters="clr-namespace:TicTacToe.App.Converters"
              d:DataContext="{d:DesignInstance controlViewModels:NavigationViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
+        <Grid.Resources>
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        </Grid.Resources>
+
         <ListView Margin="0 20 0 0">
-            <ListViewItem HorizontalAlignment="Stretch">
+            <ListViewItem HorizontalAlignment="Stretch" Margin="0 0 0 30">
                 <ComboBox HorizontalAlignment="Center" HorizontalContentAlignment="Center" Width="50"
                           ItemsSource="{Binding SupportedLanguages}" SelectedItem="{Binding SelectedCulture, Mode=TwoWay}">
                     <ComboBox.ItemTemplate>
@@ -21,19 +27,30 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
             </ListViewItem>
+            <ListViewItem Visibility="{Binding CurrentUser, Converter={StaticResource NullToVisibilityConverter}}"
+                          HorizontalAlignment="Center" >
+                <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        HorizontalAlignment="Left"
+                        BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
+                        ToolTip="{x:Static l:Texts.Nav_Profile}" Command="{Binding GoToUserProfileCommand}">
+                    <StackPanel Margin="-5">
+                        <materialDesign:PackIcon Kind="User" />
+                    </StackPanel>
+                </Button>
+            </ListViewItem>
             <ListViewItem HorizontalAlignment="Center">
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                        ToolTip="Home" Command="{Binding GoToHomeCommand}">
+                                        ToolTip="{x:Static l:Texts.Nav_Home}" Command="{Binding GoToHomeCommand}">
                     <StackPanel Margin="-5">
                         <materialDesign:PackIcon Kind="Home" />
                     </StackPanel>
                 </Button>
             </ListViewItem>
-            <ListViewItem HorizontalAlignment="Center" ToolTip="Game">
+            <ListViewItem HorizontalAlignment="Center">
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Left" ToolTip="{x:Static l:Texts.Nav_Game}"
                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
                         IsEnabled="{Binding IsGameEnabled}"
                         Command="{Binding GoToGameSetupCommand}">
@@ -46,7 +63,7 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                        ToolTip="Stats" Command="{Binding GoToStatisticsCommand}">
+                                        ToolTip="{x:Static l:Texts.Nav_Stats}" Command="{Binding GoToStatisticsCommand}">
                     <StackPanel Margin="-5">
                         <materialDesign:PackIcon Kind="GraphOutline" />
                     </StackPanel>
@@ -56,7 +73,7 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                        ToolTip="Exit" Command="{Binding ExitApplicationCommand}">
+                                        ToolTip="{x:Static l:Texts.Nav_Exit}" Command="{Binding ExitApplicationCommand}">
                     <StackPanel Margin="-5">
                         <materialDesign:PackIcon Kind="ExitRun" />
                     </StackPanel>

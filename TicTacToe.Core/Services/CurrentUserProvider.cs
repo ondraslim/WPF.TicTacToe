@@ -16,6 +16,8 @@ namespace TicTacToe.Core.Services
             OnPropertyChanged();
         }
 
+        public void Logout() => SetCurrentUser(null);
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

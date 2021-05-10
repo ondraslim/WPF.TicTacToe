@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Input;
+using TicTacToe.BL.DTOs.User;
 using TicTacToe.BL.Services;
 using TicTacToe.Core.Factories;
 using TicTacToe.Core.Services.Interfaces;
@@ -16,6 +17,7 @@ namespace TicTacToe.Core.ViewModels.ControlViewModels
         private readonly ILocalizationService localizationService;
 
         public bool IsGameEnabled => currentUserProvider.CurrentUser is not null;
+        public UserDTO CurrentUser => currentUserProvider.CurrentUser;
 
         public CultureInfo SelectedCulture
         {
@@ -25,6 +27,7 @@ namespace TicTacToe.Core.ViewModels.ControlViewModels
 
         public IList<CultureInfo> SupportedLanguages { get; set; }
 
+        public ICommand GoToUserProfileCommand { get; set; }
         public ICommand GoToHomeCommand { get; set; }
         public ICommand GoToGameSetupCommand { get; set; }
         public ICommand GoToStatisticsCommand { get; set; }
@@ -43,8 +46,9 @@ namespace TicTacToe.Core.ViewModels.ControlViewModels
 
             SupportedLanguages = localizationService.SupportedLanguages;
 
-            currentUserProvider.PropertyChanged += UpdateGameEnabled;
+            currentUserProvider.PropertyChanged += UserChanged;
 
+            GoToUserProfileCommand = commandFactory.CreateCommand(NavigateToUserProfile);
             GoToHomeCommand = commandFactory.CreateCommand(NavigateToHome);
             GoToGameSetupCommand = commandFactory.CreateCommand(NavigateToGameSetup);
             GoToStatisticsCommand = commandFactory.CreateCommand(NavigateToStatistics);
@@ -52,9 +56,15 @@ namespace TicTacToe.Core.ViewModels.ControlViewModels
             ExitApplicationCommand = commandFactory.CreateCommand(ExitApplication);
         }
 
-        private void UpdateGameEnabled(object sender, PropertyChangedEventArgs e)
+        private void UserChanged(object sender, PropertyChangedEventArgs e)
         {
             OnPropertyChanged(nameof(IsGameEnabled));
+            OnPropertyChanged(nameof(CurrentUser));
+        }
+
+        public void NavigateToUserProfile()
+        {
+            navigationService.NavigateTo<UserProfileViewModel>();
         }
 
         public void NavigateToHome()

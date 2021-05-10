@@ -8,5 +8,6 @@ namespace TicTacToe.BL.Services
         UserDTO CurrentUser { get; }
 
         void SetCurrentUser(UserDTO currentUser);
+        void Logout();
     }
 }

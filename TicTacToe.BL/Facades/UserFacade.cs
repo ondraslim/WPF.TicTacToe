@@ -78,40 +78,59 @@ namespace TicTacToe.BL.Facades
             return authorizedUser;
         }
 
+        public async Task ChangeUserPasswordAsync(PasswordChangeDTO passwordChange)
+        {
+            if (passwordChange.NewPassword != passwordChange.NewPasswordConfirmation) return;
+
+            using var uow = UnitOfWorkProvider.Create();
+
+            var user = await userRepository.GetByIdAsync(passwordChange.UserId);
+            if (user is null) 
+                throw new EntityNotFoundException($"User with id '{passwordChange.UserId}' was not found.");
+
+            if (!IsLoginCredentialsValid(passwordChange.OldPassword, user))
+                throw new UserAuthException($"Password verification for user '{passwordChange.UserId}' failed.");
+
+            user.PasswordHash = GetPasswordHash(passwordChange.NewPassword);
+
+            await uow.CommitAsync();
+        }
+
         private User PrepareNewUser(UserRegisterDTO registration)
         {
             var user = mapper.Map<User>(registration);
-
-            var (hash, salt) = passwordHasher.CreateHash(registration.Password);
-            user.PasswordHash = string.Join(',', hash, salt);
-            user.PreferredLanguage = "en";
-
+            user.PasswordHash = GetPasswordHash(registration.Password);
             return user;
+        }
+
+        private string GetPasswordHash(string password)
+        {
+            var (hash, salt) = passwordHasher.CreateHash(password);
+            return string.Join(',', hash, salt);
         }
 
         private async Task<UserDTO> AuthorizeUserAsync(UserLoginDTO user)
         {
             var entity = await userRepository.GetUserByNameAsync(user.Name);
             if (entity is null)
-            {
                 throw new EntityNotFoundException($"User with name '{user.Name}' was not found.");
-            }
 
             if (!IsLoginCredentialsValid(user, entity))
-            {
                 throw new UserAuthException($"Password verification for user '{user.Name}' failed.");
-            }
 
             return mapper.Map<UserDTO>(entity);
         }
 
-        private bool IsLoginCredentialsValid(UserLoginDTO user, User userEntity)
+        private bool IsLoginCredentialsValid(UserLoginDTO user, User userEntity) 
+            => IsLoginCredentialsValid(user.Password, userEntity);
+
+        private bool IsLoginCredentialsValid(string inputPassword, User userEntity)
         {
             string hash;
             string salt;
 
             (hash, salt) = userEntity is not null ? passwordHasher.GetPassAndSalt(userEntity.PasswordHash) : (string.Empty, string.Empty);
-            return userEntity is not null && passwordHasher.VerifyHashedPassword(hash, salt, user.Password);
+            return userEntity is not null && passwordHasher.VerifyHashedPassword(hash, salt, inputPassword);
         }
     }
 }

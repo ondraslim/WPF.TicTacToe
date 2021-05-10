@@ -25,19 +25,19 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="2*" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.ColumnSpan="3" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"
                    Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontFamily="#Bradley Hand ITC"
-                   FontWeight="Black" FontSize="200"
+                   FontWeight="Black" FontSize="140"
                    Text="{x:Static l:Texts.Home_Title}" />
 
         <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="TOP">
-            <Image Width="220" Height="220" Source="{StaticResource TttBoard}" />
+            <Image Width="200" Height="200" Source="{StaticResource TttBoard}" />
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="1"
@@ -71,12 +71,12 @@
             <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource MaterialDesignLabel}" HorizontalAlignment="Center">
                 <TextBlock HorizontalAlignment="Center" FontSize="30" Text="{x:Static l:Texts.Home_Name}" />
             </Label>
-            <TextBox Grid.Row="1" Grid.Column="0" md:HintAssist.Hint="{x:Static l:Texts.Home_Name}" Width="250"
+            <TextBox Grid.Row="1" Grid.Column="0" md:HintAssist.Hint="{x:Static l:Texts.Home_Name}" Width="250" FontSize="18"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                      Text="{Binding LoginModel.Name}" />
 
             <!-- Should be PasswordBox, omitted on school project  for MVVM binding complications -->
-            <TextBox Grid.Row="2" Grid.Column="0" Width="250"
+            <TextBox Grid.Row="2" Grid.Column="0" Width="250" FontSize="18"
                      md:HintAssist.Hint="{x:Static l:Texts.Home_Pwd}"
                      md:HintAssist.Foreground="Black"
                      md:TextFieldAssist.UnderlineBrush="Black"
@@ -94,22 +94,22 @@
                        Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="30" HorizontalAlignment="Center"
                        Text="{x:Static l:Texts.Home_New}" />
             
-            <TextBox Grid.Row="1" Grid.Column="1" md:HintAssist.Hint="Name" Width="250"
+            <TextBox Grid.Row="1" Grid.Column="1" md:HintAssist.Hint="Name" Width="250" FontSize="18"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Text="{Binding RegisterModel.Name}" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="250"
+            <TextBox Grid.Row="2" Grid.Column="1" Width="250" FontSize="18"
                      md:HintAssist.Hint="{x:Static l:Texts.Home_Pwd}"
                      md:HintAssist.Foreground="Black"
                      md:TextFieldAssist.UnderlineBrush="Black"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Text="{Binding RegisterModel.Password}" />
-            <TextBox Grid.Row="3" Grid.Column="1" Width="250"
+            <TextBox Grid.Row="3" Grid.Column="1" Width="250" FontSize="18"
                      md:HintAssist.Hint="{x:Static l:Texts.Home_PwdConf}"
                      md:HintAssist.Foreground="Black"
                      md:TextFieldAssist.UnderlineBrush="Black"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                      Text="{Binding RegisterModel.PasswordConfirmation}" />
-            <Button Grid.Row="4" Grid.Column="1" 
+            <Button Grid.Row="4" Grid.Column="1"
                     HorizontalAlignment="Center" Width="250" Height="50" Margin="0 30 0 0"
                     Style="{StaticResource MaterialDesignFlatAccentButton}"
                     BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"

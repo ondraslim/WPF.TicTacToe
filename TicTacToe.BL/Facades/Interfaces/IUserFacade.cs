@@ -12,5 +12,6 @@ namespace TicTacToe.BL.Facades.Interfaces
         Task<UserDTO> RegisterAsync(UserRegisterDTO user);
 
         Task<List<UserDTO>> GetUserListAsync();
+        Task ChangeUserPasswordAsync(PasswordChangeDTO passwordChange);
     }
 }

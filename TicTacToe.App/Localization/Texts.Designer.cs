@@ -358,6 +358,123 @@ namespace TicTacToe.App.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string Nav_Exit {
+            get {
+                return ResourceManager.GetString("Nav_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game.
+        /// </summary>
+        public static string Nav_Game {
+            get {
+                return ResourceManager.GetString("Nav_Game", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Nav_Home {
+            get {
+                return ResourceManager.GetString("Nav_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User profile.
+        /// </summary>
+        public static string Nav_Profile {
+            get {
+                return ResourceManager.GetString("Nav_Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stats.
+        /// </summary>
+        public static string Nav_Stats {
+            get {
+                return ResourceManager.GetString("Nav_Stats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        public static string Profile_ChangePwd {
+            get {
+                return ResourceManager.GetString("Profile_ChangePwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string Profile_Logout {
+            get {
+                return ResourceManager.GetString("Profile_Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string Profile_NewPwd {
+            get {
+                return ResourceManager.GetString("Profile_NewPwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password confirmation.
+        /// </summary>
+        public static string Profile_NewPwdConf {
+            get {
+                return ResourceManager.GetString("Profile_NewPwdConf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old password.
+        /// </summary>
+        public static string Profile_OldPwd {
+            get {
+                return ResourceManager.GetString("Profile_OldPwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password Change.
+        /// </summary>
+        public static string Profile_PwdChangeTitle {
+            get {
+                return ResourceManager.GetString("Profile_PwdChangeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Profile.
+        /// </summary>
+        public static string Profile_Title {
+            get {
+                return ResourceManager.GetString("Profile_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current User:.
+        /// </summary>
+        public static string Profile_User {
+            get {
+                return ResourceManager.GetString("Profile_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Games Played.
         /// </summary>
         public static string Stats_GamesPlayed {

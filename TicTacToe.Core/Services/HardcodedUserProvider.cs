@@ -15,6 +15,8 @@ namespace TicTacToe.Core.Services
 
         public void SetCurrentUser(UserDTO currentUser) { }
 
+        public void Logout() { }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

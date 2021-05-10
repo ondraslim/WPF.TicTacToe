@@ -216,6 +216,45 @@
   <data name="Home_Who" xml:space="preserve">
     <value>Kdo jsi?</value>
   </data>
+  <data name="Nav_Exit" xml:space="preserve">
+    <value>Ukončit</value>
+  </data>
+  <data name="Nav_Game" xml:space="preserve">
+    <value>Hra</value>
+  </data>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>Domů</value>
+  </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Nav_Stats" xml:space="preserve">
+    <value>Statistiky</value>
+  </data>
+  <data name="Profile_ChangePwd" xml:space="preserve">
+    <value>Změni heslo</value>
+  </data>
+  <data name="Profile_Logout" xml:space="preserve">
+    <value>Odhlášení</value>
+  </data>
+  <data name="Profile_NewPwd" xml:space="preserve">
+    <value>Nové heslo</value>
+  </data>
+  <data name="Profile_NewPwdConf" xml:space="preserve">
+    <value>Potvrzení nového hesla</value>
+  </data>
+  <data name="Profile_OldPwd" xml:space="preserve">
+    <value>Staré heslo</value>
+  </data>
+  <data name="Profile_PwdChangeTitle" xml:space="preserve">
+    <value>Změna Hesla</value>
+  </data>
+  <data name="Profile_Title" xml:space="preserve">
+    <value>Profil uživatele</value>
+  </data>
+  <data name="Profile_User" xml:space="preserve">
+    <value>Aktuální uživatel</value>
+  </data>
   <data name="Stats_GamesPlayed" xml:space="preserve">
     <value>Her Zahráno</value>
   </data>

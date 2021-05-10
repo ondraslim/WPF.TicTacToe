@@ -12,8 +12,6 @@ namespace TicTacToe.Data.Models
         [Required] 
         public string PasswordHash { get; set; }
         
-        public string PreferredLanguage { get; set; }
-
         public virtual ICollection<GameParticipation> GameParticipation { get; set; }
     }
 }
