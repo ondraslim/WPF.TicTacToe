@@ -87,7 +87,7 @@ namespace TicTacToe.BL.Facades
 
             game.TurnCount = result.TurnCount;
             
-            var winner = game.GameParticipation?.FirstOrDefault(g => g.UserId == result.WinnerId);
+            var winner = game.GameParticipation?.FirstOrDefault(g => g.Id == result.WinnerId);
             if (winner != default) winner.IsWinner = true;
 
             await uow.CommitAsync();

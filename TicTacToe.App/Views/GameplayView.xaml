@@ -6,7 +6,6 @@
                 xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                 xmlns:views="clr-namespace:TicTacToe.App.Views.Common"
-                xmlns:l="clr-namespace:TicTacToe.App.Localization"
                 mc:Ignorable="d"
                 d:DataContext="{d:DesignInstance viewModels:GameplayViewModel}"
                 d:DesignHeight="800" d:DesignWidth="1200">
@@ -19,60 +18,48 @@
 
         <Border BorderThickness="0 0 0 1" BorderBrush="Black">
             <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" BorderThickness="0 0 1 0" BorderBrush="Black">
-                <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        VerticalAlignment="Center" HorizontalAlignment="Center"
-                        BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                        ToolTip="{x:Static l:Texts.Gameplay_Restart}"
-                        Command="{Binding RestartCommand}">
-                    <StackPanel>
-                        <materialDesign:PackIcon Kind="Restart" />
-                    </StackPanel>
-                </Button>
-            </Border>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="1" BorderThickness="0 0 1 0" BorderBrush="Black">
-                <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                <Border Grid.Column="0" BorderThickness="0 0 1 0" BorderBrush="Black">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                         VerticalAlignment="Center"
                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                        ToolTip="{x:Static l:Texts.Gameplay_Surr}" IsEnabled="{Binding Gameplay.IsActive}"
+                        ToolTip="{Binding Gameplay_Surr, Source={StaticResource Resources}}" IsEnabled="{Binding Gameplay.IsActive}"
                         Command="{Binding SurrenderCommand}">
-                    <StackPanel>
-                        <materialDesign:PackIcon Kind="FlagVariantOutline" />
-                    </StackPanel>
-                </Button>
-            </Border>
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="FlagVariantOutline" />
+                        </StackPanel>
+                    </Button>
+                </Border>
 
-            <Border Grid.Column="3" BorderThickness="0 0 1 0" BorderBrush="Black">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
-                               VerticalAlignment="Center" TextAlignment="Center" FontSize="16"
-                               Text="{x:Static l:Texts.Gameplay_Player}"/>
-                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Margin="5"
+                <Border Grid.Column="2" BorderThickness="0 0 1 0" BorderBrush="Black">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
+                               VerticalAlignment="Center" TextAlignment="Center" FontSize="20"
+                               Text="{Binding Gameplay_Player, Source={StaticResource Resources}}"/>
+                        <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Margin="5"
                                HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20"
                                Text="{Binding Gameplay.CurrentPlayer.Name}" />
-                </StackPanel>
+                    </StackPanel>
 
-            </Border>
-            <Border Grid.Column="4" BorderThickness="0 0 1 0" BorderBrush="Black">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
-                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="16"
-                               Text="{x:Static l:Texts.Gameplay_Turn}"/>
-                    <TextBlock Style="{StaticResource MaterialDesignTextBlock}"  Margin="5"
+                </Border>
+                <Border Grid.Column="3" BorderBrush="Black">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20"
+                               Text="{Binding Gameplay_Turn, Source={StaticResource Resources}}"/>
+                        <TextBlock Style="{StaticResource MaterialDesignTextBlock}"  Margin="5"
                                HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20"
                                Text="{Binding Gameplay.TurnCount}" />
-                </StackPanel>
-            </Border>
-        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
         </Border>
         <Grid Grid.Row="1" IsEnabled="{Binding Gameplay.IsActive}">
             <ItemsControl ItemsSource="{Binding Gameplay.Board.Cells}">
@@ -84,22 +71,28 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding Sign}" IsEnabled="{Binding IsEmpty}" Background="{x:Null}" BorderThickness="1" Foreground="Black"
-                                Style="{x:Null}"
+                        <Button Content="{Binding Sign}" IsEnabled="{Binding IsEmpty}" Background="Transparent" FontWeight="Heavy" FontSize="22"
                                 Command="{Binding DataContext.TakeCellCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:ViewBase}}" 
-                                CommandParameter="{Binding}"/>
-                        <DataTemplate.Triggers>
-                            <DataTrigger Binding="{Binding IsWinningCell}" Value="True">
-                                <Setter Property="Border.BorderThickness" Value="2" />
-                                <Setter Property="Border.BorderBrush" Value="Green" />
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Sign}" Value="X">
-                                <Setter Property="Control.Foreground" Value="LightSkyBlue"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Sign}" Value="O">
-                                <Setter Property="Control.Foreground" Value="Coral" />
-                            </DataTrigger>
-                        </DataTemplate.Triggers>
+                                CommandParameter="{Binding}">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="BorderBrush" Value="Black"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsWinningCell}" Value="True">
+                                            <Setter Property="BorderBrush" Value="Green" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Sign}" Value="X">
+                                            <Setter Property="Foreground" Value="LightSkyBlue"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Sign}" Value="O">
+                                            <Setter Property="Foreground" Value="Coral" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                        </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

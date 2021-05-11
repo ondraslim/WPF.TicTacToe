@@ -5,7 +5,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controlViewModels="clr-namespace:TicTacToe.Core.ViewModels.ControlViewModels;assembly=TicTacToe.Core"
-             xmlns:l="clr-namespace:TicTacToe.App.Localization"
              xmlns:converters="clr-namespace:TicTacToe.App.Converters"
              d:DataContext="{d:DesignInstance controlViewModels:NavigationViewModel}"
              mc:Ignorable="d" 
@@ -32,7 +31,7 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                         HorizontalAlignment="Left"
                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                        ToolTip="{x:Static l:Texts.Nav_Profile}" Command="{Binding GoToUserProfileCommand}">
+                        ToolTip="{Binding Nav_Profile, Source={StaticResource Resources}}" Command="{Binding GoToUserProfileCommand}">
                     <StackPanel Margin="-5">
                         <materialDesign:PackIcon Kind="User" />
                     </StackPanel>
@@ -42,7 +41,7 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                        ToolTip="{x:Static l:Texts.Nav_Home}" Command="{Binding GoToHomeCommand}">
+                                        ToolTip="{Binding Nav_Home, Source={StaticResource Resources}}" Command="{Binding GoToHomeCommand}">
                     <StackPanel Margin="-5">
                         <materialDesign:PackIcon Kind="Home" />
                     </StackPanel>
@@ -50,7 +49,7 @@
             </ListViewItem>
             <ListViewItem HorizontalAlignment="Center">
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        HorizontalAlignment="Left" ToolTip="{x:Static l:Texts.Nav_Game}"
+                        HorizontalAlignment="Left" ToolTip="{Binding Nav_Game, Source={StaticResource Resources}}"
                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
                         IsEnabled="{Binding IsGameEnabled}"
                         Command="{Binding GoToGameSetupCommand}">
@@ -63,7 +62,7 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                        ToolTip="{x:Static l:Texts.Nav_Stats}" Command="{Binding GoToStatisticsCommand}">
+                                        ToolTip="{Binding Nav_Stats, Source={StaticResource Resources}}" Command="{Binding GoToStatisticsCommand}">
                     <StackPanel Margin="-5">
                         <materialDesign:PackIcon Kind="GraphOutline" />
                     </StackPanel>
@@ -73,7 +72,7 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"
-                                        ToolTip="{x:Static l:Texts.Nav_Exit}" Command="{Binding ExitApplicationCommand}">
+                                        ToolTip="{Binding Nav_Exit, Source={StaticResource Resources}}" Command="{Binding ExitApplicationCommand}">
                     <StackPanel Margin="-5">
                         <materialDesign:PackIcon Kind="ExitRun" />
                     </StackPanel>

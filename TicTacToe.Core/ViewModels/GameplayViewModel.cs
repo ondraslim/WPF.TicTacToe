@@ -20,7 +20,6 @@ namespace TicTacToe.Core.ViewModels
             set => ViewModelParameter = value;
         }
 
-        public ICommand RestartCommand { get; set; }
         public ICommand SurrenderCommand { get; set; }
 
         public ICommand TakeCellCommand { get; set; }
@@ -35,16 +34,8 @@ namespace TicTacToe.Core.ViewModels
             this.gameFacade = gameFacade;
             this.gameplayService = gameplayService;
 
-            RestartCommand = commandFactory.CreateCommand(Restart);
             SurrenderCommand = commandFactory.CreateAsyncCommand(SurrenderAsync);
-            TakeCellCommand = commandFactory.CreateCommand<BoardCellDTO>(TakeCell);
-        }
-
-        public void Restart()
-        {
-            Gameplay.CurrentPlayerId = Gameplay.PlayerOne.Id;
-            Gameplay.TurnCount = 1;
-            Gameplay.Board.ClearCells();
+            TakeCellCommand = commandFactory.CreateAsyncCommand<BoardCellDTO>(TakeCell);
         }
 
         public async Task SurrenderAsync()
@@ -57,7 +48,7 @@ namespace TicTacToe.Core.ViewModels
         }
 
         // TODO: add draw option
-        public void TakeCell(BoardCellDTO selectedCell)
+        public async Task TakeCell(BoardCellDTO selectedCell)
         {
             var cell = Gameplay.Board.GetCell(selectedCell.Row, selectedCell.Col);
             cell.Sign = Gameplay.CurrentPlayer.Sign;
@@ -67,9 +58,12 @@ namespace TicTacToe.Core.ViewModels
             {
                 Gameplay.IsActive = false;
                 Gameplay.CurrentPlayer.IsWinner = true;
+                await SaveResultAsync();
             }
-
-            Gameplay.TurnFinished();
+            else
+            {
+                Gameplay.TurnFinished();
+            }
         }
 
         private async Task SaveResultAsync()

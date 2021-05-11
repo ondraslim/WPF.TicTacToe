@@ -6,7 +6,6 @@
                   xmlns:views="clr-namespace:TicTacToe.App.Views.Common"
                   xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
                   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-                  xmlns:l="clr-namespace:TicTacToe.App.Localization"
                   d:DataContext="{d:DesignInstance viewModels:GameParticipationSetupViewModel}"
                   mc:Ignorable="d" 
                   d:DesignHeight="450" d:DesignWidth="800">
@@ -41,10 +40,10 @@
         <TextBlock  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" 
                     HorizontalAlignment="Center" VerticalAlignment="Center"
                     Margin="0 50 0 0" Style="{StaticResource MaterialDesignHeadline2TextBlock}" 
-                    Text="{x:Static l:Texts.GamePart_Title}" />
+                    Text="{Binding GamePart_Title, Source={StaticResource Resources}}" />
 
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
-            <TextBlock FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GamePart_Creator}" />
+            <TextBlock FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding GamePart_Creator, Source={StaticResource Resources}}" />
         </Label>
         <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="5" HorizontalAlignment="Center"
                    FontSize="18"
@@ -52,12 +51,12 @@
         <ToggleButton Grid.Row="1" Grid.Column="3"
                       Style="{StaticResource MaterialDesignActionToggleButton}"
                       IsChecked="{Binding CreatorStarts}"
-                      ToolTip="{x:Static l:Texts.GamePart_ToggleTip}"
+                      ToolTip="{Binding GamePart_ToggleTip, Source={StaticResource Resources}}"
                       Content="O"
                       materialDesign:ToggleButtonAssist.OnContent="X" />
 
         <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"  VerticalAlignment="Center"  Margin="5">
-            <TextBlock FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GamePart_OpponentWho}" />
+            <TextBlock FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding GamePart_OpponentWho, Source={StaticResource Resources}}" />
         </Label>
 
         <ComboBox Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Margin="5" Width="250"
@@ -68,16 +67,16 @@
         <ToggleButton Grid.Row="2" Grid.Column="3"
                       Style="{StaticResource MaterialDesignActionToggleButton}"
                       IsChecked="{Binding OpponentStarts}"
-                      ToolTip="{x:Static l:Texts.GamePart_ToggleTip}"
+                      ToolTip="{Binding GamePart_ToggleTip, Source={StaticResource Resources}}"
                       Content="O"
                       materialDesign:ToggleButtonAssist.OnContent="X" />
 
         <Label Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Margin="5">
-            <TextBlock FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{x:Static l:Texts.GamePart_OpponentName}"/>
+            <TextBlock FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding GamePart_OpponentName, Source={StaticResource Resources}}"/>
         </Label>
 
         <TextBox Grid.Row="3" Grid.Column="2" Margin="5" VerticalAlignment="Center"
-                 materialDesign:HintAssist.Hint="{x:Static l:Texts.GamePart_ExternalOpp}" Width="250"
+                 materialDesign:HintAssist.Hint="{Binding GamePart_ExternalOpp, Source={StaticResource Resources}}" Width="250"
                  IsEnabled="{Binding CanSelectOpponent}" FontSize="18"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Text="{Binding ExternalOpponentName}"/>
@@ -86,8 +85,8 @@
                 Width="400" Height="50" Margin="40"
                 Style="{StaticResource MaterialDesignFlatAccentButton}"
                 BorderBrush="Black" BorderThickness="1" Background="{x:Null}" Foreground="Black"
-                ToolTip="{x:Static l:Texts.GamePart_StartTip}" Command="{Binding StartGameCommand}">
-            <TextBlock Text="{x:Static l:Texts.GamePart_Start}" Style="{StaticResource MaterialDesignBody1TextBlock}" />
+                ToolTip="{Binding GamePart_StartTip, Source={StaticResource Resources}}" Command="{Binding StartGameCommand}">
+            <TextBlock Text="{Binding GamePart_Start, Source={StaticResource Resources}}" Style="{StaticResource MaterialDesignBody1TextBlock}" />
         </Button>
     </Grid>
 </views:ViewBase>
