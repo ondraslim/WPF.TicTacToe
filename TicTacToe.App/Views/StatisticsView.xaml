@@ -53,8 +53,8 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Width="150" Header="{Binding Stats_User, Source={StaticResource Resources}}" DisplayMemberBinding="{Binding UserName}" />
-                        <GridViewColumn Width="150" Header="{Binding Stats_GamesPlayed, Source={StaticResource Resources}}" DisplayMemberBinding="{Binding GamesPlayedCount}" />
-                        <GridViewColumn Width="150" Header="{Binding Stats_WinRatio, Source={StaticResource Resources}}" DisplayMemberBinding="{Binding WinRate}" />
+                        <GridViewColumn Width="150" Header="{Binding Stats_GamesPlayed, Source={StaticResource Resources}}" DisplayMemberBinding="{Binding GameCount}" />
+                        <GridViewColumn Width="150" Header="{Binding Stats_WinRatio, Source={StaticResource Resources}}" DisplayMemberBinding="{Binding WinRate, StringFormat={}{0:#.00} %}" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -66,7 +66,7 @@
             <ListView HorizontalAlignment="Center" IsEnabled="False" ItemsSource="{Binding LongGameList}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="150" Header="{Binding Stats_Opponent, Source={StaticResource Resources}}" DisplayMemberBinding="{Binding Opponent}" />
+                        <GridViewColumn Width="150" Header="{Binding Stats_Players, Source={StaticResource Resources}}" DisplayMemberBinding="{Binding PlayerNames}" />
                         <GridViewColumn Width="150" Header="{Binding Stats_Turns, Source={StaticResource Resources}}" DisplayMemberBinding="{Binding TurnCount}" />
                         <GridViewColumn Width="150" Header="{Binding Stats_GameType, Source={StaticResource Resources}}" DisplayMemberBinding="{Binding Type}" />
                     </GridView>

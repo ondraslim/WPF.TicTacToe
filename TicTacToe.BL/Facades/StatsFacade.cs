@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using TicTacToe.BL.DTOs.Stats;
 using TicTacToe.BL.Facades.Common;
 using TicTacToe.BL.Facades.Interfaces;
@@ -21,82 +23,32 @@ namespace TicTacToe.BL.Facades
         }
 
 
-        public List<LongGameListDTO> GetLongestGamesListAsync()
+        public async Task<List<LongGameListDTO>> GetLongestGamesListAsync()
         {
             using var uow = UnitOfWorkProvider.Create();
-            
-            return new()
-            {
-                new LongGameListDTO
+            var longestGames = await gameRepository.GetLongestGameListAsync(10);
+
+            return longestGames
+                .Select(g => new LongGameListDTO
                 {
-                    Opponent = "Opponent1",
-                    TurnCount = 42,
-                    Type = GameType.Multiplayer
-                },
-                new LongGameListDTO
-                {
-                    Opponent = "Opponent2",
-                    TurnCount = 39,
-                    Type = GameType.Multiplayer
-                },
-                new LongGameListDTO
-                {
-                    Opponent = "AI",
-                    TurnCount = 32,
-                    Type = GameType.Solo
-                }
-            };
+                    Id = g.Id,
+                    TurnCount = g.TurnCount,
+                    Type = g.Type,
+                    Players = g.GameParticipation.Select(gp => gp.User?.Name ?? gp.ExternalPlayerName).ToList()
+                })
+                .ToList();
         }
 
-        public List<UserGameCountListDTO> GetMostGamesUserListAsync()
+        public async Task<List<UserGameCountListDTO>> GetMostGamesUserListAsync()
         {
             using var uow = UnitOfWorkProvider.Create();
-         
-            return new()
-            {
-                new UserGameCountListDTO
-                {
-                    UserName = "Me",
-                    GameCount = 123
-                },
-                new UserGameCountListDTO
-                {
-                    UserName = "Hubert",
-                    GameCount = 101
-                },
-                new UserGameCountListDTO
-                {
-                    UserName = "Huberta",
-                    GameCount = 44
-                },
-            };
+            return await gameRepository.GetMostGamesUserListAsync(10);
         }
 
-        public List<UserWinRateListDTO> GetBestWinRateUserListAsync()
+        public async Task<List<UserWinRateListDTO>> GetBestWinRateUserListAsync()
         {
             using var uow = UnitOfWorkProvider.Create();
-           
-            return new()
-            {
-                new UserWinRateListDTO
-                {
-                    UserName = "Me",
-                    GamesPlayedCount = 100,
-                    WinRate = 80
-                },
-                new UserWinRateListDTO
-                {
-                    UserName = "Hubert",
-                    GamesPlayedCount = 50,
-                    WinRate = 60
-                },
-                new UserWinRateListDTO
-                {
-                    UserName = "Huberta",
-                    GamesPlayedCount = 40,
-                    WinRate = 60
-                }
-            };
+            return await gameRepository.GetBestWinRateUserListAsync(10);
         }
     }
 }

@@ -270,8 +270,8 @@
   <data name="Stats_Header_WinRate" xml:space="preserve">
     <value>Nejvítěznější Hráči</value>
   </data>
-  <data name="Stats_Opponent" xml:space="preserve">
-    <value>Protihráč</value>
+  <data name="Stats_Players" xml:space="preserve">
+    <value>Hráči</value>
   </data>
   <data name="Stats_Title" xml:space="preserve">
     <value>Statistiky</value>

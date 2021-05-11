@@ -270,8 +270,8 @@
   <data name="Stats_Header_WinRate" xml:space="preserve">
     <value>Best Win Ratio</value>
   </data>
-  <data name="Stats_Opponent" xml:space="preserve">
-    <value>Opponent</value>
+  <data name="Stats_Players" xml:space="preserve">
+    <value>Players</value>
   </data>
   <data name="Stats_Title" xml:space="preserve">
     <value>Statistics</value>

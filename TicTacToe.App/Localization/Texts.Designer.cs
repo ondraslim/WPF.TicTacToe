@@ -520,11 +520,11 @@ namespace TicTacToe.App.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opponent.
+        ///   Looks up a localized string similar to Players.
         /// </summary>
-        public static string Stats_Opponent {
+        public static string Stats_Players {
             get {
-                return ResourceManager.GetString("Stats_Opponent", resourceCulture);
+                return ResourceManager.GetString("Stats_Players", resourceCulture);
             }
         }
         

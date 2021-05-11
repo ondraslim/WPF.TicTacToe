@@ -21,9 +21,9 @@ namespace TicTacToe.Core.ViewModels
 
         public override async Task OnLoadedAsync()
         {
-            MostGamesList = statsFacade.GetMostGamesUserListAsync();
-            UserWinRateList = statsFacade.GetBestWinRateUserListAsync();
-            LongGameList = statsFacade.GetLongestGamesListAsync();
+            MostGamesList = await statsFacade.GetMostGamesUserListAsync();
+            UserWinRateList = await statsFacade.GetBestWinRateUserListAsync();
+            LongGameList = await statsFacade.GetLongestGamesListAsync();
             
             await base.OnLoadedAsync();
         }
