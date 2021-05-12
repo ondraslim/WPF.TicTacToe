@@ -6,6 +6,7 @@
                 xmlns:viewModels="clr-namespace:TicTacToe.Core.ViewModels;assembly=TicTacToe.Core"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                 xmlns:views="clr-namespace:TicTacToe.App.Views.Common"
+                xmlns:converters="clr-namespace:TicTacToe.App.Converters"
                 mc:Ignorable="d"
                 d:DataContext="{d:DesignInstance viewModels:GameplayViewModel}"
                 d:DesignHeight="800" d:DesignWidth="1200">
@@ -15,6 +16,11 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <converters:NotBoolToVisibilityConverter x:Key="NotBoolToVisConverter" />
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisConverter" />
+        </Grid.Resources>
 
         <Border BorderThickness="0 0 0 1" BorderBrush="Black">
             <Grid>
@@ -41,10 +47,15 @@
                 <Border Grid.Column="2" BorderThickness="0 0 1 0" BorderBrush="Black">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                         <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
-                               VerticalAlignment="Center" TextAlignment="Center" FontSize="20"
-                               Text="{Binding Gameplay_Player, Source={StaticResource Resources}}"/>
+                               VerticalAlignment="Center" TextAlignment="Center" FontSize="18"
+                               Text="{Binding Gameplay_Player, Source={StaticResource Resources}}" 
+                               Visibility="{Binding Gameplay.CurrentPlayer.IsWinner, Converter={StaticResource NotBoolToVisConverter}}"/>
+                        <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
+                                   VerticalAlignment="Center" TextAlignment="Center" FontSize="18"
+                                   Text="{Binding Gameplay_Winner, Source={StaticResource Resources}}" 
+                                   Visibility="{Binding Gameplay.CurrentPlayer.IsWinner, Converter={StaticResource BoolToVisConverter}}"/>
                         <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Margin="5"
-                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="20"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="18"
                                Text="{Binding Gameplay.CurrentPlayer.Name}" />
                     </StackPanel>
 
@@ -76,11 +87,9 @@
                                 CommandParameter="{Binding}">
                             <Button.Style>
                                 <Style TargetType="Button">
-                                    <Setter Property="Foreground" Value="Black"/>
-                                    <Setter Property="BorderBrush" Value="Black"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding IsWinningCell}" Value="True">
-                                            <Setter Property="BorderBrush" Value="Green" />
+                                        <DataTrigger Binding="{Binding IsWinningCell}" Value="true">
+                                            <Setter Property="BorderThickness" Value="5"/>
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding Sign}" Value="X">
                                             <Setter Property="Foreground" Value="LightSkyBlue"/>

@@ -21,9 +21,10 @@ namespace TicTacToe.BL.Repositories
         {
             return Context.Set<Game>()
                 .OrderByDescending(g => g.TurnCount)
-                .Take(count)
                 .Include(g => g.GameParticipation)
                 .ThenInclude(gp => gp.User)
+                .Where(u => u.GameParticipation.Any(gp => gp.IsWinner))
+                .Take(count)
                 .ToListAsync();
         }
 
@@ -31,6 +32,7 @@ namespace TicTacToe.BL.Repositories
         {
             return Context.Set<User>()
                 .OrderByDescending(u => u.GameParticipation.Count)
+                .Where(u => u.GameParticipation.Any(gp => gp.IsWinner))
                 .Take(count)
                 .Select(u => new UserGameCountListDTO
                 {
@@ -45,6 +47,7 @@ namespace TicTacToe.BL.Repositories
         {
             return Context.Set<User>()
                 .OrderByDescending(u => 100.0 * u.GameParticipation.Count(g => g.IsWinner) / u.GameParticipation.Count)
+                .Where(u => u.GameParticipation.Any(gp => gp.IsWinner))
                 .Take(count)
                 .Select(u => new UserWinRateListDTO
                 {

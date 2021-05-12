@@ -142,7 +142,7 @@
     <value>X - goes first, O - goes second</value>
   </data>
   <data name="Gameplay_Player" xml:space="preserve">
-    <value>Current Player: </value>
+    <value>Player: </value>
   </data>
   <data name="Gameplay_Restart" xml:space="preserve">
     <value>Restart the Game</value>
@@ -152,6 +152,9 @@
   </data>
   <data name="Gameplay_Turn" xml:space="preserve">
     <value>Turn: </value>
+  </data>
+  <data name="Gameplay_Winner" xml:space="preserve">
+    <value>Winner:</value>
   </data>
   <data name="GameSetup_AI" xml:space="preserve">
     <value>AI Difficulty:</value>

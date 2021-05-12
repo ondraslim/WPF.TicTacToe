@@ -133,7 +133,7 @@ namespace TicTacToe.App.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current Player: .
+        ///   Looks up a localized string similar to Player: .
         /// </summary>
         public static string Gameplay_Player {
             get {
@@ -165,6 +165,15 @@ namespace TicTacToe.App.Localization {
         public static string Gameplay_Turn {
             get {
                 return ResourceManager.GetString("Gameplay_Turn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Winner:.
+        /// </summary>
+        public static string Gameplay_Winner {
+            get {
+                return ResourceManager.GetString("Gameplay_Winner", resourceCulture);
             }
         }
         

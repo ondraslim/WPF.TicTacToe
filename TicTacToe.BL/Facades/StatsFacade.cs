@@ -26,7 +26,7 @@ namespace TicTacToe.BL.Facades
         public async Task<List<LongGameListDTO>> GetLongestGamesListAsync()
         {
             using var uow = UnitOfWorkProvider.Create();
-            var longestGames = await gameRepository.GetLongestGameListAsync(10);
+            var longestGames = await gameRepository.GetLongestGameListAsync(5);
 
             return longestGames
                 .Select(g => new LongGameListDTO
@@ -42,13 +42,13 @@ namespace TicTacToe.BL.Facades
         public async Task<List<UserGameCountListDTO>> GetMostGamesUserListAsync()
         {
             using var uow = UnitOfWorkProvider.Create();
-            return await gameRepository.GetMostGamesUserListAsync(10);
+            return await gameRepository.GetMostGamesUserListAsync(5);
         }
 
         public async Task<List<UserWinRateListDTO>> GetBestWinRateUserListAsync()
         {
             using var uow = UnitOfWorkProvider.Create();
-            return await gameRepository.GetBestWinRateUserListAsync(10);
+            return await gameRepository.GetBestWinRateUserListAsync(5);
         }
     }
 }

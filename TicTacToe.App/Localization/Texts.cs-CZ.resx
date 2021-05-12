@@ -142,7 +142,7 @@
     <value>X - jde první, O - jde druhý</value>
   </data>
   <data name="Gameplay_Player" xml:space="preserve">
-    <value>Aktuální hráč:</value>
+    <value>Hráč:</value>
   </data>
   <data name="Gameplay_Restart" xml:space="preserve">
     <value>Restartovat hru</value>
@@ -152,6 +152,9 @@
   </data>
   <data name="Gameplay_Turn" xml:space="preserve">
     <value>Tah:</value>
+  </data>
+  <data name="Gameplay_Winner" xml:space="preserve">
+    <value>Vítěz:</value>
   </data>
   <data name="GameSetup_AI" xml:space="preserve">
     <value>Obtížnost</value>

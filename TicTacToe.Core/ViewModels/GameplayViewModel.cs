@@ -36,6 +36,14 @@ namespace TicTacToe.Core.ViewModels
 
             SurrenderCommand = commandFactory.CreateAsyncCommand(SurrenderAsync);
             TakeCellCommand = commandFactory.CreateAsyncCommand<BoardCellDTO>(TakeCell);
+
+            StartGameplay();
+        }
+
+        private void StartGameplay()
+        {
+            Gameplay.IsActive = true;
+            OnPropertyChanged(nameof(Gameplay.IsActive));
         }
 
         public async Task SurrenderAsync()
@@ -58,6 +66,12 @@ namespace TicTacToe.Core.ViewModels
             {
                 Gameplay.IsActive = false;
                 Gameplay.CurrentPlayer.IsWinner = true;
+
+                await SaveResultAsync();
+            }
+            else if (Gameplay.IsDraw)
+            {
+                Gameplay.IsActive = false;
                 await SaveResultAsync();
             }
             else

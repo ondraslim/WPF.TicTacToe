@@ -171,7 +171,7 @@ namespace TicTacToe.Core.Services
                 {
                     for (var i = 0; i < RequiredCellsToWin; i++)
                     {
-                        board.GetCell(row + i, col - i).IsWinningCell = true;
+                        board.GetCell(row - i, col + i).IsWinningCell = true;
                     }
 
                     return true;

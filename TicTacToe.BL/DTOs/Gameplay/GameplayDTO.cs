@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using TicTacToe.BL.DTOs.Gameplay.Common;
 using TicTacToe.Data.Models.Enums;
 
@@ -21,6 +22,10 @@ namespace TicTacToe.BL.DTOs.Gameplay
         public PlayerDTO CurrentPlayer => PlayerOne.Id == CurrentPlayerId ? PlayerOne : PlayerTwo;
 
         public bool IsActive { get; set; }
+
+        public bool HasWinner => PlayerOne.IsWinner || PlayerTwo.IsWinner;
+
+        public bool IsDraw => Board.Cells.All(c => !c.IsEmpty);
 
         public void TurnFinished()
         {
