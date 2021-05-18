@@ -55,7 +55,6 @@ namespace TicTacToe.Core.ViewModels
             await SaveResultAsync();
         }
 
-        // TODO: add draw option
         public async Task TakeCell(BoardCellDTO selectedCell)
         {
             var cell = Gameplay.Board.GetCell(selectedCell.Row, selectedCell.Col);
